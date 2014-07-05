@@ -20,11 +20,11 @@ function §(array $input)
  * Arity 3: Returns the calculated value
  *          operator('+', 1, 2); // 3
  *
- * @license Forked from https://github.com/nikic/iter Copyright (c) 2013 by Nikita Popov
  * @param $operator
  * @param mixed $a
  * @param mixed $b
  * @return callable
+ * @license Forked from https://github.com/nikic/iter Copyright (c) 2013 by Nikita Popov
  */
 function operator($operator) {
     $functions = [
@@ -71,5 +71,25 @@ function operator($operator) {
         default:
             throw new BadFunctionCallException;
 
+    }
+}
+
+/**
+ * Call a method on an object
+ *
+ * @param $methodName
+ * @param array $args
+ * @return callable
+ * @license Forked from https://github.com/nikic/iter Copyright (c) 2013 by Nikita Popov
+ */
+function method($methodName, $args = []) {
+    if (empty($args)) {
+        return function($object) use ($methodName) {
+            return $object->$methodName();
+        };
+    } else {
+        return function($object) use ($methodName, $args) {
+            return call_user_func_array([$object, $methodName], $args);
+        };
     }
 }
