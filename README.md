@@ -1,5 +1,6 @@
 # Lambdalicious
-# Elegant Functional Programming in PHP
+
+Elegant Functional Programming in PHP
 
 ## Design Goals
 
