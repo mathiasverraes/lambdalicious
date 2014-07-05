@@ -4,20 +4,53 @@
 
 - Decorate, wrap, fork, copy/paste, borrow, steal shamelessly from smarter people than myself.
 - Allow you to write beautiful, elegant, and expressive code, with a high signal-to-noise rate.
-- Polluting your global namespace? Think of it as cleaning up the global namespace!
-- Higher order baby!
+- Gloriously global! Polluting your global namespace? Think of it as cleaning up the global namespace!
+- Higher order functions baby!
+
+## Usage
+
+```php
+
+<?php
+assert(
+    §([1, 2, 3])                    // Wrap an array with the ampersand function §()
+        ->map(operator('+', 2))     // Map the array to a callback
+        ->filter(operator('>=', 4)) // Filter $x where $x >= 4
+        ->§                         // Unwrap an array with the ampersand property ->§
+    
+    == [4, 5]
+);
+
+assert(
+    §(['hello', 'world'])
+        ->map('ucfirst')
+        ->fold(operator('.'), '')   // Concatenate all values
+                                    // Fold returns a value so no § needed
+    == 'HelloWorld';    
+);
+
+```
+
 
 ## FAQ
 
-- Why does it do X? Why doesn't it do Y?
+### But but but, objects and fluent interfaces, is it really functional?
 
-Dunno, I just built whatever I needed to get it to work for my use case. Enough with all the questions! Pull requests!
+Yep. Blows your mind.
+
+### Why does it do X? Why doesn't it do Y?
+
+Dunno, I just built whatever I needed to get it to work for my use case, or whatever was easy to steal. Enough with all the questions! Pull requests!
+
+### How can I contribute?
+
+I like you already! Use it, fix broken stuff, implement missing features from the libs listed below, measure and optimize performance, have awesome ideas.
 
 
-Code shamelessly stolen from 
+## Inspired by:
 
-https://github.com/nikic/iter
-https://gist.github.com/adaburrows/941874
-https://github.com/lstrojny/functional-php
-https://github.com/reactphp/partial
-http://brianhaveri.github.io/Underscore.php/
+- https://github.com/nikic/iter
+- https://gist.github.com/adaburrows/941874
+- https://github.com/lstrojny/functional-php
+- https://github.com/reactphp/partial
+- http://brianhaveri.github.io/Underscore.php/

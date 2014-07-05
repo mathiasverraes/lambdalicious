@@ -6,6 +6,9 @@ use PHPUnit_Framework_TestCase;
 
 final class FluentCollectionTest extends PHPUnit_Framework_TestCase
 {
+
+
+
     /**
      * @test
      */
@@ -16,5 +19,6 @@ final class FluentCollectionTest extends PHPUnit_Framework_TestCase
             §([1, 2])->§
         );
     }
+
 }
  

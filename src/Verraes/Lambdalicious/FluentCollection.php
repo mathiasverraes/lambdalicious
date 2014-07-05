@@ -25,7 +25,7 @@ final class FluentCollection extends ArrayObject
 
     public function map(callable $f)
     {
-        return new FluentCollection(array_map($f, $this));
+        return new FluentCollection(array_map($f, $this->§));
     }
 
     public function filter(callable $f)
