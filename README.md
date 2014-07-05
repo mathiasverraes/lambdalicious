@@ -1,9 +1,9 @@
-# Lambdalicious - Elegant Functional Programming in PHP
-
-![Lambda Man by Martin Grabmüller](docs/lambda-man.jpg "Lambda Man by Martin Grabmüller")
-
+# Lambdalicious
+# Elegant Functional Programming in PHP
 
 ## Design Goals
+
+![Lambda Man by Martin Grabmüller](docs/lambda-man.jpg "Lambda Man by Martin Grabmüller")
 
 - Decorate, wrap, fork, copy/paste, borrow, steal shamelessly from smarter people than myself.
 - Allow you to write beautiful, elegant, and expressive code, with a high signal-to-noise rate.
