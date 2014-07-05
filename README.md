@@ -1,10 +1,13 @@
 # Lambdalicious - Elegant Functional Programming in PHP
 
+![Lambda Man by Martin Grabmüller](docs/lambda-man.jpg "Lambda Man by Martin Grabmüller")
+
+
 ## Design Goals
 
 - Decorate, wrap, fork, copy/paste, borrow, steal shamelessly from smarter people than myself.
 - Allow you to write beautiful, elegant, and expressive code, with a high signal-to-noise rate.
-- Gloriously global! Polluting your global namespace? Think of it as cleaning up the global namespace!
+- Gloriously global! Polluting your global namespace? Think of it as cleaning up your global namespace!
 - Higher order functions baby!
 
 ## Usage
@@ -40,7 +43,11 @@ Yep. Blows your mind.
 
 ### Why does it do X? Why doesn't it do Y?
 
-Dunno, I just built whatever I needed to get it to work for my use case, or whatever was easy to steal. Enough with all the questions! Pull requests!
+Dunno, I just built whatever I needed to get it to work for my use case, or whatever was easy to steal.
+
+### Should I use it? Is it ready for production? 
+
+If you can't make that decision for yourself, don't use it.
 
 ### How can I contribute?
 
@@ -54,3 +61,4 @@ I like you already! Use it, fix broken stuff, implement missing features from th
 - https://github.com/lstrojny/functional-php
 - https://github.com/reactphp/partial
 - http://brianhaveri.github.io/Underscore.php/
+- http://www.grabmueller.de/martin/www/gallery/misc-3.en.html (Lambda Man)
