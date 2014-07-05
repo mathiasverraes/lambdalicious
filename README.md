@@ -2,9 +2,9 @@
 
 Elegant Functional Programming in PHP
 
-## Design Goals
-
 ![Lambda Man by Martin Grabmüller](docs/lambda-man.jpg "Lambda Man by Martin Grabmüller")
+
+## Design Goals
 
 - Decorate, wrap, fork, copy/paste, borrow, steal shamelessly from smarter people than myself.
 - Allow you to write beautiful, elegant, and expressive code, with a high signal-to-noise rate.
