@@ -1,0 +1,16 @@
+{
+    "name": "mathiasverraes/lambdalicious",
+    "description": "Lambdalicious - Elegant Functional Programming in PHP",
+    "minimum-stability": "dev",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mathias Verraes",
+            "email": "mathias@verraes.net"
+        }
+    ],
+    "require": {
+        "lstrojny/functional-php": "1.0.*@dev",
+        "nikic/iter": "dev-master"
+    }
+}
