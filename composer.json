@@ -9,8 +9,18 @@
             "email": "mathias@verraes.net"
         }
     ],
+    "autoload": {
+        "psr-0": { "Verraes": "src"},
+        "files": [
+            "src/Verraes/Lambdalicious/functions.php"
+        ]
+    },
+
     "require": {
         "lstrojny/functional-php": "1.0.*@dev",
         "nikic/iter": "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0"
     }
 }

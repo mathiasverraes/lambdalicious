@@ -2,10 +2,17 @@
 
 ## Design Goals
 
-- Decorate, wrap, fork, copy/paste, borrow, steal, shamelessly from smarter people than myself.
+- Decorate, wrap, fork, copy/paste, borrow, steal shamelessly from smarter people than myself.
 - Allow you to write beautiful, elegant, and expressive code, with a high signal-to-noise rate.
 - Polluting your global namespace? Think of it as cleaning up the global namespace!
 - Higher order baby!
+
+## FAQ
+
+- Why does it do X? Why doesn't it do Y?
+
+Dunno, I just built whatever I needed to get it to work for my use case. Enough with all the questions! Pull requests!
+
 
 Code shamelessly stolen from 
 
