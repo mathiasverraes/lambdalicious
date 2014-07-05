@@ -14,24 +14,19 @@ Elegant Functional Programming in PHP
 ## Usage
 
 ```php
-
 <?php
-assert(
-    §([1, 2, 3])                    // Wrap an array with the ampersand function §()
-        ->map(operator('+', 2))     // Map the array to a callback
-        ->filter(operator('>=', 4)) // Filter $x where $x >= 4
-        ->§                         // Unwrap an array with the ampersand property ->§
-    
-    == [4, 5]
-);
 
-assert(
-    §(['hello', 'world'])
-        ->map('ucfirst')
-        ->fold(operator('.'), '')   // Concatenate all values
-                                    // Fold returns a value so no § needed
-    == 'HelloWorld';    
-);
+§([1, 2, 3])                    // Wrap an array with the ampersand function §()
+    ->map(operator('+', 2))     // Map the array to a callback
+    ->filter(operator('>=', 4)) // Filter $x where $x >= 4
+    ->§;                        // Unwrap an array with the ampersand property ->§
+                                // Returns [4, 5]
+
+§(['hello', 'world'])
+    ->map('ucfirst')
+    ->fold(operator('.'), '');  // Concatenate all values
+                                // Fold returns a value so no § needed
+                                // Returns 'HelloWorld'    
 
 ```
 
