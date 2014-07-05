@@ -34,6 +34,8 @@ assert(
 
 ```
 
+More examples in `tests/Verraes/Tests/Lambdalicious/ExamplesTest.php`
+
 
 ## FAQ
 

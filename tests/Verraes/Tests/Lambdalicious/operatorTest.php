@@ -45,10 +45,10 @@ final class operatorTest extends PHPUnit_Framework_TestCase
      * @param $b
      * @param $expectedResult
      */
-    public function it_should_create_TODO($symbol, $a, $b, $expectedResult)
+    public function it_should_resolve_to_value($symbol, $a, $b, $expectedResult)
     {
         $identity = operator($symbol, $a, $b);
-        $this->assertSame($expectedResult, $identity());
+        $this->assertSame($expectedResult, $identity);
 
     }
 
@@ -82,13 +82,21 @@ final class operatorTest extends PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Unknown operator "**"
      */
     public function it_should_throw_for_unknown_operators()
     {
         $this->setExpectedException(InvalidArgumentException::class,'Unknown operator "**"');
         operator('**');
+    }
+
+
+    /**
+     * @test
+     */
+    public function it_should_throw_for_too_many_args()
+    {
+        $this->setExpectedException(\BadFunctionCallException::class);
+        operator('*', 1, 2, 3);
     }
 }
  

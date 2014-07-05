@@ -4,7 +4,7 @@
 namespace Verraes\Tests\Lambdalicious;
 
 
-final class ExamplesFromReadmeTest extends \PHPUnit_Framework_TestCase
+final class ExamplesTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @test

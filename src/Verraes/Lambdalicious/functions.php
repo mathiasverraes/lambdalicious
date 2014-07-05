@@ -22,10 +22,11 @@ function §(array $input)
  *
  * @license Forked from https://github.com/nikic/iter Copyright (c) 2013 by Nikita Popov
  * @param $operator
- * @param null $arg
+ * @param mixed $a
+ * @param mixed $b
  * @return callable
  */
-function operator($operator, $arg = null) {
+function operator($operator) {
     $functions = [
         'instanceof' => function($a, $b) { return $a instanceof $b; },
         '*'   => function($a, $b) { return $a *   $b; },
@@ -56,11 +57,19 @@ function operator($operator, $arg = null) {
     }
 
     $fn = $functions[$operator];
-    if (func_num_args() === 1) {
-        return $fn;
-    } else {
-        return function($a) use ($fn, $arg) {
-            return $fn($a, $arg);
-        };
+    $args = func_get_args();
+    switch(func_num_args()) {
+        case 1:
+            return $fn;
+        case 2:
+            $a = $args[1];
+            return function($x) use ($fn, $a) {
+                return $fn($x, $a);
+            };
+        case 3:
+            return $fn($args[1], $args[2]);
+        default:
+            throw new BadFunctionCallException;
+
     }
 }
