@@ -12,7 +12,7 @@
         >
     <testsuites>
         <testsuite name="Verraes/Lambdalicious">
-            <directory suffix="Test.php">tests</directory>
+            <directory suffix="composeTest.php">tests</directory>
         </testsuite>
     </testsuites>
 </phpunit>

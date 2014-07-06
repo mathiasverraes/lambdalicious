@@ -12,7 +12,8 @@
     "autoload": {
         "psr-0": { "Verraes": "src"},
         "files": [
-            "src/Verraes/Lambdalicious/functions.php"
+            "src/Verraes/Lambdalicious/functions.php",
+            "src/Verraes/Lambdalicious/compose.php"
         ]
     },
 
