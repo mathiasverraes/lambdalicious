@@ -1,6 +1,6 @@
 # Lambdalicious
 
-Elegant Functional Programming in PHP
+Experiments in Elegant Functional Programming in PHP
 
 ![Lambda Man by Martin Grabmüller](docs/lambda-man.jpg "Lambda Man by Martin Grabmüller")
 
