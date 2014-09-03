@@ -1,11 +1,34 @@
 <?php
 
+/**
+ *
+ */
+const atom = 'atom';
 const iseq = 'iseq';
 const isempty = 'isempty';
 const cons = 'cons';
 const car = 'car';
 const cdr = 'cdr';
 const identity = 'identity';
+
+/**
+ * Defines an atom.
+ *
+ * @param $atom
+ */
+function atom($atom)
+{
+    if(!defined($atom)) define($atom, $atom);
+}
+
+/**
+ * @param $atom
+ * @return bool
+ */
+function isatom($atom)
+{
+    return is_scalar($atom);
+}
 
 /**
  * Is $left equal to $right?
