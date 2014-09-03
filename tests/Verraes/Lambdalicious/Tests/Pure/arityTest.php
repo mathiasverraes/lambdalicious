@@ -1,6 +1,6 @@
 <?php
 
-namespace Verraes\Tests\Lambdalicious;
+namespace Verraes\Lambdalicious\Tests;
 
 final class arityTest extends \PHPUnit_Framework_TestCase
 {
