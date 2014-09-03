@@ -18,8 +18,8 @@ function divide ($a, $b) { return $a /   $b; };
 const mod = 'mod';
 function mod($a, $b) { return $a %   $b; };
 
-const exp = 'exp';
-function exp($a, $b) { return $a ** $b; };
+const exponent = 'exponent';
+function exponent($a, $b) { return $a ** $b; };
 
 const concat = 'concat';
 function concat($a, $b) { return $a .   $b; };
