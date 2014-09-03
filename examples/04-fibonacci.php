@@ -7,18 +7,20 @@ $fib = function($n) use(&$fib) {
     return lt($n, 2) ? $n : add($fib($n-1), $fib($n-2));
 };
 
+// It's is strictly forbidden to do functional programming without calculating Fibonacci numbers
 assert(
-    $fib(12) == 144,
-    "It's is strictly forbidden to do functional programming without calculating Fibonacci numbers"
+    $fib(12) == 144
 );
 
 $fastfib = memoize(function($n) use(&$fastfib) {
     return lt($n, 2) ? $n : add($fastfib($n-1), $fastfib($n-2));
 });
-assert($fastfib(12) == 144);
-// echo profile($fib, 35) . PHP_EOL;
-// echo profile($fastfib, 35) . PHP_EOL;
+assert(
+    $fastfib(12) == 144
+);
 // Memoization can help with expensive recursive operations
+// echo profile($fastfib, 100) . PHP_EOL;
+// echo profile($fib, 100) . PHP_EOL;
 
 
 // If we want to use cond, we need to wrap add(fib(n-1), fib(n-2)) in a closure. That makes the whole thing rather ugly.
@@ -35,4 +37,6 @@ $fib2 = function($n) use (&$fib2, $decrement) {
         )
     );
 };
-assert($fib2(12) == 144);
+assert(
+    $fib2(12) == 144
+);
