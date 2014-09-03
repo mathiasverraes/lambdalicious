@@ -42,16 +42,3 @@ assert(
     cdr([a, b, c]) === [b, c],
     "cdr returns a list of all but the first element of a list"
 );
-
-$second = compose(car, cdr);
-assert(
-    $second([a, b, c]),
-    "second returns the second element of a list. We made it by composing cdr and car"
-);
-
-$add1 = partial(add, 1);
-assert(
-    $add1(2) === 3,
-    "partial fixes a number of arguments of a function. eg add(x, y) takes two arguments, partial(add, 1) creates a function add1(y)"
-);
-

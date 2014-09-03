@@ -11,5 +11,13 @@ final class examplesTest extends \PHPUnit_Framework_TestCase
     {
         include __DIR__ . '/../../../../examples/1.php';
     }
+
+    /**
+     * @test
+     */
+    public function examples2()
+    {
+        include __DIR__ . '/../../../../examples/2.php';
+    }
 }
  

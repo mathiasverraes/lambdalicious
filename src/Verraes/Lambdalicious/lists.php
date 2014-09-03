@@ -5,6 +5,8 @@ const cons = 'cons';
 const car = 'car';
 const cdr = 'cdr';
 const reduce = 'reduce';
+const map = 'map';
+const filter = 'filter';
 
 /**
  * Is the list empty?
@@ -69,6 +71,11 @@ function cdr(array $list)
 }
 final class CdrIsDefinedOnlyForNonEmptyLists extends \Exception {}
 
+function map(callable $function, array $list)
+{
+    return array_map($function, $list);
+}
+
 /**
  * Reduce $list to a single value using $function($carry, $item), starting by $initial
  *
@@ -80,4 +87,9 @@ final class CdrIsDefinedOnlyForNonEmptyLists extends \Exception {}
 function reduce(callable $function, array $list, $initial)
 {
     return array_reduce($list, $function, $initial);
+}
+
+function filter(callable $function, array $list)
+{
+    return array_filter($list, $function);
 }
