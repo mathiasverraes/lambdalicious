@@ -1,46 +1,59 @@
 <?php
 
+const cond = 'cond';
+const elsedo = 'elsedo';
 const isinstanceof = 'isinstanceof';
-function isinstanceof($a, $b) { return $a instanceof $b; }
-
 const add = 'add';
-function add($x, $y) { return $x + $y; }
-
 const subtract = 'subtract';
-function subtract($a, $b) { return $a -   $b; };
-
 const multiply = 'multiply';
-function multiply($x, $y) { return $x * $y; }
-
 const divide = 'divide';
-function divide ($a, $b) { return $a /   $b; };
-
 const mod = 'mod';
-function mod($a, $b) { return $a %   $b; };
-
-const exponent = 'exponent';
-function exponent($a, $b) { return $a ** $b; };
-
 const lt = 'lt';
-function lt($a, $b) { return $a <   $b; };
-
 const lteq = 'lteq';
-function lteq($a, $b) { return $a <=  $b; };
-
 const gt = 'gt';
-function gt($a, $b) { return $a >   $b; };
-
 const gteq = 'gteq';
-function gteq($a, $b) { return $a >=  $b; };
-
 const noteq = 'noteq';
-function noteq($a, $b) { return !iseq($a, $b); };
-
 const not = 'not';
-function not(callable $function) { return function(...$arguments) use($function) { return !call($function, $arguments);}; }
-
 const andx = 'andx';
-function andx($a, $b) { return $a &&  $b; };
-
 const orx = 'orx';
+const exponent = 'exponent';
+
+function isinstanceof($object, $classname) { return $object instanceof $classname; }
+function add($x, $y) { return $x + $y; }
+function subtract($a, $b) { return $a -   $b; };
+function multiply($x, $y) { return $x * $y; }
+function divide ($a, $b) { return $a /   $b; };
+function mod($a, $b) { return $a %   $b; };
+function exponent($a, $b) { return $a ** $b; };
+function lt($a, $b) { return $a <   $b; };
+function lteq($a, $b) { return $a <=  $b; };
+function gt($a, $b) { return $a >   $b; };
+function gteq($a, $b) { return $a >=  $b; };
+function noteq($a, $b) { return !iseq($a, $b); };
+function not(callable $function) { return function(...$arguments) use($function) { return !call($function, $arguments);}; }
+function andx($a, $b) { return $a &&  $b; };
 function orx($a, $b) { return $a ||  $b; };
+
+/**
+ * Returns the second element of the first pair. The last pair should always be pair(elsedo, expression)
+ * @param $conds
+ * @throws CondExpectsAtLeastOneCondition
+ * @throws CondExpectsPairsAsArguments
+ * @throws CondExpectsTheFinalExpressionToBeElsedo
+ * @return mixed
+ */
+function cond(...$conds)
+{
+    if(count(filter(not(ispair), $conds))) throw new CondExpectsPairsAsArguments;
+    if(isempty($conds)) throw new CondExpectsAtLeastOneCondition;
+
+    if(contains1($conds)) {
+        if(!iseq(elsedo, car($conds)->first())) throw new CondExpectsTheFinalExpressionToBeElsedo;
+        return car($conds)->second();
+    }
+
+    return car($conds)->first() ? car($conds)->second() : call(cond, cdr($conds));
+}
+final class CondExpectsTheFinalExpressionToBeElsedo extends \Exception {}
+final class CondExpectsPairsAsArguments extends \Exception {}
+final class CondExpectsAtLeastOneCondition extends \Exception {}

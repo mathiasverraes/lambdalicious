@@ -1,6 +1,7 @@
 <?php
 
 const isempty = 'isempty';
+const contains1 = 'contains1';
 const cons = 'cons';
 const car = 'car';
 const cdr = 'cdr';
@@ -18,9 +19,7 @@ const concat = 'concat';
  */
 function isempty($list)
 {
-    if(!is_array($list)) {
-        throw new IsEmptyIsDefinedOnlyForLists;
-    }
+    if(!is_array($list)) throw new IsEmptyIsDefinedOnlyForLists;
     return [] === $list;
 }
 final class IsEmptyIsDefinedOnlyForLists extends \Exception {}
@@ -47,10 +46,7 @@ function cons($element, array $list)
  */
 function car(array $list)
 {
-    if ([] === $list) {
-        throw new CarIsDefinedOnlyForNonEmptyLists;
-    }
-
+    if (isempty($list)) throw new CarIsDefinedOnlyForNonEmptyLists;
     return reset($list);
 }
 final class CarIsDefinedOnlyForNonEmptyLists extends \Exception {}
@@ -64,14 +60,27 @@ final class CarIsDefinedOnlyForNonEmptyLists extends \Exception {}
  */
 function cdr(array $list)
 {
-    if ([] === $list) {
-        throw new CdrIsDefinedOnlyForNonEmptyLists;
-    }
-
+    if (isempty($list)) throw new CdrIsDefinedOnlyForNonEmptyLists;
     return array_slice($list, 1);
 }
 final class CdrIsDefinedOnlyForNonEmptyLists extends \Exception {}
 
+/**
+ * True if the list contains exactly one item
+ * @param array $list
+ * @return bool
+ */
+function contains1(array $list)
+{
+    return count($list) == 1;
+}
+/**
+ * Applies $function to the elements of the given $list
+ *
+ * @param callable $function
+ * @param array $list
+ * @return array
+ */
 function map(callable $function, array $list)
 {
     return array_map($function, $list);
@@ -90,14 +99,21 @@ function reduce(callable $function, array $list, $initial)
     return array_reduce($list, $function, $initial);
 }
 
-function filter(callable $function, array $list)
+/**
+ * Returns a list of items from $list for which $predicate is true
+ *
+ * @param callable $predicate
+ * @param array $list
+ * @return array
+ */
+function filter(callable $predicate, array $list)
 {
-    return array_values(array_filter($list, $function));
+    return array_values(array_filter($list, $predicate));
 }
 
 function concat(...$lists)
 {
     if(isempty($lists)) return [];
-    if(1 == count($lists)) return car($lists);
+    if(contains1($lists)) return car($lists);
     return array_merge(car($lists), call(concat, cdr($lists)));
 }

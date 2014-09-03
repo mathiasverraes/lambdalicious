@@ -15,7 +15,6 @@ assert(
 );
 
 $listOfLists = [[a, b], [], [c, d]];
-print_r(filter(not(isempty), $listOfLists));
 assert(
     filter(not(isempty), $listOfLists) === [[a, b], [c, d]]
 );
@@ -25,5 +24,3 @@ assert(
     $removeEmptyLists($listOfLists)  === [[a, b], [c, d]],
     "Another example of partial function application, both expressions evaluate the same"
 );
-
-

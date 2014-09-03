@@ -132,5 +132,15 @@ final class listsTest extends \PHPUnit_Framework_TestCase
             concat($list1, $list2, $list3)
         );
     }
+
+    /**
+     * @test
+     */
+    public function contains1()
+    {
+        $this->assertFalse(contains1([]));
+        $this->assertTrue(contains1([a]));
+        $this->assertFalse(contains1([a, b]));
+    }
 }
  
