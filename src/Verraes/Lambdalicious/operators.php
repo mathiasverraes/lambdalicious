@@ -29,7 +29,7 @@ function lt($a, $b) { return $a <   $b; };
 function lteq($a, $b) { return $a <=  $b; };
 function gt($a, $b) { return $a >   $b; };
 function gteq($a, $b) { return $a >=  $b; };
-function noteq($a, $b) { return !iseq($a, $b); };
+function noteq($a, $b) { return !isequal($a, $b); };
 function not(callable $function) { return function(...$arguments) use($function) { return !call($function, $arguments);}; }
 function andx($a, $b) { return $a &&  $b; };
 function orx($a, $b) { return $a ||  $b; };
@@ -48,7 +48,7 @@ function cond(...$conds)
     if(isempty($conds)) throw new CondExpectsAtLeastOneCondition;
 
     if(contains1($conds)) {
-        if(!iseq(elsedo, car($conds)->first())) throw new CondExpectsTheFinalExpressionToBeElsedo;
+        if(!isequal(elsedo, car($conds)->first())) throw new CondExpectsTheFinalExpressionToBeElsedo;
         return car($conds)->second();
     }
 

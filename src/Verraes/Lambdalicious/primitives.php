@@ -1,7 +1,7 @@
 <?php
 
 const atom = 'atom';
-const iseq = 'iseq';
+const isequal = 'isequal';
 const identity = 'identity';
 
 /**
@@ -30,9 +30,9 @@ function isatom($atom)
  * @throws IsEqIsDefinedForNonListsOnly
  * @return boolean
  */
-function iseq($left, $right)
+function isequal($left, $right)
 {
-    if(is_array($left) || is_array($right)) {
+    if(orx(islist($left), islist($right))) {
         throw new IsEqIsDefinedForNonListsOnly;
     }
     return $left == $right;

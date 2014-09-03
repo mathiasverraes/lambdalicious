@@ -27,7 +27,7 @@ final class primitivesTest extends \PHPUnit_Framework_TestCase
     public function iseq_is_defined_for_non_lists_only()
     {
         $this->setExpectedException(IsEqIsDefinedForNonListsOnly::class);
-        iseq([a, b], c);
+        isequal([a, b], c);
     }
 
     /**
@@ -35,7 +35,7 @@ final class primitivesTest extends \PHPUnit_Framework_TestCase
      */
     public function iseq_returns_true_when_equal()
     {
-        $this->assertTrue(iseq(a, a));
+        $this->assertTrue(isequal(a, a));
     }
 
     /**
@@ -43,7 +43,7 @@ final class primitivesTest extends \PHPUnit_Framework_TestCase
      */
     public function iseq_returns_false_when_not_equal()
     {
-        $this->assertFalse(iseq(a, b));
+        $this->assertFalse(isequal(a, b));
     }
 
 }

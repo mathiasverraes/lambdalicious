@@ -12,6 +12,15 @@ final class listsTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function islist()
+    {
+        $this->assertTrue(islist([a, b]));
+        $this->assertFalse(islist(a));
+    }
+
+    /**
+     * @test
+     */
     public function isempty_is_defined_only_for_lists()
     {
         $this->setExpectedException(IsEmptyIsDefinedOnlyForLists::class);

@@ -10,6 +10,17 @@ const map = 'map';
 const filter = 'filter';
 const concat = 'concat';
 
+const islist = 'islist';
+
+/**
+ * @param $list
+ * @return bool
+ */
+function islist($list)
+{
+    return is_array($list);
+}
+
 /**
  * Is the list empty?
  *
@@ -19,11 +30,10 @@ const concat = 'concat';
  */
 function isempty($list)
 {
-    if(!is_array($list)) throw new IsEmptyIsDefinedOnlyForLists;
+    if(!islist($list)) throw new IsEmptyIsDefinedOnlyForLists;
     return [] === $list;
 }
 final class IsEmptyIsDefinedOnlyForLists extends \Exception {}
-
 
 /**
  * Create a list from $element and $list
