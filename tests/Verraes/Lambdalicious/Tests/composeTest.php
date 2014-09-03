@@ -1,6 +1,6 @@
 <?php
 
-namespace Verraes\Lambdalicious\Tests\Pure;
+namespace Verraes\Lambdalicious\Tests;
 
 final class composeTest extends \PHPUnit_Framework_TestCase
 {

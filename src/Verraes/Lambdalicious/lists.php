@@ -4,6 +4,7 @@ const isempty = 'isempty';
 const cons = 'cons';
 const car = 'car';
 const cdr = 'cdr';
+const reduce = 'reduce';
 
 /**
  * Is the list empty?
@@ -19,6 +20,7 @@ function isempty($list)
     }
     return [] === $list;
 }
+final class IsEmptyIsDefinedOnlyForLists extends \Exception {}
 
 
 /**
@@ -48,6 +50,7 @@ function car(array $list)
 
     return reset($list);
 }
+final class CarIsDefinedOnlyForNonEmptyLists extends \Exception {}
 
 /**
  * Get the list without the first element
@@ -64,7 +67,17 @@ function cdr(array $list)
 
     return array_slice($list, 1);
 }
-
-final class IsEmptyIsDefinedOnlyForLists extends \Exception {}
-final class CarIsDefinedOnlyForNonEmptyLists extends \Exception {}
 final class CdrIsDefinedOnlyForNonEmptyLists extends \Exception {}
+
+/**
+ * Reduce $list to a single value using $function($carry, $item), starting by $initial
+ *
+ * @param callable $function
+ * @param array $list
+ * @param $initial
+ * @return mixed
+ */
+function reduce(callable $function, array $list, $initial)
+{
+    return array_reduce($list, $function, $initial);
+}

@@ -54,3 +54,4 @@ assert(
     $add1(2) === 3,
     "partial fixes a number of arguments of a function. eg add(x, y) takes two arguments, partial(add, 1) creates a function add1(y)"
 );
+
