@@ -7,6 +7,7 @@ const cdr = 'cdr';
 const reduce = 'reduce';
 const map = 'map';
 const filter = 'filter';
+const concat = 'concat';
 
 /**
  * Is the list empty?
@@ -91,5 +92,12 @@ function reduce(callable $function, array $list, $initial)
 
 function filter(callable $function, array $list)
 {
-    return array_filter($list, $function);
+    return array_values(array_filter($list, $function));
+}
+
+function concat(...$lists)
+{
+    if(isempty($lists)) return [];
+    if(1 == count($lists)) return car($lists);
+    return array_merge(car($lists), call(concat, cdr($lists)));
 }

@@ -95,5 +95,42 @@ final class listsTest extends \PHPUnit_Framework_TestCase
             cdr([a])
         );
     }
+
+    /**
+     * @test
+     */
+    public function concat_empty()
+    {
+        $this->assertEquals(
+            [],
+            concat()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function concat_1_element()
+    {
+        $this->assertEquals(
+            [a, b],
+            concat([a, b])
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function concat_multiple()
+    {
+        $list1 = [a, b];
+        $list2 = [c, d];
+        $list3 = [e, f];
+
+        $this->assertEquals(
+            [a, b, c, d, e, f],
+            concat($list1, $list2, $list3)
+        );
+    }
 }
  

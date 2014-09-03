@@ -21,9 +21,6 @@ function mod($a, $b) { return $a %   $b; };
 const exponent = 'exponent';
 function exponent($a, $b) { return $a ** $b; };
 
-const concat = 'concat';
-function concat($a, $b) { return $a .   $b; };
-
 const lt = 'lt';
 function lt($a, $b) { return $a <   $b; };
 
@@ -38,6 +35,9 @@ function gteq($a, $b) { return $a >=  $b; };
 
 const noteq = 'noteq';
 function noteq($a, $b) { return !iseq($a, $b); };
+
+const not = 'not';
+function not(callable $function) { return function(...$arguments) use($function) { return !call($function, $arguments);}; }
 
 const andx = 'andx';
 function andx($a, $b) { return $a &&  $b; };

@@ -26,7 +26,7 @@ function compose(...$functions)
 function partial($function, ...$arguments)
 {
     return function (...$moreArguments) use ($function, $arguments) {
-        return call_user_func_array($function, array_merge($arguments, $moreArguments));
+        return call($function, array_merge($arguments, $moreArguments));
     };
 
 }

@@ -15,10 +15,14 @@ assert(
 );
 
 $listOfLists = [[a, b], [], [c, d]];
-$removeEmptyLists = partial(filter, isempty);
+print_r(filter(not(isempty), $listOfLists));
 assert(
-    filter(isempty, $listOfLists) === [[a, b], [c, d]]
-    && $removeEmptyLists($listOfLists)  === [[a, b], [c, d]],
+    filter(not(isempty), $listOfLists) === [[a, b], [c, d]]
+);
+
+$removeEmptyLists = partial(filter, not(isempty));
+assert(
+    $removeEmptyLists($listOfLists)  === [[a, b], [c, d]],
     "Another example of partial function application, both expressions evaluate the same"
 );
 
