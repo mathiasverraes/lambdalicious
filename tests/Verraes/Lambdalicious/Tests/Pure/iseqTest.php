@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Verraes\Lambdalicious\Tests\Pure;
 
 use IsEqIsDefinedForNonListsOnly;

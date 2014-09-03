@@ -1,11 +1,11 @@
 <?php
 
-
 namespace Verraes\Lambdalicious\Tests\Pure;
 
 use NullIsDefinedOnlyForLists;
 
-final class isnullTest extends \PHPUnit_Framework_TestCase {
+final class isnullTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * @test
      */

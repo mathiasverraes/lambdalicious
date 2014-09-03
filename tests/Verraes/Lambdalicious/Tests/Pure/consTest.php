@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Verraes\Lambdalicious\Tests\Pure;
 
 final class consTest extends \PHPUnit_Framework_TestCase
