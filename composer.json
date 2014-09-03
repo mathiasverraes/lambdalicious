@@ -3,24 +3,30 @@
     "description": "Lambdalicious - Elegant Functional Programming in PHP",
     "minimum-stability": "dev",
     "license": "MIT",
+    "keywords": ["lisp", "fp", "functional", "clojure", "lambda"],
     "authors": [
         {
             "name": "Mathias Verraes",
-            "email": "mathias@verraes.net"
+            "email": "mathias@verraes.net",
+            "homepage": "http://verraes.net"
         }
     ],
     "autoload": {
-        "psr-0": { "Verraes": "src"},
         "files": [
             "src/Verraes/Lambdalicious/preload.php"
         ]
     },
 
-    "require": {
-        "lstrojny/functional-php": "1.0.*@dev",
-        "nikic/iter": "dev-master"
+    "autoload-dev": {
+        "psr-4": {
+            "Verraes\\": ["tests/Verraes"]
+        }
     },
+
     "require-dev": {
-        "phpunit/phpunit": "~4.0"
+        "phpunit/phpunit": "~4.1"
+    },
+    "config": {
+        "bin-dir": "bin"
     }
 }
