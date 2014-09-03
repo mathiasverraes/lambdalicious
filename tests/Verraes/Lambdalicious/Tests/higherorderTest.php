@@ -68,5 +68,29 @@ final class higherorderTest extends \PHPUnit_Framework_TestCase
             $add1(2)
         );
     }
+
+    /**
+     * @test
+     */
+    public function memoize()
+    {
+        $counter = new _TestCounter;
+        $f = memoize(function($x, $y) use($counter) { $counter->count++; });
+        $g = memoize(function($x, $y) use($counter) { $counter->count++; });
+
+        $f(a, b);
+        $f(a, b);
+        $this->assertEquals(1, $counter->count);
+        $f(c, d);
+        $f(c, d);
+        $this->assertEquals(2, $counter->count);
+        $g(a, b);
+        $g(a, b);
+        $this->assertEquals(3, $counter->count);
+    }
 }
- 
+
+final class _TestCounter
+{
+    public $count;
+}
