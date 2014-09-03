@@ -33,15 +33,27 @@ final class composeTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function composes_functions()
+    public function composing_two_functions()
     {
         $add1 = partial(add, 1);
         $double = partial(multiply, 2);
-        $add1AndDouble = compose($add1, $double);
+        $doubleThenAdd1 = compose($add1, $double);
 
         $this->assertEquals(
-            12,
-            $add1AndDouble(5)
+            11,
+            $doubleThenAdd1(5)
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function composing_two_functions2()
+    {
+        $secondElement = compose(car, cdr);
+        $this->assertEquals(
+            b,
+            $secondElement([a, b, c])
         );
     }
 }

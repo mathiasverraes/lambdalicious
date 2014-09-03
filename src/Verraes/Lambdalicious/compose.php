@@ -13,7 +13,7 @@ function compose(...$functions)
     return reduce(
         function (callable $carry, $function) {
             return function ($argument) use ($carry, $function) {
-                return $function($carry($argument));
+                return $carry($function($argument));
             };
         },
         $functions,
