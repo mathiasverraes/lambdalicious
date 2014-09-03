@@ -2,7 +2,7 @@
 
 namespace Verraes\Lambdalicious\Tests;
 
-final class composeTest extends \PHPUnit_Framework_TestCase
+final class higherorderTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @test
@@ -54,6 +54,18 @@ final class composeTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(
             b,
             $secondElement([a, b, c])
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function partial()
+    {
+        $add1 = partial(add, 1);
+        $this->assertEquals(
+            3,
+            $add1(2)
         );
     }
 }
