@@ -12,7 +12,7 @@
     "autoload": {
         "psr-0": { "Verraes": "src"},
         "files": [
-            "src/Verraes/Lambdalicious/preload.php"
+            "src/Verraes/Lambdalicious/Pure/preload.php"
         ]
     },
 

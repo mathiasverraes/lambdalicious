@@ -6,11 +6,11 @@ Experiments in Elegant Functional Programming in PHP
 
 ## Design Goals
 
-- Decorate, wrap, fork, copy/paste, borrow, steal shamelessly from smarter people than myself!
-- Allow you to write beautiful, elegant, and expressive code, with a high signal-to-noise rate!
-- Gloriously global! Polluting your global namespace? Think of it as cleaning up your global namespace!
-- Higher order functions baby!
 - LISPlike Love for Lists!
+- Higher order functions baby!
+- Gloriously global! Polluting your global namespace? Think of it as cleaning up your global namespace!
+- Allow you to write beautiful, elegant, and expressive code, with a high signal-to-noise rate!
+- Decorate, wrap, fork, copy/paste, borrow, steal shamelessly from smarter people than myself!
 
 
 
