@@ -15,5 +15,17 @@ final class functionsTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(3,  arity(function($a, $b, $c){}));
         $this->assertEquals(4,  arity(function($a, $b, $c, $d){}));
     }
+
+    /**
+     * @test
+     */
+    public function reverseargs()
+    {
+        $subtractRev = reverseargs(subtract);
+        $this->assertEquals(
+            4,
+            $subtractRev(1, 5)
+        );
+    }
 }
  

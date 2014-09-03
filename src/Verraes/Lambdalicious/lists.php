@@ -9,7 +9,7 @@ const reduce = 'reduce';
 const map = 'map';
 const filter = 'filter';
 const concat = 'concat';
-
+const reverse = 'reverse';
 const islist = 'islist';
 
 /**
@@ -126,4 +126,15 @@ function concat(...$lists)
     if(isempty($lists)) return [];
     if(contains1($lists)) return car($lists);
     return array_merge(car($lists), call(concat, cdr($lists)));
+}
+
+/**
+ * Reverse a list
+ *
+ * @param array $list
+ * @return array
+ */
+function reverse(array $list)
+{
+    return array_reverse($list, false);
 }

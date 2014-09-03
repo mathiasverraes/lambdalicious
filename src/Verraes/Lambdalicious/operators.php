@@ -49,7 +49,7 @@ function cond(...$conds)
 
     if(contains1($conds)) {
         if(!isequal(elsedo, car($conds)->first())) throw new CondExpectsTheFinalExpressionToBeElsedo;
-        return car($conds)->second();
+        return evaluate(car($conds)->second());
     }
 
     return car($conds)->first() ? car($conds)->second() : call(cond, cdr($conds));

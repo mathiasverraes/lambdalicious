@@ -27,5 +27,13 @@ final class examplesTest extends \PHPUnit_Framework_TestCase
     {
         include __DIR__ . '/../../../../examples/03-conditionals.php';
     }
+
+    /**
+     * @test
+     */
+    public function examples_04_fibonacci()
+    {
+        include __DIR__ . '/../../../../examples/04-fibonacci.php';
+    }
 }
  

@@ -61,10 +61,22 @@ final class operatorsTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException(CondExpectsTheFinalExpressionToBeElsedo::class);
         cond(
-//            pair(false, a),
+            pair(false, a),
             pair(false, b)
         );
+    }
 
+    /**
+     * @test
+     */
+    public function cond_evaluates_functions()
+    {
+        $result = cond(
+            pair(false, function() { return 'fail'; }),
+            pair(elsedo, function() { return 'success'; })
+        );
+
+        $this->assertEquals('success', $result);
     }
 }
  

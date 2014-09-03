@@ -151,5 +151,17 @@ final class listsTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(contains1([a]));
         $this->assertFalse(contains1([a, b]));
     }
+
+    /**
+     * @test
+     */
+    public function reverse()
+    {
+        $this->assertEquals(
+            [c, b, a],
+            reverse([a, b, c])
+        );
+
+    }
 }
  
