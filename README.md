@@ -24,7 +24,7 @@ $accounts = [
 ];
 
 $negate = function($n) { return -$n; };
-$getAmount = partial(method, 'last', [], __);
+$getAmount = last; // last returns the last item in a Pair
 $isNegative = partial(lt, __, 0);
 
 $totalOutstanding = pipe(

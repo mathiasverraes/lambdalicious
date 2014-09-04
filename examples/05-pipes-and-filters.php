@@ -12,7 +12,7 @@ $accounts = [
 ];
 
 $negate = function($n) { return -$n; };
-$getAmount = partial(method, 'last', [], __);
+$getAmount = last; // last returns the last item in a Pair
 $isNegative = partial(lt, __, 0);
 
 $totalOutstanding = pipe(
@@ -27,7 +27,7 @@ assert( $totalOutstanding($accounts) == 93 );
 // @TODO Automatic partials perhaps?
 /*
  $totalOutstanding = pipe(
-    map(method('last', [], __), __),
+    map(last, __),
     filter(lt(__, 0), __),
     map($negate, __),
     reduce(add, __, 0)
