@@ -28,17 +28,27 @@ function compose(...$functions)
  * Fixes the $arguments to $function, producing another function with the leftover arguments.
  *
  * @param $function
- * @param $arguments
+ * @param $partialArgs
  * @return callable
+ *
  */
-function partial($function, ...$arguments)
+function partial($function, ...$partialArgs)
 {
-    return function (...$moreArguments) use ($function, $arguments) {
-        return call($function, concat($arguments, $moreArguments));
+    $replacePlaceholders = function (array $partialArgs, array $finalArgs, array $carry = []) use (&$replacePlaceholders)
+    {
+        if (isempty($partialArgs)) {
+            return concat(reverse($carry), $finalArgs);
+        } elseif (isequal(car($partialArgs), __)) {
+            return $replacePlaceholders(cdr($partialArgs), cdr($finalArgs), cons(car($finalArgs), $carry));
+        } else {
+            return $replacePlaceholders(cdr($partialArgs), $finalArgs, cons(car($partialArgs), $carry));
+        }
     };
 
+    return function (...$finalArgs) use ($function, $partialArgs, $replacePlaceholders) {
+        return call($function, $replacePlaceholders($partialArgs, $finalArgs));
+    };
 }
-
 
 /**
  * Stores the results of expensive function calls and returns the cached result when the same function is called with
