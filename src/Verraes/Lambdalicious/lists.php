@@ -10,6 +10,7 @@ atom('filter');
 atom('concat');
 atom('reverse');
 atom('islist');
+atom('count');
 
 /**
  * @param $list
