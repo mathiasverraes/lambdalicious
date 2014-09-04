@@ -58,7 +58,7 @@ Boring, next question please.
 
 I know right? I believe PHP7 should focus on improving the language, or at least introduce lambda syntax. Call your local internals representative!
 
-**Should I use it? Is it ready for production?**
+**Should I use it in production?**
 
 Yes! Be a pioneer, be an early adopter, be an innovator! Show your boss you *can* take risks on company time! You are a
 strong individual who makes your own decisions, even in the face of constant change and breakage! You are a legend!
