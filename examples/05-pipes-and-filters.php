@@ -16,11 +16,20 @@ $getAmount = partial(method, 'last', [], __);
 $isNegative = partial(lt, __, 0);
 
 $totalOutstanding = pipe(
-    partial(map, $getAmount),
-    partial(filter, $isNegative),
-    partial(map, $negate),
+    partial(map, $getAmount, __),
+    partial(filter, $isNegative, __),
+    partial(map, $negate, __),
     partial(reduce, add, __, 0)
 );
 
 assert( $totalOutstanding($accounts) == 93 );
 
+// @TODO Automatic partials perhaps?
+/*
+ $totalOutstanding = pipe(
+    map(method('last', [], __), __),
+    filter(lt(__, 0), __),
+    map($negate, __),
+    reduce(add, __, 0)
+);
+ */

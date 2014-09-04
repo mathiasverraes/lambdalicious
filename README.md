@@ -12,6 +12,31 @@ Experiments in Elegant Functional Programming in PHP
 - Higher order functions baby!
 - Gloriously Global!
 
+## Example
+
+```php
+<?php
+$accounts = [
+    pair('Jim', 100),
+    pair('Jenny', 30),
+    pair('Jack', -50),
+    pair('Jules', -43),
+];
+
+$negate = function($n) { return -$n; };
+$getAmount = partial(method, 'last', [], __);
+$isNegative = partial(lt, __, 0);
+
+$totalOutstanding = pipe(
+    partial(map, $getAmount, __),
+    partial(filter, $isNegative, __),
+    partial(map, $negate, __),
+    partial(reduce, add, __, 0)
+);
+
+assert( $totalOutstanding($accounts) == 93 );
+```
+
 ## FAQ
 
 **What is this all about?**
