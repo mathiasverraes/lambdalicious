@@ -2,20 +2,16 @@
 
 require_once __DIR__.'/../src/Verraes/Lambdalicious/preload.php';
 
-// atom is an atom
+// An atom is a constant with itself as a value. Define them using atom(), using const, or using plain strings.
+// atom() is safer, but doesn't play nice with some IDE's.
+atom('my_atom');
 assert(
-    isatom(atom)
+    isatom(my_atom)
 );
 
 // All scalars are atoms
 assert(
     isatom(1)
-);
-
-// You can define your own atoms, or use const, or just use plain strings
-atom('custom_atom');
-assert(
-    isatom(custom_atom)
 );
 
 // Lists of atoms are not atoms

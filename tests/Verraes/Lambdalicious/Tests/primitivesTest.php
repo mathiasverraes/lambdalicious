@@ -2,6 +2,7 @@
 
 namespace Verraes\Lambdalicious\Tests;
 
+use AtomIsAlreadyDefinedWithADifferentValue;
 use IsEqIsDefinedForNonListsOnly;
 
 final class primitivesTest extends \PHPUnit_Framework_TestCase
@@ -19,6 +20,27 @@ final class primitivesTest extends \PHPUnit_Framework_TestCase
 
         $this->assertFalse(isatom([]));
         $this->assertFalse(isatom(cons(a, [b, c])));
+    }
+
+    /**
+     * @test
+     */
+    public function defining_atoms_is_idempotent()
+    {
+        atom('__my_test_atom__');
+        atom('__my_test_atom__');
+
+        $this->assertEquals('__my_test_atom__', __my_test_atom__);
+    }
+
+    /**
+     * @test
+     */
+    public function defining_atoms_differently_fails()
+    {
+        define('__my_test_atom__2', 'other value');
+        $this->setExpectedException(AtomIsAlreadyDefinedWithADifferentValue::class);
+        atom('__my_test_atom__2');
     }
 
     /**

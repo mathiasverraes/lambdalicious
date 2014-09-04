@@ -8,11 +8,17 @@ const identity = 'identity';
  * Defines an atom.
  *
  * @param $atom
+ * @throws AtomIsAlreadyDefinedWithADifferentValue
  */
 function atom($atom)
 {
-    if(!defined($atom)) define($atom, $atom);
+    if(defined($atom)) {
+        if($atom !== constant($atom)) throw new AtomIsAlreadyDefinedWithADifferentValue;
+    } else {
+        define($atom, $atom);
+    }
 }
+final class AtomIsAlreadyDefinedWithADifferentValue extends \Exception {}
 
 /**
  * @param $atom
