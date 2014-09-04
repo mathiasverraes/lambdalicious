@@ -54,6 +54,10 @@ You're very observant! Don't think of it as polluting the global namespace. Thin
 
 Boring, next question please.
 
+**Wouldn't this all be a lot easier and more elegant using HHVM/Hack?
+
+I know right? I believe PHP7 should focus on improving the language, or at least introduce lambda syntax. Call your local internals representative!
+
 **Should I use it? Is it ready for production?**
 
 Yes! Be a pioneer, be an early adopter, be an innovator! Show your boss you *can* take risks on company time! You are a
