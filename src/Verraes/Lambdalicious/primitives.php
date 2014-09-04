@@ -40,7 +40,7 @@ function isequal($left, $right)
     if(orx(islist($left), islist($right))) {
         throw new IsEqIsDefinedForNonListsOnly;
     }
-    return $left == $right;
+    return $left === $right;
 }
 
 /**
