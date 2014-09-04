@@ -37,6 +37,8 @@ $totalOutstanding = pipe(
 assert( $totalOutstanding($accounts) == 93 );
 ```
 
+Find more in the `examples` folder, or read the tests.
+
 ## FAQ
 
 **What is this all about?**
