@@ -1,5 +1,5 @@
 <?php
-atom('cond');
+
 atom('elsedo');
 atom('isinstanceof');
 atom('add');

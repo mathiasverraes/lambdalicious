@@ -11,7 +11,6 @@ const car = 'car';
 const cdr = 'cdr';
 const compose = 'compose';
 const concat = 'concat';
-const cond = 'cond';
 const cons = 'cons';
 const contains1 = 'contains1';
 const count = 'identity';
