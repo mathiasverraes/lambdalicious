@@ -46,15 +46,6 @@ final class primitivesTest extends LambdaliciousTestCase
     /**
      * @test
      */
-    public function iseq_is_defined_for_non_lists_only()
-    {
-        $this->setExpectedException(IsEqIsDefinedForNonListsOnly::class);
-        isequal([a, b], c);
-    }
-
-    /**
-     * @test
-     */
     public function iseq_returns_true_when_equal()
     {
         $this->assertTrue(isequal(a, a));

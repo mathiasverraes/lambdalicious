@@ -32,14 +32,10 @@ function isatom($atom)
  * Is $left equal to $right?
  * @param $left
  * @param $right
- * @throws IsEqIsDefinedForNonListsOnly
  * @return boolean
  */
 function isequal($left, $right)
 {
-    if(orx(islist($left), islist($right))) {
-        throw new IsEqIsDefinedForNonListsOnly;
-    }
     return $left === $right;
 }
 
@@ -53,5 +49,3 @@ function identity($x)
 {
     return $x;
 }
-
-final class IsEqIsDefinedForNonListsOnly extends \Exception {}
