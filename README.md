@@ -11,6 +11,7 @@ Experiments in Elegant Functional Programming in PHP
 - LISPlike Love for Lists!
 - Higher order functions baby!
 - Gloriously Global!
+- [Recursion!](https://github.com/mathiasverraes/lambdalicious)
 
 ## Example
 
