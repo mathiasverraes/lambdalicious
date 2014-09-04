@@ -4,9 +4,9 @@
 atom('pair');
 atom('ispair');
 
-function pair($first, $second)
+function pair($first, $last)
 {
-    return new Pair($first, $second);
+    return new Pair($first, $last);
 }
 
 function ispair($item)

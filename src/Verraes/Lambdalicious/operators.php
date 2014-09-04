@@ -34,7 +34,7 @@ function andx($a, $b) { return $a &&  $b; };
 function orx($a, $b) { return $a ||  $b; };
 
 /**
- * Returns the second element of the first pair. The last pair should always be pair(elsedo, expression)
+ * Returns the last element of the first pair. The last pair should always be pair(elsedo, expression)
  * @param $conds
  * @throws CondExpectsAtLeastOneCondition
  * @throws CondExpectsPairsAsArguments
@@ -48,10 +48,10 @@ function cond(...$conds)
 
     if(contains1($conds)) {
         if(!isequal(elsedo, car($conds)->first())) throw new CondExpectsTheFinalExpressionToBeElsedo;
-        return evaluate(car($conds)->second());
+        return evaluate(car($conds)->last());
     }
 
-    return car($conds)->first() ? car($conds)->second() : call(cond, cdr($conds));
+    return car($conds)->first() ? car($conds)->last() : call(cond, cdr($conds));
 }
 final class CondExpectsTheFinalExpressionToBeElsedo extends \Exception {}
 final class CondExpectsPairsAsArguments extends \Exception {}
