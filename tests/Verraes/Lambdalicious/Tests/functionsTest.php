@@ -2,7 +2,7 @@
 
 namespace Verraes\Lambdalicious\Tests;
 
-final class functionsTest extends \PHPUnit_Framework_TestCase
+final class functionsTest extends LambdaliciousTestCase
 {
     /**
      * @test

@@ -1,6 +1,5 @@
 <?php
-
-const method = 'method';
+atom('method');
 
 /**
  * Call a method on an object

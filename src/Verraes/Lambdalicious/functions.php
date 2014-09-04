@@ -1,8 +1,7 @@
 <?php
-
-const arity = 'arity';
-const call = 'call';
-const reverseargs = 'reverseargs';
+atom('arity');
+atom('call');
+atom('reverseargs');
 
 /**
  * From http://jasonframe.co.uk/logfile/2009/05/finding-the-arity-of-a-closure-in-php-53/

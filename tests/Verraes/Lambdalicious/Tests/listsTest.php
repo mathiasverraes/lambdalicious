@@ -6,7 +6,7 @@ use CarIsDefinedOnlyForNonEmptyLists;
 use CdrIsDefinedOnlyForNonEmptyLists;
 use IsEmptyIsDefinedOnlyForLists;
 
-final class listsTest extends \PHPUnit_Framework_TestCase
+final class listsTest extends LambdaliciousTestCase
 {
 
     /**

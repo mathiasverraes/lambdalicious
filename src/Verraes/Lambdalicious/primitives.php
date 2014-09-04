@@ -1,8 +1,7 @@
 <?php
-
-const atom = 'atom';
-const isequal = 'isequal';
-const identity = 'identity';
+atom('atom');
+atom('isequal');
+atom('identity');
 
 /**
  * Defines an atom.

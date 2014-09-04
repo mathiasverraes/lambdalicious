@@ -1,22 +1,21 @@
 <?php
-
-const cond = 'cond';
-const elsedo = 'elsedo';
-const isinstanceof = 'isinstanceof';
-const add = 'add';
-const subtract = 'subtract';
-const multiply = 'multiply';
-const divide = 'divide';
-const mod = 'mod';
-const lt = 'lt';
-const lteq = 'lteq';
-const gt = 'gt';
-const gteq = 'gteq';
-const noteq = 'noteq';
-const not = 'not';
-const andx = 'andx';
-const orx = 'orx';
-const exponent = 'exponent';
+atom('cond');
+atom('elsedo');
+atom('isinstanceof');
+atom('add');
+atom('subtract');
+atom('multiply');
+atom('divide');
+atom('mod');
+atom('lt');
+atom('lteq');
+atom('gt');
+atom('gteq');
+atom('noteq');
+atom('not');
+atom('andx');
+atom('orx');
+atom('exponent');
 
 function isinstanceof($object, $classname) { return $object instanceof $classname; }
 function add($x, $y) { return $x + $y; }

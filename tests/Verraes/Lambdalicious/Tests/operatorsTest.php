@@ -6,7 +6,7 @@ use CondExpectsAtLeastOneCondition;
 use CondExpectsPairsAsArguments;
 use CondExpectsTheFinalExpressionToBeElsedo;
 
-final class operatorsTest extends \PHPUnit_Framework_TestCase
+final class operatorsTest extends LambdaliciousTestCase
 {
     /**
      * @test

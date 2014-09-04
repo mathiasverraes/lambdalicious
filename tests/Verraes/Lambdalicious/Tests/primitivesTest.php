@@ -5,7 +5,7 @@ namespace Verraes\Lambdalicious\Tests;
 use AtomIsAlreadyDefinedWithADifferentValue;
 use IsEqIsDefinedForNonListsOnly;
 
-final class primitivesTest extends \PHPUnit_Framework_TestCase
+final class primitivesTest extends LambdaliciousTestCase
 {
     /**
      * @test

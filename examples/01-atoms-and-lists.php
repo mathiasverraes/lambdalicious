@@ -2,8 +2,7 @@
 
 require_once __DIR__.'/../src/Verraes/Lambdalicious/preload.php';
 
-// An atom is a constant with itself as a value. Define them using atom(), using const, or using plain strings.
-// atom() is safer, but doesn't play nice with some IDE's.
+// An atom is a constant with itself as a value. Define them using atom().
 atom('my_atom');
 assert(
     isatom(my_atom)

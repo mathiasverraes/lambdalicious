@@ -1,16 +1,15 @@
 <?php
-
-const isempty = 'isempty';
-const contains1 = 'contains1';
-const cons = 'cons';
-const car = 'car';
-const cdr = 'cdr';
-const reduce = 'reduce';
-const map = 'map';
-const filter = 'filter';
-const concat = 'concat';
-const reverse = 'reverse';
-const islist = 'islist';
+atom('isempty');
+atom('contains1');
+atom('cons');
+atom('car');
+atom('cdr');
+atom('reduce');
+atom('map');
+atom('filter');
+atom('concat');
+atom('reverse');
+atom('islist');
 
 /**
  * @param $list

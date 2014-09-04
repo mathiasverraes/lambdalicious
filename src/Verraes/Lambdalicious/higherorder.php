@@ -1,8 +1,8 @@
 <?php
-
-const partial = 'partial';
-const compose = 'compose';
-const memoize = 'memoize';
+atom('partial');
+atom('compose');
+atom('memoize');
+atom('__'); // Argument placeholder for partials
 
 /**
  * The compose function returns a closure that calls each of the functions from last to first, passing on the result of

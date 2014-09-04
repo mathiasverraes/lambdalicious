@@ -1,7 +1,8 @@
 <?php
 
-const pair = 'pair';
-const ispair = 'ispair';
+
+atom('pair');
+atom('ispair');
 
 function pair($first, $second)
 {
