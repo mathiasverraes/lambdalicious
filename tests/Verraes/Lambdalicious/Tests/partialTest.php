@@ -4,8 +4,6 @@ namespace Verraes\Lambdalicious\Tests;
 
 final class partialTest extends LambdaliciousTestCase
 {
-
-
     /**
      * @test
      */
