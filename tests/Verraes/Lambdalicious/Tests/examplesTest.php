@@ -15,9 +15,17 @@ final class examplesTest extends LambdaliciousTestCase
     /**
      * @test
      */
-    public function examples_02_functions()
+    public function examples_02__tuples_and_pairs()
     {
-        include __DIR__ . '/../../../../examples/02-functions.php';
+        include __DIR__ . '/../../../../examples/02-tuples_and_pairs.php';
+    }
+
+    /**
+     * @test
+     */
+    public function examples_03_functions()
+    {
+        include __DIR__ . '/../../../../examples/03-functions.php';
     }
 
     /**

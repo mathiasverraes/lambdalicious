@@ -45,6 +45,9 @@ const reverseargs = 'reverseargs';
 const subtract = 'subtract';
 const first = 'first';
 const second = 'second';
+const tuple = 'tuple';
+const get = 'get';
+const istuple = 'istuple';
 
 const _ = '_';
 const a = 'a';
