@@ -27,7 +27,7 @@ assert( $totalOutstanding($accounts) == 93 );
 // @TODO Automatic partials perhaps?
 /*
  $totalOutstanding = pipe(
-    map(last, __),
+    map(second, __),
     filter(lt(__, 0), __),
     map($negate, __),
     reduce(add, __, 0)
