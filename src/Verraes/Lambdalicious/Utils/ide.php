@@ -45,7 +45,7 @@ const reverse = 'reverse';
 const reverseargs = 'reverseargs';
 const subtract = 'subtract';
 const first = 'first';
-const last = 'last';
+const second = 'second';
 
 const _ = '_';
 const a = 'a';

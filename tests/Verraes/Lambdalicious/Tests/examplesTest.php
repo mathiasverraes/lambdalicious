@@ -23,14 +23,6 @@ final class examplesTest extends LambdaliciousTestCase
     /**
      * @test
      */
-    public function examples_03_conditionals()
-    {
-        include __DIR__ . '/../../../../examples/03-conditionals.php';
-    }
-
-    /**
-     * @test
-     */
     public function examples_04_fibonacci()
     {
         include __DIR__ . '/../../../../examples/04-fibonacci.php';
