@@ -17,12 +17,12 @@ function ispair($item)
 final class Pair
 {
     private $first;
-    private $second;
+    private $last;
 
-    public function __construct($first, $second)
+    public function __construct($first, $last)
     {
         $this->first = $first;
-        $this->second = $second;
+        $this->last = $last;
     }
 
     /**
@@ -36,8 +36,8 @@ final class Pair
     /**
      * @return mixed
      */
-    public function second()
+    public function last()
     {
-        return $this->second;
+        return $this->last;
     }
 }

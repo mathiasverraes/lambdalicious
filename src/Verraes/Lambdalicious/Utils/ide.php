@@ -39,6 +39,7 @@ const noteq = 'noteq';
 const orx = 'orx';
 const pair = 'pair';
 const partial = 'partial';
+const pipe = 'pipe';
 const reduce = 'reduce';
 const reverse = 'reverse';
 const reverseargs = 'reverseargs';

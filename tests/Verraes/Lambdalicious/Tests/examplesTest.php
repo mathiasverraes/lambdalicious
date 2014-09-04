@@ -35,5 +35,13 @@ final class examplesTest extends LambdaliciousTestCase
     {
         include __DIR__ . '/../../../../examples/04-fibonacci.php';
     }
+
+    /**
+     * @test
+     */
+    public function examples_05_pipes_and_filters()
+    {
+        include __DIR__ . '/../../../../examples/05-pipes-and-filters.php';
+    }
 }
  

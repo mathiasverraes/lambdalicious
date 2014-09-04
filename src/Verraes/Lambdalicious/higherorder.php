@@ -1,6 +1,7 @@
 <?php
 atom('partial');
 atom('compose');
+atom('pipe');
 atom('memoize');
 atom('__'); // Argument placeholder for partials
 
@@ -21,8 +22,19 @@ function compose(...$functions)
         $functions,
         identity
     );
-
 }
+
+/**
+ * Pipe is like compose, but the first function is applied first. Think Unix pipes.
+ *
+ * @param $functions
+ * @return callable
+ */
+function pipe(...$functions)
+{
+    return call(compose, reverse($functions));
+}
+
 
 /**
  * Fixes the $arguments to $function, producing another function with the leftover arguments.

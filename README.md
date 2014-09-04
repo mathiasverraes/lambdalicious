@@ -17,7 +17,7 @@ Experiments in Elegant Functional Programming in PHP
 **What is this all about?**
 
 Read the [The Little Schemer](http://www.amazon.com/gp/product/0262560992/ref=as_li_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=0262560992&linkCode=as2&tag=verraesnet-20&linkId=LWAZ2Z4LXEVNZNAH).
-Or learn LISP (or Clojure or some variant). There's also some Erlang-ish ideas in there. And lots
+Or learn LISP (or Clojure or some variant). There's also some Erlang-ish ideas in there.
 
 **But but but... Global functions? Global constants?**
 
