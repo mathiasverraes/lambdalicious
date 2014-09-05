@@ -5,7 +5,7 @@ require_once __DIR__.'/../src/Verraes/Lambdalicious/preload.php';
 // $second returns the second element of a list. We made it by composing cdr and car
 $second = compose(car, cdr);
 assert(
-    $second([a, b, c])
+    $second([a, b, c]) === b
 );
 
 // isempty is a predicate (a function that returns a boolean)
@@ -34,10 +34,7 @@ assert(
 
 // Remember our filter? If we wanted to make it reusable, we could do this:
 // $removeEmptyLists = function($list) { return filter(not(isempty), $list)); }
-// We can use partials now!
-
-$notMEpty = not(isempty);
-filter(__, __);
+// We can do shorrter using partials now:
 $removeEmptyLists = filter(not(isempty), __);
 assert(
     $removeEmptyLists($listOfLists)  === [[a, b], [c, d]]

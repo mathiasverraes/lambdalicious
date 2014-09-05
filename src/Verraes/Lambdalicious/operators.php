@@ -14,6 +14,7 @@ atom('not');
 atom('andx');
 atom('orx');
 atom('exponent');
+atom('negate');
 
 /**
  * @partial
@@ -27,6 +28,15 @@ function isinstanceof($object, $className)
         hasplaceholders(func_get_args()) ? partial(isinstanceof, $object, $className) :
         $object instanceof $className;
 }
+
+/**
+ * Returns - $x
+ * @param $x
+ * @return mixed
+ */
+function negate ($x) {
+    return -$x;
+};
 
 /**
  * @partial
