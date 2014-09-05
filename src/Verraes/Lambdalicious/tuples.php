@@ -16,7 +16,7 @@ atom('second');
  */
 function tuple(...$elements)
 {
-    return count($elements) == 2
+    return isequal(count($elements), 2)
         ? new __Pair(car($elements), car(cdr($elements)))
         : new __Tuple($elements);
 }
@@ -121,8 +121,8 @@ final class __Pair extends __Tuple
 
     public function __get($name)
     {
-        if($name === 'first') return $this->first;
-        if($name === 'second') return $this->second;
+        if(isequal($name, 'first')) return $this->first;
+        if(isequal($name, 'second')) return $this->second;
         throw new BadMethodCallException;
     }
 }

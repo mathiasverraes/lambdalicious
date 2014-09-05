@@ -2,12 +2,13 @@
 
 require_once __DIR__ . '/../src/Verraes/Lambdalicious/preload.php';
 
-
 $sumOfHalves = pipe(
     map(divide(__, 2), __),
     reduce(add, __, 0)
 );
-assert($sumOfHalves([2, 4, 6]) === 6);
+assert(isequal(
+    $sumOfHalves([2, 4, 6]), 6
+));
 
 // How much money is still unpaid?
 $accounts = [
@@ -25,6 +26,8 @@ $totalOutstanding = pipe(
     map(negate, __),
     reduce(add, __, 0)
 );
-assert($totalOutstanding($accounts) === 93);
+assert(isequal(
+    $totalOutstanding($accounts), 93
+));
 
 

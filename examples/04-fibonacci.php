@@ -7,17 +7,17 @@ require_once __DIR__ . '/../src/Verraes/Lambdalicious/preload.php';
 $fib = function($n) use(&$fib) {
     return lt($n, 2) ? $n : add($fib($n-1), $fib($n-2));
 };
-assert(
-    $fib(12) == 144
-);
+assert(isequal(
+    $fib(12), 144
+));
 
 // Memoization can help with expensive recursive operations
 $fastfib = memoize(function($n) use(&$fastfib) {
     return lt($n, 2) ? $n : add($fastfib($n-1), $fastfib($n-2));
 });
-assert(
-    $fastfib(12) == 144
-);
+assert(isequal(
+    $fastfib(12), 144
+));
 
 // You may need to increase "xdebug.max_nesting_level" in the php.ini for these.
 // On my machine, for $n=28, $fastfib is more than 8600 times faster.

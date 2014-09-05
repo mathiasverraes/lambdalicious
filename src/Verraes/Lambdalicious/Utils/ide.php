@@ -3,7 +3,7 @@
 
 const __ = '__';
 const add = 'add';
-const andx = 'andx';
+const and_ = 'and_';
 const arity = 'arity';
 const atom = 'atom';
 const call = 'call';
@@ -35,7 +35,7 @@ const mod = 'mod';
 const multiply = 'multiply';
 const not = 'not';
 const noteq = 'noteq';
-const orx = 'orx';
+const or_ = 'or_';
 const pair = 'pair';
 const partial = 'partial';
 const pipe = 'pipe';

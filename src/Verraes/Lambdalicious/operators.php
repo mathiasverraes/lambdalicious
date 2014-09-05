@@ -11,8 +11,8 @@ atom('gt');
 atom('gteq');
 atom('noteq');
 atom('not');
-atom('andx');
-atom('orx');
+atom('and_');
+atom('or_');
 atom('exponent');
 atom('negate');
 
@@ -183,7 +183,7 @@ function noteq($x, $y)
 }
 
 /**
- * @partial
+ * @todo maybe this should be a normal NOT, find something else for inverting predicates?
  * @param callable $function
  * @return bool|callable
  */
@@ -200,10 +200,10 @@ function not(callable $function)
  * @param $y
  * @return bool|callable
  */
-function andx($x, $y)
+function and_($x, $y)
 {
     return
-        hasplaceholders(func_get_args()) ? partial(andx, $x, $y) :
+        hasplaceholders(func_get_args()) ? partial(and_, $x, $y) :
         $x && $y;
 }
 
@@ -213,10 +213,10 @@ function andx($x, $y)
  * @param $y
  * @return bool|callable
  */
-function orx($x, $y)
+function or_($x, $y)
 {
     return
-        hasplaceholders(func_get_args()) ? partial(orx, $x, $y) :
+        hasplaceholders(func_get_args()) ? partial(or_, $x, $y) :
         $x || $y;
 }
 
