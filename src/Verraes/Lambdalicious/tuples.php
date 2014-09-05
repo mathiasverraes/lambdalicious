@@ -11,14 +11,16 @@ atom('second');
 /**
  * Build a tuple
  *
+ * @partial
  * @param $elements
  * @return __Pair|__Tuple
  */
 function tuple(...$elements)
 {
-    return isequal(count($elements), 2)
-        ? new __Pair(car($elements), car(cdr($elements)))
-        : new __Tuple($elements);
+    return
+        hasplaceholders(func_get_args()) ? call(partial, cons(tuple, $elements)) :
+        isequal(count($elements), 2) ? new __Pair(car($elements), car(cdr($elements))) :
+        new __Tuple($elements);
 }
 
 /**
@@ -46,13 +48,16 @@ function get($index, __Tuple $tuple)
 /**
  * Build a Pair
  *
+ * @partial
  * @param $first
  * @param $second
  * @return __Pair
  */
 function pair($first, $second)
 {
-    return new __Pair($first, $second);
+    return
+        hasplaceholders(func_get_args()) ? partial(pair, $first, $second) :
+        new __Pair($first, $second);
 }
 
 /**
