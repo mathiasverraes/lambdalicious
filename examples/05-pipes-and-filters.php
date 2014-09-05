@@ -33,3 +33,11 @@ assert( $totalOutstanding($accounts) == 93 );
     reduce(add, __, 0)
 );
  */
+
+
+$sumOfHalves = pipe(
+    map(divide(__, 2), __),
+    reduce(add, __, 0)
+);
+
+assert($sumOfHalves([2, 4, 6]) == 6);

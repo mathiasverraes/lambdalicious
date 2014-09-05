@@ -30,13 +30,15 @@ function isatom($atom)
 
 /**
  * Is $left equal to $right?
- * @param $left
- * @param $right
- * @return boolean
+ * @param $x
+ * @param $y
+ * @return boolean|callable
  */
-function isequal($left, $right)
+function isequal($x, $y)
 {
-    return $left === $right;
+    return
+        hasplaceholders(func_get_args()) ? partial(isequal, $x, $y) :
+        $x === $y;
 }
 
 /**

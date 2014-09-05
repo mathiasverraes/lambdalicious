@@ -35,7 +35,6 @@ function pipe(...$functions)
     return call(compose, reverse($functions));
 }
 
-
 /**
  * Fixes the $arguments to $function, producing another function with the leftover arguments.
  *
@@ -50,7 +49,7 @@ function partial($function, ...$partialArgs)
     {
         if (isempty($partialArgs)) {
             return concat(reverse($carry), $finalArgs);
-        } elseif (isequal(car($partialArgs), __)) {
+        } elseif (car($partialArgs) === __) {
             return $replacePlaceholders(cdr($partialArgs), cdr($finalArgs), cons(car($finalArgs), $carry));
         } else {
             return $replacePlaceholders(cdr($partialArgs), $finalArgs, cons(car($partialArgs), $carry));
@@ -60,6 +59,19 @@ function partial($function, ...$partialArgs)
     return function (...$finalArgs) use ($function, $partialArgs, $replacePlaceholders) {
         return call($function, $replacePlaceholders($partialArgs, $finalArgs));
     };
+}
+
+/**
+ * True if $list has placeholder aka __ arguments
+ * @param array $list
+ * @return mixed
+ */
+function hasplaceholders(array $list)
+{
+    return
+        isempty($list) ? false :
+        (car($list) === __ ? true :
+        hasplaceholders(cdr($list)));
 }
 
 /**

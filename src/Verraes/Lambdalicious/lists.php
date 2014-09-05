@@ -82,45 +82,60 @@ final class CdrIsDefinedOnlyForNonEmptyLists extends \Exception {}
  */
 function contains1(array $list)
 {
-    return count($list) == 1;
+    return count($list) === 1;
 }
 /**
  * Applies $function to the elements of the given $list
  *
+ * @partial
  * @param callable $function
  * @param array $list
  * @return array
  */
-function map(callable $function, array $list)
+function map($function, $list)
 {
-    return array_map($function, $list);
+    return
+        hasplaceholders(func_get_args()) ? partial(map, $function, $list) :
+        array_map($function, $list);
 }
 
 /**
  * Reduce $list to a single value using $function($carry, $item), starting by $initial
  *
+ * @partial
  * @param callable $function
  * @param array $list
  * @param $initial
  * @return mixed
  */
-function reduce(callable $function, array $list, $initial)
+function reduce($function, $list, $initial)
 {
-    return array_reduce($list, $function, $initial);
+    return
+        hasplaceholders(func_get_args()) ? partial(reduce, $function, $list, $initial) :
+        array_reduce($list, $function, $initial);
 }
 
 /**
  * Returns a list of items from $list for which $predicate is true
  *
+ * @partial
  * @param callable $predicate
  * @param array $list
- * @return array
+ * @return array|callable
  */
-function filter(callable $predicate, array $list)
+function filter($predicate, $list)
 {
-    return array_values(array_filter($list, $predicate));
+    return
+        hasplaceholders(func_get_args()) ? partial(filter, $predicate, $list) :
+        array_values(array_filter($list, $predicate));
 }
 
+/**
+ * Make a new list of the elements of all the lists.
+ *
+ * @param $lists
+ * @return array|mixed
+ */
 function concat(...$lists)
 {
     if(isempty($lists)) return [];
