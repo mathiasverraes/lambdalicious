@@ -8,12 +8,13 @@ atom('ispair');
 atom('first');
 atom('second');
 
+// @todo maybe tuples are just f(i)->tuple[i] ?
 /**
  * Build a tuple
  *
  * @partial
  * @param $elements
- * @return __Pair|__Tuple
+ * @return __Pair|__Tuple|callable
  */
 function tuple(...$elements)
 {
@@ -51,7 +52,7 @@ function get($index, __Tuple $tuple)
  * @partial
  * @param $first
  * @param $second
- * @return __Pair
+ * @return __Pair|callable
  */
 function pair($first, $second)
 {
