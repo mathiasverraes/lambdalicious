@@ -24,14 +24,11 @@ $accounts = [
 ];
 
 $negate = function($n) { return -$n; };
-$getAmount = last; // last returns the last item in a Pair
-$isNegative = partial(lt, __, 0);
-
 $totalOutstanding = pipe(
-    partial(map, $getAmount, __),
-    partial(filter, $isNegative, __),
-    partial(map, $negate, __),
-    partial(reduce, add, __, 0)
+    map(second, __), // second returns the second item in a Pair
+    filter(lt(__, 0), __), // lt is less than
+    map($negate, __),
+    reduce(add, __, 0)
 );
 
 assert( $totalOutstanding($accounts) == 93 );
