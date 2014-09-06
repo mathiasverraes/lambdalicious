@@ -110,6 +110,7 @@ class __Tuple
 }
 
 /**
+ * @todo get rid of pair?
  * @internal
  * @property $first
  * @property $second

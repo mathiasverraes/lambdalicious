@@ -106,7 +106,7 @@ function map($function, $list)
  * @param callable $function
  * @param array $list
  * @param $initial
- * @return mixed
+ * @return mixed|callable
  */
 function reduce($function, $list, $initial)
 {

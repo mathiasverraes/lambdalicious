@@ -43,5 +43,13 @@ final class examplesTest extends LambdaliciousTestCase
     {
         include __DIR__ . '/../../../../examples/05-pipes-and-filters.php';
     }
+
+    /**
+     * @test
+     */
+    public function examples_06_average()
+    {
+        include __DIR__ . '/../../../../examples/06-average.php';
+    }
 }
  

@@ -15,7 +15,7 @@ $accounts = [
     pair('Jim', 100),
     pair('Jenny', 30),
     pair('Jack', -50),
-    pair('Jules', -43),
+    pair('Jill', -43),
 ];
 
 $getAmount = second; // returns the last item in a Pair
@@ -29,5 +29,3 @@ $totalOutstanding = pipe(
 assert(isequal(
     $totalOutstanding($accounts), 93
 ));
-
-

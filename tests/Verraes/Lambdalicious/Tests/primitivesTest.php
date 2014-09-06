@@ -3,7 +3,6 @@
 namespace Verraes\Lambdalicious\Tests;
 
 use AtomIsAlreadyDefinedWithADifferentValue;
-use IsEqIsDefinedForNonListsOnly;
 
 final class primitivesTest extends LambdaliciousTestCase
 {
