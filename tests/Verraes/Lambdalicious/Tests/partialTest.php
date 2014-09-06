@@ -53,7 +53,7 @@ final class partialTest extends LambdaliciousTestCase
 
     public function more_placeholders()
     {
-        atom('substr');
+        atom(@substr);
         $thirdChar = partial(substr, __, 3, 1);
         $this->assertEquals('c', $thirdChar('abcde'));
     }
@@ -63,7 +63,7 @@ final class partialTest extends LambdaliciousTestCase
      */
     public function with_two_placeholders()
     {
-        atom('substr');
+        atom(@substr);
         $firstNChars = partial(substr, __, 0, __);
         $this->assertEquals('abc', $firstNChars('abcde', 3));
         $this->assertEquals('ab', $firstNChars('abcde', 2));

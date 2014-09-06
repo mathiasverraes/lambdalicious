@@ -1,7 +1,7 @@
 <?php
-atom('atom');
-atom('isequal');
-atom('identity');
+atom(@atom);
+atom(@isequal);
+atom(@identity);
 
 /**
  * Defines an atom.

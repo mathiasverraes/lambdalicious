@@ -1,16 +1,16 @@
 <?php
-atom('isempty');
-atom('contains1');
-atom('cons');
-atom('car');
-atom('cdr');
-atom('reduce');
-atom('map');
-atom('filter');
-atom('concat');
-atom('reverse');
-atom('islist');
-atom('count');
+atom(@isempty);
+atom(@contains1);
+atom(@cons);
+atom(@car);
+atom(@cdr);
+atom(@reduce);
+atom(@map);
+atom(@filter);
+atom(@concat);
+atom(@reverse);
+atom(@islist);
+atom(@count);
 
 /**
  * @param $list

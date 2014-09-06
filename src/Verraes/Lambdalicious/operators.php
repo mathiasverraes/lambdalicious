@@ -1,20 +1,20 @@
 <?php
-atom('isinstanceof');
-atom('add');
-atom('subtract');
-atom('multiply');
-atom('divide');
-atom('mod');
-atom('lt');
-atom('lteq');
-atom('gt');
-atom('gteq');
-atom('noteq');
-atom('not');
-atom('and_');
-atom('or_');
-atom('exponent');
-atom('negate');
+atom(@isinstanceof);
+atom(@add);
+atom(@subtract);
+atom(@multiply);
+atom(@divide);
+atom(@mod);
+atom(@lt);
+atom(@lteq);
+atom(@gt);
+atom(@gteq);
+atom(@noteq);
+atom(@not);
+atom(@and_);
+atom(@or_);
+atom(@exponent);
+atom(@negate);
 
 /**
  * @partial

@@ -1,5 +1,5 @@
 <?php
-atom('method');
+atom(@method);
 
 /**
  * Call a method on an object

@@ -1,9 +1,9 @@
 <?php
-atom('partial');
-atom('compose');
-atom('pipe');
-atom('memoize');
-atom('__'); // Argument placeholder for partials
+atom(@partial);
+atom(@compose);
+atom(@pipe);
+atom(@memoize);
+atom(@__); // Argument placeholder for partials
 
 /**
  * The compose function returns a closure that calls each of the functions from last to first, passing on the result of

@@ -1,12 +1,12 @@
 <?php
 
-atom('tuple');
-atom('get');
-atom('istuple');
-atom('pair');
-atom('ispair');
-atom('first');
-atom('second');
+atom(@tuple);
+atom(@get);
+atom(@istuple);
+atom(@pair);
+atom(@ispair);
+atom(@first);
+atom(@second);
 
 // @todo maybe tuples are just f(i)->tuple[i] ?
 /**

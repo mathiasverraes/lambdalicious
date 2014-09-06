@@ -2,27 +2,21 @@
 
 require_once __DIR__.'/../src/Verraes/Lambdalicious/preload.php';
 
-// An atom is like a constant that has itself as a value. Define them using atom().
-atom('my_atom');
+// An atom is like a constant that has itself as a value. Atoms start with @.
+assert(
+    isatom(@my_atom)
+);
+assert(isequal(
+    @my_atom, 'my_atom'
+));
+
+// You can fix an atom using atom(@name). After that, you don't have to prefix them with @ anymore. Fixed atoms are forever.
+atom(@my_atom);
 assert(
     isatom(my_atom)
 );
-assert(isequal(
-    my_atom, 'my_atom'
-));
 
-// Atoms defined with atom() are forever. You can also define a temporary atom using @. It will be discarded right
-// after it was used.
-assert(isequal(
-    @my_temporary_atom, 'my_temporary_atom'
-));
-
-// All scalars are atoms
-assert(
-    isatom(1)
-);
-
-// Lists are not atoms
+// Lists of atoms are not atoms
 assert(
     !isatom([a, b, c])
 );
