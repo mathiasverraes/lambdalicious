@@ -27,8 +27,8 @@ $negate = function($n) { return -$n; };
 $totalOutstanding = pipe(
     map(second, __), // second returns the second item in a Pair
     filter(lt(__, 0), __), // lt is less than
-    map($negate, __),
-    reduce(add, __, 0)
+    reduce(add, __, 0),
+    $negate
 );
 
 assert( $totalOutstanding($accounts) == 93 );
