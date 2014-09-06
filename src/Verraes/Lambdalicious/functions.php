@@ -16,13 +16,17 @@ function arity($function)
 
 /**
  * Call a $function using $arguments
+ *
+ * @partial
  * @param callable $function
  * @param array $arguments
- * @return mixed
+ * @return mixed|callable
  */
-function call(callable $function, array $arguments)
+function call($function, $arguments)
 {
-    return call_user_func_array($function, $arguments);
+    return
+        hasplaceholders(func_get_args()) ? call_user_func_array(partial, cons(call, func_get_args())) :
+        call_user_func_array($function, $arguments);
 }
 
 /**

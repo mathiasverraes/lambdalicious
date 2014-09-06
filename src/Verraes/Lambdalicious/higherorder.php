@@ -57,7 +57,7 @@ function partial($function, ...$partialArgs)
     };
 
     return function (...$finalArgs) use ($function, $partialArgs, $replacePlaceholders) {
-        return call($function, $replacePlaceholders($partialArgs, $finalArgs));
+        return call_user_func_array($function, $replacePlaceholders($partialArgs, $finalArgs));
     };
 }
 
