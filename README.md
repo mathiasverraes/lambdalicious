@@ -43,6 +43,10 @@ Find more in the `examples` folder, or read the tests.
 Read the [The Little Schemer](http://www.amazon.com/gp/product/0262560992/ref=as_li_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=0262560992&linkCode=as2&tag=verraesnet-20&linkId=LWAZ2Z4LXEVNZNAH).
 Or learn LISP (or Clojure or some variant). There's also some Erlang-ish ideas in there.
 
+**Wait but why?**
+
+Why did I try to build a radio when I was ten? Why did I take apart my father's computer when I was eleven?
+
 **But but but... Global functions? Global constants?**
 
 You're very observant! Don't think of it as polluting the global namespace. Think of it as cleaning up the global namespace!
@@ -53,7 +57,7 @@ Boring, next question please.
 
 **Wouldn't this all be a lot easier and more elegant using HHVM/Hack?**
 
-I know right? I believe PHP7 should focus on improving the language, or at least introduce lambda syntax. Call your local internals representative!
+I know right? HHVM doesn't support some of the extensions I need.
 
 **Should I use it in production?**
 
