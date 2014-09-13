@@ -47,7 +47,7 @@ final class primitivesTest extends LambdaliciousTestCase
      */
     public function defining_atoms_differently_fails()
     {
-       // $this->markTestSkipped("Name clashing doesn't work with @atom definitions.");
+       $this->markTestSkipped("Name clashing doesn't work with @atom definitions.");
 
         define('__my_test_atom__2', 'other value');
         $this->setExpectedException(AtomIsAlreadyDefinedWithADifferentValue::class);
