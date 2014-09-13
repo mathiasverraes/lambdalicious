@@ -15,6 +15,8 @@ atom(@my_atom);
 assert(
     isatom(my_atom)
 );
+// Let's define some atoms to use in our examples
+atom(@a, @b, @c, @d, @e, @f);
 
 // Lists of atoms are not atoms
 assert(

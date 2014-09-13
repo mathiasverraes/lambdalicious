@@ -6,17 +6,24 @@ atom(@identity);
 /**
  * Defines an atom.
  *
- * @param $atom
+ * @param $atoms
+ * @return void
  * @throws AtomIsAlreadyDefinedWithADifferentValue
  */
-function atom($atom)
+function atom(...$atoms)
 {
-    if(defined($atom)) {
-        if($atom !== constant($atom)) throw new AtomIsAlreadyDefinedWithADifferentValue;
-    } else {
-        define($atom, $atom);
-    }
+    array_walk(
+        $atoms,
+        function ($atom) {
+            if (defined($atom)) {
+                if ($atom !== constant($atom)) throw new AtomIsAlreadyDefinedWithADifferentValue($atom);
+            } else {
+                define($atom, $atom);
+            }
+        }
+    );
 }
+
 final class AtomIsAlreadyDefinedWithADifferentValue extends \Exception {}
 
 /**

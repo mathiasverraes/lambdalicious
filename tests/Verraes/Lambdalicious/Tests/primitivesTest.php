@@ -11,6 +11,7 @@ final class primitivesTest extends LambdaliciousTestCase
      */
     public function isatom()
     {
+        // These atoms are defined elsewhere
         $this->assertTrue(isatom(a));
         $this->assertTrue(isatom(b));
         $this->assertTrue(isatom(1));
@@ -35,9 +36,18 @@ final class primitivesTest extends LambdaliciousTestCase
     /**
      * @test
      */
+    public function define_multiple_atoms()
+    {
+        atom(@a, @b, @c, @d, @e, @f);
+        $this->assertEquals('f', f);
+    }
+
+    /**
+     * @test
+     */
     public function defining_atoms_differently_fails()
     {
-        $this->markTestSkipped("Name clashing doesn't work with @atom definitions.");
+       // $this->markTestSkipped("Name clashing doesn't work with @atom definitions.");
 
         define('__my_test_atom__2', 'other value');
         $this->setExpectedException(AtomIsAlreadyDefinedWithADifferentValue::class);
