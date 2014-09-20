@@ -24,8 +24,8 @@ $accounts = [
 ];
 
 $negate = function($n) { return -$n; };
-$totalOutstanding = pipe(
-    map(second, __), // second returns the second item in a Pair
+$totalOutstanding = pipe( // think *nix pipes and filters
+    map(second, __), // __ is a partial application placeholder. second returns the second item in a Pair
     filter(lt(__, 0), __), // lt is less than
     reduce(add, __, 0),
     $negate
