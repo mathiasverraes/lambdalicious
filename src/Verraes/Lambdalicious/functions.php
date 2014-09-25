@@ -2,6 +2,7 @@
 atom(@arity);
 atom(@call);
 atom(@reverseargs);
+atom(@evaluate);
 
 /**
  * From http://jasonframe.co.uk/logfile/2009/05/finding-the-arity-of-a-closure-in-php-53/

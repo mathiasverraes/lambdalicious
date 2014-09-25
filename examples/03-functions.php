@@ -33,7 +33,7 @@ assert(isequal(
 
 // Remember our filter? If we wanted to make it reusable, we could do this:
 // $removeEmptyLists = function($list) { return filter(not(isempty), $list)); }
-// We can do shorrter using partials now:
+// We can make it shorter using partials now:
 $removeEmptyLists = filter(not(isempty), __);
 assert(isequal(
     $removeEmptyLists($listOfLists),

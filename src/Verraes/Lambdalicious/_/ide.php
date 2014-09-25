@@ -17,6 +17,7 @@ const count = 'identity';
 const divide = 'divide';
 const elsedo = 'elsedo';
 const exponent = 'exponent';
+const evaluate = 'evaluate';
 const filter = 'filter';
 const gt = 'gt';
 const gteq = 'gteq';
