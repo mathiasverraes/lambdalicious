@@ -7,7 +7,7 @@ final class examplesTest extends LambdaliciousTestCase
     /**
      * @test
      */
-    public function examples_01_atoms_and_lists()
+    public function atoms_and_lists()
     {
         include __DIR__ . '/../../../../examples/01-atoms-and-lists.php';
     }
@@ -15,41 +15,49 @@ final class examplesTest extends LambdaliciousTestCase
     /**
      * @test
      */
-    public function examples_02__tuples_and_pairs()
+    public function conditionals()
     {
-        include __DIR__ . '/../../../../examples/02-tuples_and_pairs.php';
+        include __DIR__ . '/../../../../examples/02-conditionals.php';
     }
 
     /**
      * @test
      */
-    public function examples_03_functions()
+    public function tuples_and_pairs()
     {
-        include __DIR__ . '/../../../../examples/03-functions.php';
+        include __DIR__ . '/../../../../examples/03-tuples_and_pairs.php';
     }
 
     /**
      * @test
      */
-    public function examples_04_fibonacci()
+    public function functions()
     {
-        include __DIR__ . '/../../../../examples/04-fibonacci.php';
+        include __DIR__ . '/../../../../examples/04-functions.php';
     }
 
     /**
      * @test
      */
-    public function examples_05_pipes_and_filters()
+    public function fibonacci()
     {
-        include __DIR__ . '/../../../../examples/05-pipes-and-filters.php';
+        include __DIR__ . '/../../../../examples/05-fibonacci.php';
     }
 
     /**
      * @test
      */
-    public function examples_06_average()
+    public function pipes_and_filters()
     {
-        include __DIR__ . '/../../../../examples/06-average.php';
+        include __DIR__ . '/../../../../examples/06-pipes-and-filters.php';
+    }
+
+    /**
+     * @test
+     */
+    public function average()
+    {
+        include __DIR__ . '/../../../../examples/07-average.php';
     }
 }
  
