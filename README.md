@@ -8,8 +8,9 @@ Experiments in Elegant Functional Programming in PHP
 
 ## Design Goals
 
-- LISPlike Love for Lists!
-- Higher order functions baby!
+- LISPy Love for Lists!
+- Higher order Happiness!
+- Posh Partial Application!
 - Gloriously Global!
 
 ## Example
@@ -23,7 +24,7 @@ $accounts = [
     pair('Jules', -43),
 ];
 
-$negate = function($n) { return -$n; };
+$negate = multiply(-1);
 $totalOutstanding = pipe( // think *nix pipes and filters
     map(second, __), // __ is a partial application placeholder. second returns the second item in a Pair
     filter(lt(__, 0), __), // lt is less than
