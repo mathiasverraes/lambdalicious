@@ -5,17 +5,6 @@ atom(@reverseargs);
 atom(@evaluate);
 
 /**
- * From http://jasonframe.co.uk/logfile/2009/05/finding-the-arity-of-a-closure-in-php-53/
- * @param $function
- * @return int
- */
-function arity($function)
-{
-    $m = (new ReflectionObject($function))->getMethod('__invoke');
-    return $m->getNumberOfParameters();
-}
-
-/**
  * Call a $function using $arguments
  *
  * @partial

@@ -7,18 +7,6 @@ final class functionsTest extends LambdaliciousTestCase
     /**
      * @test
      */
-    public function arity()
-    {
-        $this->assertEquals(0,  arity(function(){}));
-        $this->assertEquals(1,  arity(function($a){}));
-        $this->assertEquals(2,  arity(function($a, $b){}));
-        $this->assertEquals(3,  arity(function($a, $b, $c){}));
-        $this->assertEquals(4,  arity(function($a, $b, $c, $d){}));
-    }
-
-    /**
-     * @test
-     */
     public function reverseargs()
     {
         $subtractRev = reverseargs(subtract);
