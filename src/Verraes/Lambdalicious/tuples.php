@@ -19,8 +19,10 @@ atom(@second);
 function tuple(...$elements)
 {
     return
-        hasplaceholders(func_get_args()) ? call(partial, cons(tuple, $elements)) :
-        isequal(count($elements), 2) ? new __Pair(car($elements), car(cdr($elements))) :
+        hasplaceholders(func_get_args())
+            ? call(partial, cons(tuple, $elements)) :
+        isequal(count($elements), 2)
+            ? new __Pair(car($elements), car(cdr($elements))) :
         new __Tuple($elements);
 }
 
@@ -57,7 +59,8 @@ function get($index, __Tuple $tuple)
 function pair($first, $second)
 {
     return
-        hasplaceholders(func_get_args()) ? partial(pair, $first, $second) :
+        hasplaceholders(func_get_args())
+            ? partial(pair, $first, $second) :
         new __Pair($first, $second);
 }
 

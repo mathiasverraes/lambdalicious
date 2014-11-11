@@ -95,8 +95,10 @@ function contains1(array $list)
 function map($function, $list)
 {
     return
-        hasplaceholders(func_get_args()) ? partial(map, $function, $list) :
-        (isempty($list) ? [] :
+        hasplaceholders(func_get_args())
+            ? partial(map, $function, $list) :
+        (isempty($list)
+            ? [] :
         (cons($function(car($list)), map($function, cdr($list)))));
 }
 
@@ -113,7 +115,8 @@ function reduce($function, $list, $initial)
 {
     return
         hasplaceholders(func_get_args()) ? partial(reduce, $function, $list, $initial) :
-        (isempty($list) ? $initial :
+        (isempty($list)
+            ? $initial :
         reduce($function, cdr($list), $function($initial, car($list))));
 }
 
@@ -127,16 +130,20 @@ function reduce($function, $list, $initial)
  */
 function filter($predicate, $list)
 {
-    $filter = function($predicate, $list, $carry) use(&$filter) {
+    // the private $_filter() serves to hide $carry from the public filter()
+    $_filter = function($predicate, $list, $carry) use(&$_filter) {
         return
-            (isempty($list) ? reverse($carry) :
-            ($predicate(car($list)) ? $filter($predicate, cdr($list), cons(car($list), $carry)) :
-            $filter($predicate, cdr($list), $carry)));
+            (isempty($list)
+                ? reverse($carry) :
+            ($predicate(car($list))
+                ? $_filter($predicate, cdr($list), cons(car($list), $carry)) :
+            $_filter($predicate, cdr($list), $carry)));
     };
 
     return
-        hasplaceholders(func_get_args()) ? partial(filter, $predicate, $list) :
-        $filter($predicate, $list, []);
+        hasplaceholders(func_get_args())
+            ? partial(filter, $predicate, $list) :
+        $_filter($predicate, $list, []);
 
 }
 
