@@ -96,7 +96,8 @@ function map($function, $list)
 {
     return
         hasplaceholders(func_get_args()) ? partial(map, $function, $list) :
-        array_map($function, $list);
+        (isempty($list) ? [] :
+        (cons($function(car($list)), map($function, cdr($list)))));
 }
 
 /**
