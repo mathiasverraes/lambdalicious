@@ -113,7 +113,8 @@ function reduce($function, $list, $initial)
 {
     return
         hasplaceholders(func_get_args()) ? partial(reduce, $function, $list, $initial) :
-        array_reduce($list, $function, $initial);
+        (isempty($list) ? $initial :
+        reduce($function, cdr($list), $function($initial, car($list))));
 }
 
 /**
