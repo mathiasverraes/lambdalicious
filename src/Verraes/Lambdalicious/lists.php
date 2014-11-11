@@ -127,9 +127,17 @@ function reduce($function, $list, $initial)
  */
 function filter($predicate, $list)
 {
+    $filter = function($predicate, $list, $carry) use(&$filter) {
+        return
+            (isempty($list) ? reverse($carry) :
+            ($predicate(car($list)) ? $filter($predicate, cdr($list), cons(car($list), $carry)) :
+            $filter($predicate, cdr($list), $carry)));
+    };
+
     return
         hasplaceholders(func_get_args()) ? partial(filter, $predicate, $list) :
-        array_values(array_filter($list, $predicate));
+        $filter($predicate, $list, []);
+
 }
 
 /**
