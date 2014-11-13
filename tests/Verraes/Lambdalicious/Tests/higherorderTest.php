@@ -50,7 +50,7 @@ final class higherorderTest extends LambdaliciousTestCase
      */
     public function composing_two_functions2()
     {
-        $secondElement = compose(car, cdr);
+        $secondElement = compose(head, tail);
         $this->assertEquals(
             b,
             $secondElement([a, b, c])

@@ -35,14 +35,14 @@ assert(isequal(
     cons(a, cons(b, cons(c, cons(d, []))))
 ));
 
-// car takes the first element of a list
+// head takes the first element of a list
 assert(isequal(
-    car([a, b, c]),
+    head([a, b, c]),
     a
 ));
 
-// cdr returns a list of all but the first element of a list
+// tail returns a list of all but the first element of a list
 assert(isequal(
-    cdr([a, b, c]),
+    tail([a, b, c]),
     [b, c]
 ));

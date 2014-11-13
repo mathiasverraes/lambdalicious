@@ -49,10 +49,10 @@ function partial($function, ...$partialArgs)
     {
         if (isempty($partialArgs)) {
             return concat(reverse($carry), $finalArgs);
-        } elseif (car($partialArgs) === __) {
-            return $replacePlaceholders(cdr($partialArgs), cdr($finalArgs), cons(car($finalArgs), $carry));
+        } elseif (head($partialArgs) === __) {
+            return $replacePlaceholders(tail($partialArgs), tail($finalArgs), cons(head($finalArgs), $carry));
         } else {
-            return $replacePlaceholders(cdr($partialArgs), $finalArgs, cons(car($partialArgs), $carry));
+            return $replacePlaceholders(tail($partialArgs), $finalArgs, cons(head($partialArgs), $carry));
         }
     };
 
@@ -70,8 +70,8 @@ function hasplaceholders(array $list)
 {
     return
         isempty($list) ? false :
-        (car($list) === __ ? true :
-        hasplaceholders(cdr($list)));
+        (head($list) === __ ? true :
+        hasplaceholders(tail($list)));
 }
 
 /**

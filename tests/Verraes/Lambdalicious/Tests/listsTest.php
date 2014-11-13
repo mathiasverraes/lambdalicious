@@ -2,8 +2,8 @@
 
 namespace Verraes\Lambdalicious\Tests;
 
-use CarIsDefinedOnlyForNonEmptyLists;
-use CdrIsDefinedOnlyForNonEmptyLists;
+use HeadIsDefinedOnlyForNonEmptyLists;
+use TailIsDefinedOnlyForNonEmptyLists;
 use IsEmptyIsDefinedOnlyForLists;
 
 final class listsTest extends LambdaliciousTestCase
@@ -63,51 +63,51 @@ final class listsTest extends LambdaliciousTestCase
     /**
      * @test
      */
-    public function car_is_defined_only_for_non_empty_lists()
+    public function head_is_defined_only_for_non_empty_lists()
     {
-        $this->setExpectedException(CarIsDefinedOnlyForNonEmptyLists::class);
-        car([]);
+        $this->setExpectedException(HeadIsDefinedOnlyForNonEmptyLists::class);
+        head([]);
     }
 
     /**
      * @test
      */
-    public function car_returns_the_first_S_expression()
+    public function head_returns_the_first_S_expression()
     {
         $this->assertEquals(
             a,
-            car([a, b, c])
+            head([a, b, c])
         );
     }
 
     /**
      * @test
      */
-    public function cdr_is_defined_only_for_non_empty_lists()
+    public function tail_is_defined_only_for_non_empty_lists()
     {
-        $this->setExpectedException(CdrIsDefinedOnlyForNonEmptyLists::class);
-        cdr([]);
+        $this->setExpectedException(TailIsDefinedOnlyForNonEmptyLists::class);
+        tail([]);
     }
 
     /**
      * @test
      */
-    public function cdr_returns_the_list_without_the_first_element()
+    public function tail_returns_the_list_without_the_first_element()
     {
         $this->assertEquals(
             [b, c],
-            cdr([a, b, c])
+            tail([a, b, c])
         );
     }
 
     /**
      * @test
      */
-    public function cdr_returns_an_empty_list_for_a_list_with_one_element()
+    public function tail_returns_an_empty_list_for_a_list_with_one_element()
     {
         $this->assertEquals(
             [],
-            cdr([a])
+            tail([a])
         );
     }
 

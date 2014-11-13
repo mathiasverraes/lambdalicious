@@ -22,7 +22,7 @@ function tuple(...$elements)
         hasplaceholders(func_get_args())
             ? call(partial, cons(tuple, $elements)) :
         isequal(count($elements), 2)
-            ? new __Pair(car($elements), car(cdr($elements))) :
+            ? new __Pair(head($elements), head(tail($elements))) :
         new __Tuple($elements);
 }
 

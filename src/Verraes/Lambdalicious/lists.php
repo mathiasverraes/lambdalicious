@@ -2,8 +2,8 @@
 atom(@isempty);
 atom(@contains1);
 atom(@cons);
-atom(@car);
-atom(@cdr);
+atom(@head);
+atom(@tail);
 atom(@reduce);
 atom(@map);
 atom(@filter);
@@ -52,28 +52,28 @@ function cons($element, array $list)
  *
  * @param array $list
  * @return mixed
- * @throws CarIsDefinedOnlyForNonEmptyLists
+ * @throws HeadIsDefinedOnlyForNonEmptyLists
  */
-function car(array $list)
+function head(array $list)
 {
-    if (isempty($list)) throw new CarIsDefinedOnlyForNonEmptyLists;
+    if (isempty($list)) throw new HeadIsDefinedOnlyForNonEmptyLists;
     return reset($list);
 }
-final class CarIsDefinedOnlyForNonEmptyLists extends \Exception {}
+final class HeadIsDefinedOnlyForNonEmptyLists extends \Exception {}
 
 /**
- * Get the list without the first element
+ * Returns the list without its first element
  *
  * @param array $list
- * @throws CdrIsDefinedOnlyForNonEmptyLists
+ * @throws TailIsDefinedOnlyForNonEmptyLists
  * @return array
  */
-function cdr(array $list)
+function tail(array $list)
 {
-    if (isempty($list)) throw new CdrIsDefinedOnlyForNonEmptyLists;
+    if (isempty($list)) throw new TailIsDefinedOnlyForNonEmptyLists;
     return array_slice($list, 1);
 }
-final class CdrIsDefinedOnlyForNonEmptyLists extends \Exception {}
+final class TailIsDefinedOnlyForNonEmptyLists extends \Exception {}
 
 /**
  * True if the list contains exactly one item
@@ -99,7 +99,7 @@ function map($function, $list)
             ? partial(map, $function, $list) :
         (isempty($list)
             ? [] :
-        (cons($function(car($list)), map($function, cdr($list)))));
+        (cons($function(head($list)), map($function, tail($list)))));
 }
 
 /**
@@ -117,7 +117,7 @@ function reduce($function, $list, $initial)
         hasplaceholders(func_get_args()) ? partial(reduce, $function, $list, $initial) :
         (isempty($list)
             ? $initial :
-        reduce($function, cdr($list), $function($initial, car($list))));
+        reduce($function, tail($list), $function($initial, head($list))));
 }
 
 /**
@@ -135,9 +135,9 @@ function filter($predicate, $list)
         return
             (isempty($list)
                 ? reverse($carry) :
-            ($predicate(car($list))
-                ? $_filter($predicate, cdr($list), cons(car($list), $carry)) :
-            $_filter($predicate, cdr($list), $carry)));
+            ($predicate(head($list))
+                ? $_filter($predicate, tail($list), cons(head($list), $carry)) :
+            $_filter($predicate, tail($list), $carry)));
     };
 
     return
@@ -156,8 +156,8 @@ function filter($predicate, $list)
 function concat(...$lists)
 {
     if(isempty($lists)) return [];
-    if(contains1($lists)) return car($lists);
-    return array_merge(car($lists), call(concat, cdr($lists)));
+    if(contains1($lists)) return head($lists);
+    return array_merge(head($lists), call(concat, tail($lists)));
 }
 
 /**

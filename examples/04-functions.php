@@ -2,8 +2,8 @@
 
 require_once __DIR__.'/../src/Verraes/Lambdalicious/preload.php';
 
-// $second returns the second element of a list. We made it by composing cdr and car
-$second = compose(car, cdr);
+// $second returns the second element of a list. We made it by composing tail and head
+$second = compose(head, tail);
 assert(isequal(
     $second([a, b, c]),
     b
