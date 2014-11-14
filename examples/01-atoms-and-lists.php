@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__.'/../src/Verraes/Lambdalicious/preload.php';
+require_once __DIR__.'/../src/Verraes/Lambdalicious/load.php';
 
 // An atom is like a constant that has itself as a value. Atoms start with @.
 assert(

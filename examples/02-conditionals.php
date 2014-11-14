@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__.'/../src/Verraes/Lambdalicious/preload.php';
+require_once __DIR__.'/../src/Verraes/Lambdalicious/load.php';
 
 // Let's play a game where you grab a ball from a bag, and win if it's green.
 // First we need some atoms

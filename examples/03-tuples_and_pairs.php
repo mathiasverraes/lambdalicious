@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__.'/../src/Verraes/Lambdalicious/preload.php';
+require_once __DIR__.'/../src/Verraes/Lambdalicious/load.php';
 
 // A tuple is a way of storing multiple values in a single value.
 assert(

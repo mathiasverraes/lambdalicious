@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../src/Verraes/Lambdalicious/preload.php';
+require_once __DIR__ . '/../src/Verraes/Lambdalicious/load.php';
 
 
 // It's is strictly forbidden to do functional programming without calculating Fibonacci numbers

@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../src/Verraes/Lambdalicious/preload.php';
+require_once __DIR__ . '/../src/Verraes/Lambdalicious/load.php';
 
 $sumOfHalves = pipe(
     map(divide(__, 2), __),

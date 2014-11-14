@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__.'/../src/Verraes/Lambdalicious/preload.php';
+require_once __DIR__.'/../src/Verraes/Lambdalicious/load.php';
 
 // $second returns the second element of a list. We made it by composing tail and head
 $second = compose(head, tail);
