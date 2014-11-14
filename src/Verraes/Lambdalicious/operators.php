@@ -196,14 +196,16 @@ function noteq($x, $y)
 
 /**
  * @todo maybe this should be a normal NOT, find something else for inverting predicates?
- * @param callable $function
- * @return bool|callable
+ * @param bool|atom|callable $value
+ * @return bool|atom|callable
  */
-function not(callable $function)
+function not($value)
 {
-    return function (...$arguments) use ($function) {
-        return !call($function, $arguments);
-    };
+    return
+        is_bool($value) ? !$value :
+        (function (...$arguments) use ($value) {
+            return !call($value, $arguments);
+        });
 }
 
 /**
