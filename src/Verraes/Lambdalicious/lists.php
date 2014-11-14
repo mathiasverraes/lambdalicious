@@ -90,7 +90,7 @@ function contains1(array $list)
  * @partial
  * @param callable $function
  * @param array $list
- * @return array
+ * @return array|callable
  */
 function map($function, $list)
 {
