@@ -8,5 +8,6 @@ const d = 'd';
 const e = 'e';
 const f = 'f';
 const substr = 'substr';
+const half = 'half';
 
 
