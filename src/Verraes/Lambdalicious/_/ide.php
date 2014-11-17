@@ -50,4 +50,4 @@ const tuple = 'tuple';
 const get = 'get';
 const istuple = 'istuple';
 const negate = 'negate';
-
+const dump = 'dump';

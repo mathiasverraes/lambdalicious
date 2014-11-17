@@ -11,3 +11,4 @@ const lose = 'lose';
 const red = 'red';
 const error = 'error';
 const ok = 'ok';
+const half = 'half';

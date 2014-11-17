@@ -42,7 +42,7 @@ final class IsEmptyIsDefinedOnlyForLists extends \Exception {}
  * @param array $list
  * @return array
  */
-function cons($element, array $list)
+function cons($element, array $list = [])
 {
     return array_merge([$element], array_values($list));
 }
