@@ -49,5 +49,5 @@ function isfunction($function)
  */
 function evaluate($x)
 {
-    if(isfunction($x)) return $x(); else return $x;
+    return isfunction($x) ? $x() : $x;
 }
