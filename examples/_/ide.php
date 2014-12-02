@@ -12,3 +12,5 @@ const red = 'red';
 const error = 'error';
 const ok = 'ok';
 const half = 'half';
+const foo = 'foo';
+const bar = 'bar';
