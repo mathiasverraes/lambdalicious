@@ -166,7 +166,9 @@ function concat(...$lists)
  * @param array $list
  * @return array
  */
-function reverse(array $list)
+function reverse(array $list, array $carry = [])
 {
-    return (isempty($list) || contains1($list)) ? $list : concat(reverse(tail($list)), [head($list)]);
+    return
+        isempty($list) ? $carry :
+        reverse(tail($list), cons(head($list), $carry));
 }
