@@ -168,5 +168,5 @@ function concat(...$lists)
  */
 function reverse(array $list)
 {
-    return (isempty($list) || contains1($list)) $list : concat(reverse(tail($list)), [head($list)]);
+    return (isempty($list) || contains1($list)) ? $list : concat(reverse(tail($list)), [head($list)]);
 }
