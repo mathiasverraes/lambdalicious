@@ -13,7 +13,7 @@ atom(@islist);
 atom(@count);
 atom(@max_by);
 atom(@min_by);
-atom(@compareby);
+atom(@compare_by);
 
 /**
  * @param $list
@@ -179,7 +179,7 @@ function reverse(array $list, array $carry = [])
     ;
 }
 
-function compareby($list, $extract, $comparator)
+function compare_by($comparator, $extract, $list)
 {
     $compare = function($carry, $item) use ($extract, $comparator) {
         return is_null($carry) || $comparator($extract($item), $extract($carry)) ? $item : $carry;
@@ -187,7 +187,7 @@ function compareby($list, $extract, $comparator)
 
     return
         hasplaceholders(func_get_args())
-            ? partial(compareby, $list, $extract, $comparator) :
+            ? partial(compare_by, $comparator, $extract, $list) :
             array_reduce($list, $compare);
 }
 
@@ -195,25 +195,25 @@ function compareby($list, $extract, $comparator)
 /**
  * Get the max item of a list, using an extract function
  *
- * @param array $list
  * @param callable $extract
+ * @param array $list
  * @return mixed
  */
-function max_by($list, $extract)
+function max_by($extract, $list)
 {
     $comparator = function($x, $y) { return $x > $y; };
-    return compareby($list, $extract, $comparator);
+    return compare_by($comparator, $extract, $list);
 }
 
 /**
  * Get the min item of a list, using an extract function
  *
- * @param array $list
  * @param callable $extract
+ * @param array $list
  * @return mixed
  */
-function min_by($list, $extract)
+function min_by($extract, $list)
 {
     $comparator = function($x, $y) { return $x < $y; };
-    return compareby($list, $extract, $comparator);
+    return compare_by($comparator, $extract, $list);
 }

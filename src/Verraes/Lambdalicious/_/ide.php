@@ -51,6 +51,6 @@ const get = 'get';
 const istuple = 'istuple';
 const negate = 'negate';
 const dump = 'dump';
-const compareby = 'compareby';
+const compare_by = 'compare_by';
 const max_by = 'max_by';
 const min_by = 'min_by';
