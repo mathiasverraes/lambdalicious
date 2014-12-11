@@ -177,11 +177,9 @@ final class listsTest extends LambdaliciousTestCase
     public function max_by()
     {
         $list = ['lambda', 'calculus', 'rocks'];
-        $fn = function($x) { return strlen($x); };
+        $this->assertEquals('calculus', max_by(@strlen, $list));
 
-        $this->assertEquals('calculus', max_by($fn, $list));
-
-        $longestString = max_by($fn, __);
+        $longestString = max_by(@strlen, __);
         $this->assertEquals('calculus', $longestString($list));
     }
 
@@ -191,11 +189,10 @@ final class listsTest extends LambdaliciousTestCase
     public function min_by()
     {
         $list = ['lambda', 'calculus', 'rocks'];
-        $fn = function($x) { return strlen($x); };
 
-        $this->assertEquals('rocks', min_by($fn, $list));
+        $this->assertEquals('rocks', min_by(@strlen, $list));
 
-        $shortestString = min_by($fn, __);
+        $shortestString = min_by(@strlen, __);
         $this->assertEquals('rocks', $shortestString($list));
     }
 }
