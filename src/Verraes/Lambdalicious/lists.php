@@ -155,9 +155,11 @@ function filter($predicate, $list)
  */
 function concat(...$lists)
 {
-    if(isempty($lists)) return [];
-    if(contains1($lists)) return head($lists);
-    return array_merge(head($lists), call(concat, tail($lists)));
+    return
+        isempty($lists) ? [] :
+        (contains1($lists) ? head($lists) :
+        (array_merge(head($lists), call(concat, tail($lists)))))
+    ;
 }
 
 /**
@@ -170,5 +172,6 @@ function reverse(array $list, array $carry = [])
 {
     return
         isempty($list) ? $carry :
-        reverse(tail($list), cons(head($list), $carry));
+        reverse(tail($list), cons(head($list), $carry))
+    ;
 }
