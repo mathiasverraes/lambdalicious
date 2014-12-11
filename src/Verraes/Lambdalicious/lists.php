@@ -11,6 +11,9 @@ atom(@concat);
 atom(@reverse);
 atom(@islist);
 atom(@count);
+atom(@max_by);
+atom(@min_by);
+atom(@compare_by);
 
 /**
  * @param $list
@@ -174,4 +177,43 @@ function reverse(array $list, array $carry = [])
         isempty($list) ? $carry :
         reverse(tail($list), cons(head($list), $carry))
     ;
+}
+
+function compare_by($comparator, $extract, $list)
+{
+    $compare = function($carry, $item) use ($extract, $comparator) {
+        return is_null($carry) || $comparator($extract($item), $extract($carry)) ? $item : $carry;
+    };
+
+    return
+        hasplaceholders(func_get_args())
+            ? partial(compare_by, $comparator, $extract, $list) :
+            array_reduce($list, $compare);
+}
+
+
+/**
+ * Get the max item of a list, using an extract function
+ *
+ * @param callable $extract
+ * @param array $list
+ * @return mixed
+ */
+function max_by($extract, $list)
+{
+    $comparator = function($x, $y) { return $x > $y; };
+    return compare_by($comparator, $extract, $list);
+}
+
+/**
+ * Get the min item of a list, using an extract function
+ *
+ * @param callable $extract
+ * @param array $list
+ * @return mixed
+ */
+function min_by($extract, $list)
+{
+    $comparator = function($x, $y) { return $x < $y; };
+    return compare_by($comparator, $extract, $list);
 }
