@@ -13,6 +13,7 @@ atom(@islist);
 atom(@count);
 atom(@max_by);
 atom(@min_by);
+atom(@compareby);
 
 /**
  * @param $list
@@ -178,6 +179,19 @@ function reverse(array $list, array $carry = [])
     ;
 }
 
+function compareby($list, $extract, $comparator)
+{
+    $compare = function($carry, $item) use ($extract, $comparator) {
+        return is_null($carry) || $comparator($extract($item), $extract($carry)) ? $item : $carry;
+    };
+
+    return
+        hasplaceholders(func_get_args())
+            ? partial(compareby, $list, $extract, $comparator) :
+            array_reduce($list, $compare);
+}
+
+
 /**
  * Get the max item of a list, using an extract function
  *
@@ -187,14 +201,8 @@ function reverse(array $list, array $carry = [])
  */
 function max_by($list, $extract)
 {
-    $compare = function($carry, $item) use ($extract) {
-        return is_null($carry) || $extract($item) > $extract($carry) ? $item : $carry;
-    };
-
-    return
-        hasplaceholders(func_get_args())
-            ? partial(max_by, $list, $extract) :
-        array_reduce($list, $compare);
+    $comparator = function($x, $y) { return $x > $y; };
+    return compareby($list, $extract, $comparator);
 }
 
 /**
@@ -206,12 +214,6 @@ function max_by($list, $extract)
  */
 function min_by($list, $extract)
 {
-    $compare = function($carry, $item) use ($extract) {
-        return is_null($carry) || $extract($item) < $extract($carry) ? $item : $carry;
-    };
-
-    return
-        hasplaceholders(func_get_args())
-            ? partial(min_by, $list, $extract) :
-        array_reduce($list, $compare);
+    $comparator = function($x, $y) { return $x < $y; };
+    return compareby($list, $extract, $comparator);
 }
