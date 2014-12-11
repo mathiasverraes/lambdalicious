@@ -168,5 +168,6 @@ function concat(...$lists)
  */
 function reverse(array $list)
 {
-    return array_reverse($list, false);
+    if(isempty($list) || contains1($list)) return $list;
+    return concat(reverse(tail($list)), [head($list)]);
 }
