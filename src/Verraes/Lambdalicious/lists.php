@@ -201,8 +201,7 @@ function compare_by($comparator, $extract, $list)
  */
 function max_by($extract, $list)
 {
-    $comparator = function($x, $y) { return $x > $y; };
-    return compare_by($comparator, $extract, $list);
+    return compare_by(gt, $extract, $list);
 }
 
 /**
@@ -214,6 +213,5 @@ function max_by($extract, $list)
  */
 function min_by($extract, $list)
 {
-    $comparator = function($x, $y) { return $x < $y; };
-    return compare_by($comparator, $extract, $list);
+    return compare_by(lt, $extract, $list);
 }
