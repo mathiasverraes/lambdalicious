@@ -170,4 +170,32 @@ final class listsTest extends LambdaliciousTestCase
             reverse([a, b, c])
         );
     }
+
+    /**
+     * @test
+     */
+    public function max_by()
+    {
+        $list = ['lambda', 'calculus', 'rocks'];
+        $fn = function($x) { return strlen($x); };
+
+        $this->assertEquals('calculus', max_by($list, $fn));
+
+        $longestString = max_by(__, $fn);
+        $this->assertEquals('calculus', $longestString($list));
+    }
+
+    /**
+     * @test
+     */
+    public function min_by()
+    {
+        $list = ['lambda', 'calculus', 'rocks'];
+        $fn = function($x) { return strlen($x); };
+
+        $this->assertEquals('rocks', min_by($list, $fn));
+
+        $shortestString = min_by(__, $fn);
+        $this->assertEquals('rocks', $shortestString($list));
+    }
 }
