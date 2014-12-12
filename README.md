@@ -2,7 +2,7 @@
 
 Experiments in Elegant Functional Programming in PHP
 
-![Lambda Man by Martin Grabmüller](lambda-man.jpg "Lambda Man by Martin Grabmüller")
+![Recursive Percy](docs/recursive_percy2.jpg "Recursive Percy")
 
 [![Build Status](https://travis-ci.org/mathiasverraes/lambdalicious.svg)](https://travis-ci.org/mathiasverraes/lambdalicious)
 
