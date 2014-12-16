@@ -1,18 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="vendor/autoload.php"
-         backupGlobals="false"
-         backupStaticAttributes="false"
-         colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         processIsolation="false"
-         stopOnFailure="false"
-         syntaxCheck="false"
-        >
+<phpunit
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.0/phpunit.xsd"
+        backupGlobals="false" backupStaticAttributes="false"
+        bootstrap="vendor/autoload.php"
+        cacheTokens="true"
+        colors="true"
+        forceCoversAnnotation="false"
+        strict="false" verbose="true">
+
     <testsuites>
-        <testsuite name="Verraes/Lambdalicious">
-            <directory>tests</directory>
+        <testsuite name="Lambdalicious Test Suite">
+            <directory suffix="Test.php">tests</directory>
         </testsuite>
     </testsuites>
+
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src</directory>
+            <directory suffix=".php">examples</directory>
+            <exclude>
+                <file>src/Verraes/Lambdalicious/_/ide.php</file>
+                <file>examples/_/ide.php</file>
+            </exclude>
+        </whitelist>
+    </filter>
 </phpunit>
