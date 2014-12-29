@@ -101,7 +101,7 @@ function length(array $list)
  */
 function contains1(array $list)
 {
-    return count($list) === 1;
+    return length($list) === 1;
 }
 /**
  * Applies $function to the elements of the given $list
