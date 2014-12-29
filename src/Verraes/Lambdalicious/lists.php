@@ -4,6 +4,7 @@ atom(@contains1);
 atom(@cons);
 atom(@head);
 atom(@tail);
+atom(@length);
 atom(@reduce);
 atom(@map);
 atom(@filter);
@@ -77,6 +78,21 @@ function tail(array $list)
     return array_slice($list, 1);
 }
 final class TailIsDefinedOnlyForNonEmptyLists extends \Exception {}
+
+/**
+ * Returns the length of a list
+ *
+ * @param array $list
+ *
+ * @return int
+ */
+function length(array $list)
+{
+    return
+        isempty($list) ? 0 :
+        1 + length(tail($list))
+    ;
+}
 
 /**
  * True if the list contains exactly one item
