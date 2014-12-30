@@ -90,7 +90,7 @@ function length(array $list)
 {
     return
         isempty($list) ? 0 :
-        1 + length(tail($list))
+        add(1, length(tail($list)))
     ;
 }
 
@@ -101,7 +101,7 @@ function length(array $list)
  */
 function contains1(array $list)
 {
-    return length($list) === 1;
+    return isequal(length($list), 1);
 }
 /**
  * Applies $function to the elements of the given $list
