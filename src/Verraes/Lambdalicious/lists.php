@@ -8,6 +8,7 @@ atom(@length);
 atom(@reduce);
 atom(@map);
 atom(@map2);
+atom(@zipWith);
 atom(@filter);
 atom(@concat);
 atom(@reverse);
@@ -134,6 +135,14 @@ function map2($function, $listA, $listB)
         (isempty($listA) || isempty($listB)
             ? [] :
         cons($function(head($listA), head($listB)), map2($function, tail($listA), tail($listB))));
+}
+
+/**
+ * Alias map2 to zipWith
+ */
+function zipWith($function, $listA, $listB)
+{
+    return map2($function, $listA, $listB);
 }
 
 /**
