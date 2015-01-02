@@ -217,4 +217,32 @@ final class listsTest extends LambdaliciousTestCase
         $shortestString = min_by(@strlen, __);
         $this->assertEquals('rocks', $shortestString($list));
     }
+
+    /**
+     * @test
+     */
+    public function zip()
+    {
+        $list1 = [@keep, @lambda];
+        $list2 = [@calm, @on, @that, @whisky, @bottle];
+
+        $this->assertEquals(
+            [tuple(@keep, @calm), tuple(@lambda, @on)],
+            zip($list1, $list2)
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function zipWith()
+    {
+        $list1 = [1, 2, 3, 4];
+        $list2 = [4, 3, 2];
+
+        $this->assertEquals(
+            [5, 5, 5],
+            zipWith(add, $list1, $list2)
+        );
+    }
 }

@@ -15,6 +15,8 @@ atom(@count);
 atom(@max_by);
 atom(@min_by);
 atom(@compare_by);
+atom(@zip);
+atom(@zipWith);
 
 /**
  * @param $list
@@ -230,4 +232,35 @@ function max_by($extract, $list)
 function min_by($extract, $list)
 {
     return compare_by(lt, $extract, $list);
+}
+
+/**
+ * Zip two lists
+ *
+ * @param array $listA
+ * @param array $listB
+ *
+ * @return array of tuples
+ */
+function zip($listA, $listB)
+{
+    return zipWith(tuple, $listA, $listB);
+}
+
+/**
+ * Zip two lists using a zipper function
+ *
+ * @param callable $function
+ * @param array    $listA
+ * @param array    $listB
+ *
+ * @return array
+ */
+function zipWith($function, $listA, $listB)
+{
+    return
+        hasplaceholders(func_get_args()) ? partial(zipWith, $function, $listA, $listB) :
+        (isempty($listA) || isempty($listB)
+            ? [] :
+        cons($function(head($listA), head($listB)), zipWith($function, tail($listA), tail($listB))));
 }
