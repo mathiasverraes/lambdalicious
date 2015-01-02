@@ -31,15 +31,14 @@ function islist($list)
  * Is the list empty?
  *
  * @param array $list
- * @throws IsEmptyIsDefinedOnlyForLists
  * @return boolean
  */
 function isempty($list)
 {
-    if(!islist($list)) throw new IsEmptyIsDefinedOnlyForLists;
-    return [] === $list;
+    return
+        !islist($list) ? raise("isempty() is only defined for lists") :
+        ([] === $list);
 }
-final class IsEmptyIsDefinedOnlyForLists extends \Exception {}
 
 /**
  * Create a list from $element and $list
@@ -58,28 +57,24 @@ function cons($element, array $list = [])
  *
  * @param array $list
  * @return mixed
- * @throws HeadIsDefinedOnlyForNonEmptyLists
  */
 function head(array $list)
 {
-    if (isempty($list)) throw new HeadIsDefinedOnlyForNonEmptyLists;
+    if (isempty($list)) raise("head() is only defined for non-empty lists.");
     return reset($list);
 }
-final class HeadIsDefinedOnlyForNonEmptyLists extends \Exception {}
 
 /**
  * Returns the list without its first element
  *
  * @param array $list
- * @throws TailIsDefinedOnlyForNonEmptyLists
  * @return array
  */
 function tail(array $list)
 {
-    if (isempty($list)) throw new TailIsDefinedOnlyForNonEmptyLists;
+    if (isempty($list)) raise("tail() is only defined for non-empty lists.");
     return array_slice($list, 1);
 }
-final class TailIsDefinedOnlyForNonEmptyLists extends \Exception {}
 
 /**
  * Returns the length of a list

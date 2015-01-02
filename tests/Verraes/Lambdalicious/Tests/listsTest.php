@@ -2,10 +2,6 @@
 
 namespace Verraes\Lambdalicious\Tests;
 
-use HeadIsDefinedOnlyForNonEmptyLists;
-use TailIsDefinedOnlyForNonEmptyLists;
-use IsEmptyIsDefinedOnlyForLists;
-
 final class listsTest extends LambdaliciousTestCase
 {
     /**
@@ -22,15 +18,6 @@ final class listsTest extends LambdaliciousTestCase
     public function an_atom_is_not_a_list()
     {
         $this->assertFalse(islist(a));
-    }
-
-    /**
-     * @test
-     */
-    public function isempty_is_defined_only_for_lists()
-    {
-        $this->setExpectedException(IsEmptyIsDefinedOnlyForLists::class);
-        isempty(null);
     }
 
     /**
@@ -63,30 +50,12 @@ final class listsTest extends LambdaliciousTestCase
     /**
      * @test
      */
-    public function head_is_defined_only_for_non_empty_lists()
-    {
-        $this->setExpectedException(HeadIsDefinedOnlyForNonEmptyLists::class);
-        head([]);
-    }
-
-    /**
-     * @test
-     */
     public function head_returns_the_first_S_expression()
     {
         $this->assertEquals(
             a,
             head([a, b, c])
         );
-    }
-
-    /**
-     * @test
-     */
-    public function tail_is_defined_only_for_non_empty_lists()
-    {
-        $this->setExpectedException(TailIsDefinedOnlyForNonEmptyLists::class);
-        tail([]);
     }
 
     /**

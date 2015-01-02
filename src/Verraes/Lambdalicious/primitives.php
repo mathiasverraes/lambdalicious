@@ -8,7 +8,6 @@ atom(@identity);
  *
  * @param $atoms
  * @return void
- * @throws AtomIsAlreadyDefinedWithADifferentValue
  */
 function atom(...$atoms)
 {
@@ -16,15 +15,13 @@ function atom(...$atoms)
         $atoms,
         function ($atom) {
             if (defined($atom)) {
-                if ($atom !== constant($atom)) throw new AtomIsAlreadyDefinedWithADifferentValue($atom);
+                if ($atom !== constant($atom)) raise("The atom is already defined with a different value: ".$atom);
             } else {
                 define($atom, $atom);
             }
         }
     );
 }
-
-final class AtomIsAlreadyDefinedWithADifferentValue extends \Exception {}
 
 /**
  * @param $atom
