@@ -1,6 +1,8 @@
 <?php
 atom(@raise);
 
+final class λlicious_failed extends \Exception { }
+
 /**
  * Raise an error.
  * @param $error
