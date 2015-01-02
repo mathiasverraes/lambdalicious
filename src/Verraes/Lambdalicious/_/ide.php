@@ -55,3 +55,6 @@ const compare_by = 'compare_by';
 const max_by = 'max_by';
 const min_by = 'min_by';
 const raise = 'raise';
+const length = 'length';
+const zip = 'zip';
+const zipWith = 'zipWith';
