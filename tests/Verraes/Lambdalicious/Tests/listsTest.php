@@ -2,10 +2,6 @@
 
 namespace Verraes\Lambdalicious\Tests;
 
-use HeadIsDefinedOnlyForNonEmptyLists;
-use TailIsDefinedOnlyForNonEmptyLists;
-use IsEmptyIsDefinedOnlyForLists;
-
 final class listsTest extends LambdaliciousTestCase
 {
     /**
