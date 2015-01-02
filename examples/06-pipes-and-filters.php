@@ -18,7 +18,7 @@ $accounts = [
     pair('Jill', -43),
 ];
 
-$getAmount = second; // returns the last item in a Pair
+$getAmount = tail; // returns the last item in a pair
 $isNegative = lt(__, 0);
 $totalOutstanding = pipe(
     map($getAmount, __),

@@ -195,10 +195,17 @@ final class listsTest extends LambdaliciousTestCase
         $list1 = [@keep, @lambda];
         $list2 = [@calm, @on, @that, @whisky, @bottle];
 
-        $this->assertEquals(
-            [tuple(@keep, @calm), tuple(@lambda, @on)],
-            zip($list1, $list2)
-        );
+        $zipped = zip($list1, $list2);
+        $this->assertTrue(isequal(
+            head($zipped),
+            pair(@keep, @calm)
+        ));
+
+        $this->assertTrue(isequal(
+            head(tail($zipped)),
+            pair(@lambda, @on)
+        ));
+
     }
 
     /**

@@ -2,8 +2,6 @@
 atom(@isempty);
 atom(@contains1);
 atom(@cons);
-atom(@head);
-atom(@tail);
 atom(@length);
 atom(@reduce);
 atom(@map);
@@ -52,29 +50,6 @@ function cons($element, array $list = [])
     return array_merge([$element], array_values($list));
 }
 
-/**
- * Get the first element off a list
- *
- * @param array $list
- * @return mixed
- */
-function head(array $list)
-{
-    if (isempty($list)) raise("head() is only defined for non-empty lists.");
-    return reset($list);
-}
-
-/**
- * Returns the list without its first element
- *
- * @param array $list
- * @return array
- */
-function tail(array $list)
-{
-    if (isempty($list)) raise("tail() is only defined for non-empty lists.");
-    return array_slice($list, 1);
-}
 
 /**
  * Returns the length of a list
@@ -235,11 +210,11 @@ function min_by($extract, $list)
  * @param array $listA
  * @param array $listB
  *
- * @return array of tuples
+ * @return array of pairs
  */
 function zip($listA, $listB)
 {
-    return zipWith(tuple, $listA, $listB);
+    return zipWith(pair, $listA, $listB);
 }
 
 /**

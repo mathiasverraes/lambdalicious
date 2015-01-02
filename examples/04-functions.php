@@ -2,11 +2,12 @@
 
 require_once __DIR__.'/../src/Verraes/Lambdalicious/load.php';
 
-// $second returns the second element of a list. We made it by composing tail and head
-$second = compose(head, tail);
+// $third returns the third element of a list. We made it by composing tail and head
+$third = compose(head, tail, tail);
+
 assert(isequal(
-    $second([a, b, c]),
-    b
+    $third([a, b, c, d, e]),
+    c
 ));
 
 // isempty is a predicate (a function that returns a boolean)
