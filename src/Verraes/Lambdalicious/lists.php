@@ -7,6 +7,8 @@ atom(@tail);
 atom(@length);
 atom(@reduce);
 atom(@map);
+atom(@map2);
+atom(@zipWith);
 atom(@filter);
 atom(@concat);
 atom(@reverse);
@@ -16,7 +18,6 @@ atom(@max_by);
 atom(@min_by);
 atom(@compare_by);
 atom(@zip);
-atom(@zipWith);
 
 /**
  * @param $list
@@ -116,6 +117,32 @@ function map($function, $list)
         (isempty($list)
             ? [] :
         (cons($function(head($list)), map($function, tail($list)))));
+}
+
+/**
+ * Map over two lists using a mapper function (zipWith)
+ *
+ * @param callable $function
+ * @param array    $listA
+ * @param array    $listB
+ *
+ * @return array
+ */
+function map2($function, $listA, $listB)
+{
+    return
+        hasplaceholders(func_get_args()) ? partial(map2, $function, $listA, $listB) :
+        (isempty($listA) || isempty($listB)
+            ? [] :
+        cons($function(head($listA), head($listB)), map2($function, tail($listA), tail($listB))));
+}
+
+/**
+ * Alias map2 to zipWith
+ */
+function zipWith($function, $listA, $listB)
+{
+    return map2($function, $listA, $listB);
 }
 
 /**
@@ -239,23 +266,6 @@ function min_by($extract, $list)
  */
 function zip($listA, $listB)
 {
-    return zipWith(tuple, $listA, $listB);
+    return map2(tuple, $listA, $listB);
 }
 
-/**
- * Zip two lists using a zipper function
- *
- * @param callable $function
- * @param array    $listA
- * @param array    $listB
- *
- * @return array
- */
-function zipWith($function, $listA, $listB)
-{
-    return
-        hasplaceholders(func_get_args()) ? partial(zipWith, $function, $listA, $listB) :
-        (isempty($listA) || isempty($listB)
-            ? [] :
-        cons($function(head($listA), head($listB)), zipWith($function, tail($listA), tail($listB))));
-}

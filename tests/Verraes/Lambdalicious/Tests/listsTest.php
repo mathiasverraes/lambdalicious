@@ -211,7 +211,7 @@ final class listsTest extends LambdaliciousTestCase
 
         $this->assertEquals(
             [5, 5, 5],
-            zipWith(add, $list1, $list2)
+            map2(add, $list1, $list2)
         );
     }
 }
