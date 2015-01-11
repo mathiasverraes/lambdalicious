@@ -8,22 +8,12 @@ atom(@map);
 atom(@filter);
 atom(@concat);
 atom(@reverse);
-atom(@islist);
 atom(@count);
 atom(@max_by);
 atom(@min_by);
 atom(@compare_by);
 atom(@zip);
 atom(@zipWith);
-
-/**
- * @param $list
- * @return bool
- */
-function islist($list)
-{
-    return is_array($list);
-}
 
 /**
  * Is the list empty?

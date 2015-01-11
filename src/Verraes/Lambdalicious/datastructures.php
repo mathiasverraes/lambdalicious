@@ -4,6 +4,8 @@ atom(@pair);
 atom(@ispair);
 atom(@head);
 atom(@tail);
+atom(@l);
+atom(@islist);
 
 /**
  * Construct a pair
@@ -63,3 +65,40 @@ function tail($data)
 }
 
 final class pair {} // for IDE's
+
+/**
+ * Creates a list
+ */
+function l(...$elements)
+{
+    $createList = function(array $elements, $list = 'λ_list') use (&$createList) {
+        if (empty($elements)) {
+            return $list;
+        }
+
+        $last = current(array_reverse($elements));
+
+        $newList = pair($last, $list);
+
+        return $createList(array_reverse(array_slice(array_reverse($elements), 1)), $newList);
+    };
+
+    return $createList($elements);
+}
+
+/**
+ * @param list $list
+ * @return bool
+ */
+function islist($list)
+{
+    return $list === @λ_list
+           || (
+                  ispair($list)
+                  && (
+                         tail($list) == @λ_list
+                         || islist(tail($list))
+                  )
+           )
+    ;
+}

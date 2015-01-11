@@ -7,22 +7,6 @@ final class listsTest extends LambdaliciousTestCase
     /**
      * @test
      */
-    public function a_list_is_a_list()
-    {
-        $this->assertTrue(islist([a, b, c]));
-    }
-
-    /**
-     * @test
-     */
-    public function an_atom_is_not_a_list()
-    {
-        $this->assertFalse(islist(a));
-    }
-
-    /**
-     * @test
-     */
     public function isemtpy_is_true_for_empty_lists()
     {
         $this->assertTrue(isempty([]));
