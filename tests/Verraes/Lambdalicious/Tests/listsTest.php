@@ -9,7 +9,7 @@ final class listsTest extends LambdaliciousTestCase
      */
     public function isemtpy_is_true_for_empty_lists()
     {
-        $this->assertTrue(isempty([]));
+        $this->assertTrue(isempty(l()));
     }
 
     /**
@@ -17,7 +17,7 @@ final class listsTest extends LambdaliciousTestCase
      */
     public function isemtpy_is_false_for_non_empty_lists()
     {
-        $this->assertFalse(isempty([a]));
+        $this->assertFalse(isempty(l(a)));
     }
 
     /**

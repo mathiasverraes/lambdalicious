@@ -47,7 +47,7 @@ function partial($function, ...$partialArgs)
 {
     $replacePlaceholders = function (array $partialArgs, array $finalArgs, array $carry = []) use (&$replacePlaceholders)
     {
-        if (isempty($partialArgs)) {
+        if (_isempty($partialArgs)) {
             return concat(reverse($carry), $finalArgs);
         } elseif (head($partialArgs) === __) {
             return $replacePlaceholders(tail($partialArgs), tail($finalArgs), cons(head($finalArgs), $carry));
@@ -69,9 +69,9 @@ function partial($function, ...$partialArgs)
 function hasplaceholders(array $list)
 {
     return
-        isempty($list) ? false :
-        (head($list) === __ ? true :
-        hasplaceholders(tail($list)));
+        _isempty($list) ? false :
+        (reset($list) === __ ? true :
+        hasplaceholders(array_slice($list, 1)));
 }
 
 /**

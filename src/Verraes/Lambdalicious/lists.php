@@ -1,4 +1,5 @@
 <?php
+atom(@_isempty);
 atom(@isempty);
 atom(@contains1);
 atom(@cons);
@@ -18,14 +19,20 @@ atom(@zipWith);
 /**
  * Is the list empty?
  *
- * @param array $list
+ * @param callable $list
  * @return boolean
  */
+function _isempty($list)
+{
+    return
+        !is_array($list) ? raise('_isempty() is only defined for arrays') :
+        ([] === $list);
+}
 function isempty($list)
 {
     return
         !islist($list) ? raise("isempty() is only defined for lists") :
-        ([] === $list);
+        (@λ_list === $list);
 }
 
 /**
@@ -51,7 +58,7 @@ function cons($element, array $list = [])
 function length(array $list)
 {
     return
-        isempty($list) ? 0 :
+        _isempty($list) ? 0 :
         add(1, length(tail($list)))
     ;
 }
@@ -78,7 +85,7 @@ function map($function, $list)
     return
         hasplaceholders(func_get_args())
             ? partial(map, $function, $list) :
-        (isempty($list)
+        (_isempty($list)
             ? [] :
         (cons($function(head($list)), map($function, tail($list)))));
 }
@@ -96,7 +103,7 @@ function reduce($function, $list, $initial)
 {
     return
         hasplaceholders(func_get_args()) ? partial(reduce, $function, $list, $initial) :
-        (isempty($list)
+        (_isempty($list)
             ? $initial :
         reduce($function, tail($list), $function($initial, head($list))));
 }
@@ -114,7 +121,7 @@ function filter($predicate, $list)
     // the private $_filter() serves to hide $carry from the public filter()
     $_filter = function($predicate, $list, $carry) use(&$_filter) {
         return
-            (isempty($list)
+            (_isempty($list)
                 ? reverse($carry) :
             ($predicate(head($list))
                 ? $_filter($predicate, tail($list), cons(head($list), $carry)) :
@@ -137,7 +144,7 @@ function filter($predicate, $list)
 function concat(...$lists)
 {
     return
-        isempty($lists) ? [] :
+        _isempty($lists) ? [] :
         (contains1($lists) ? head($lists) :
         (array_merge(head($lists), call(concat, tail($lists)))))
     ;
@@ -152,7 +159,7 @@ function concat(...$lists)
 function reverse(array $list, array $carry = [])
 {
     return
-        isempty($list) ? $carry :
+        _isempty($list) ? $carry :
         reverse(tail($list), cons(head($list), $carry))
     ;
 }
@@ -220,7 +227,7 @@ function zipWith($function, $listA, $listB)
 {
     return
         hasplaceholders(func_get_args()) ? partial(zipWith, $function, $listA, $listB) :
-        (isempty($listA) || isempty($listB)
+        (_isempty($listA) || _isempty($listB)
             ? [] :
         cons($function(head($listA), head($listB)), zipWith($function, tail($listA), tail($listB))));
 }
