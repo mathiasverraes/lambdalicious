@@ -93,4 +93,17 @@ final class datastructuresTest extends LambdaliciousTestCase
             islist([a])
         );
     }
+
+    /**
+     * @test
+     */
+    public function arrayl()
+    {
+        $this->assertTrue(
+            isequal(l(), arrayl([]))
+        );
+        $this->assertTrue(
+            isequal(l(a, b, c), arrayl([a, b, c]))
+        );
+    }
 }

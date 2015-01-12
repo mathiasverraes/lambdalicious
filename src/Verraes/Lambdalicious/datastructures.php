@@ -102,3 +102,15 @@ function islist($list)
            )
     ;
 }
+
+/**
+ * Cast an array to a list
+ *
+ * @param array $array
+ *
+ * @return list
+ */
+function arrayl($array)
+{
+    return call_user_func_array(l, $array);
+}
