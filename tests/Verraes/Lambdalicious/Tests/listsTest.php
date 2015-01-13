@@ -95,9 +95,11 @@ final class listsTest extends LambdaliciousTestCase
      */
     public function concat_empty()
     {
-        $this->assertEquals(
-            [],
-            concat()
+        $this->assertTrue(
+            isequal(
+                l(),
+                concat()
+            )
         );
     }
 
@@ -106,24 +108,38 @@ final class listsTest extends LambdaliciousTestCase
      */
     public function concat_1_element()
     {
-        $this->assertEquals(
-            [a, b],
-            concat([a, b])
+        $this->assertTrue(
+            isequal(
+                l(a, b),
+                concat(l(a, b))
+            )
         );
     }
 
     /**
      * @test
      */
+    public function concat_2_elements()
+    {
+        $this->assertTrue(
+            isequal(
+                l(a, b, c, d, e, f),
+                concat2(l(a, b, c), l(d, e, f))
+            )
+        );
+    }
+
     public function concat_multiple()
     {
-        $list1 = [a, b];
-        $list2 = [c, d];
-        $list3 = [e, f];
+        $list1 = l(a, b);
+        $list2 = l(c, d);
+        $list3 = l(e, f);
 
-        $this->assertEquals(
-            [a, b, c, d, e, f],
-            concat($list1, $list2, $list3)
+        $this->assertTrue(
+            isequal(
+                l(a, b, c, d, e, f),
+                concat($list1, $list2, $list3)
+            )
         );
     }
 

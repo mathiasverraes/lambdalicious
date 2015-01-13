@@ -8,6 +8,7 @@ atom(@reduce);
 atom(@map);
 atom(@filter);
 atom(@concat);
+atom(@concat2);
 atom(@reverse);
 atom(@count);
 atom(@max_by);
@@ -147,9 +148,24 @@ function filter($predicate, $list)
 function concat(...$lists)
 {
     return
-        _isempty($lists) ? [] :
+        _isempty($lists) ? l() :
         (contains1($lists) ? head($lists) :
-        (array_merge(head($lists), call(concat, tail($lists)))))
+        (concat2(head($lists), call(concat, tail($lists)))))
+    ;
+}
+
+/**
+ * Make a new list of the elements of two lists
+ *
+ * @param $listA
+ * @param $listB
+ * @return list
+ */
+function concat2($listA, $listB)
+{
+    return
+        ((is_array($listA) && _isempty($listA)) || (!is_array($listA) && isempty($listA))) ? $listB :
+        cons(head($listA), concat2(tail($listA), $listB))
     ;
 }
 
