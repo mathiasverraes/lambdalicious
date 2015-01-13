@@ -40,7 +40,7 @@ final class listsTest extends LambdaliciousTestCase
     {
         $this->assertEquals(
             a,
-            head([a, b, c])
+            head(l(a, b, c))
         );
     }
 
@@ -49,9 +49,11 @@ final class listsTest extends LambdaliciousTestCase
      */
     public function tail_returns_the_list_without_the_first_element()
     {
-        $this->assertEquals(
-            [b, c],
-            tail([a, b, c])
+        $this->assertTrue(
+            isequal(
+                l(b, c),
+                tail(l(a, b, c))
+            )
         );
     }
 
@@ -61,8 +63,8 @@ final class listsTest extends LambdaliciousTestCase
     public function tail_returns_an_empty_list_for_a_list_with_one_element()
     {
         $this->assertEquals(
-            [],
-            tail([a])
+            l(),
+            tail(l(a))
         );
     }
 
