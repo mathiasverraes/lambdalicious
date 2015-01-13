@@ -28,7 +28,7 @@ function call($function, $arguments)
 function reverseargs($function)
 {
     return function(...$arguments) use($function) {
-        return call($function, reverse($arguments));
+        return call($function, _reverse($arguments));
     };
 }
 

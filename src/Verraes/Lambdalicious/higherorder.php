@@ -32,7 +32,7 @@ function compose(...$functions)
  */
 function pipe(...$functions)
 {
-    return call(compose, reverse($functions));
+    return call(compose, _reverse($functions));
 }
 
 /**
@@ -48,7 +48,7 @@ function partial($function, ...$partialArgs)
     $replacePlaceholders = function (array $partialArgs, array $finalArgs, array $carry = []) use (&$replacePlaceholders)
     {
         if (_isempty($partialArgs)) {
-            return concat(reverse($carry), $finalArgs);
+            return concat(_reverse($carry), $finalArgs);
         } elseif (head($partialArgs) === __) {
             return $replacePlaceholders(tail($partialArgs), tail($finalArgs), cons(head($finalArgs), $carry));
         } else {

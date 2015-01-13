@@ -125,7 +125,7 @@ function filter($predicate, $list)
     $_filter = function($predicate, $list, $carry) use(&$_filter) {
         return
             (_isempty($list)
-                ? reverse($carry) :
+                ? _reverse($carry) :
             ($predicate(head($list))
                 ? $_filter($predicate, tail($list), cons(head($list), $carry)) :
             $_filter($predicate, tail($list), $carry)));
@@ -159,10 +159,24 @@ function concat(...$lists)
  * @param array $list
  * @return array
  */
-function reverse(array $list, array $carry = [])
+function _reverse(array $list, array $carry = [])
 {
     return
         _isempty($list) ? $carry :
+        _reverse(tail($list), cons(head($list), $carry))
+    ;
+}
+
+/**
+ * Reverse a list
+ *
+ * @param list $list
+ * @return array
+ */
+function reverse($list, $carry = 'λ_list')
+{
+    return
+        isempty($list) ? $carry :
         reverse(tail($list), cons(head($list), $carry))
     ;
 }

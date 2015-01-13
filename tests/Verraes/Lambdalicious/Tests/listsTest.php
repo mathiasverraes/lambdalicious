@@ -142,11 +142,11 @@ final class listsTest extends LambdaliciousTestCase
      */
     public function reverse()
     {
-        $this->assertEquals([], reverse([]));
-        $this->assertEquals([a], reverse([a]));
+        $this->assertEquals(l(), reverse(l()));
+        $this->assertEquals(l(a), reverse(l(a)));
         $this->assertEquals(
-            [c, b, a],
-            reverse([a, b, c])
+            l(c, b, a),
+            reverse(l(a, b, c))
         );
     }
 
