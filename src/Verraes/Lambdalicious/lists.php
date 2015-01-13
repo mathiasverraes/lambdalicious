@@ -89,8 +89,8 @@ function map($function, $list)
     return
         hasplaceholders(func_get_args())
             ? partial(map, $function, $list) :
-        (_isempty($list)
-            ? [] :
+        (isempty($list)
+            ? l() :
         (cons($function(head($list)), map($function, tail($list)))));
 }
 
@@ -125,8 +125,8 @@ function filter($predicate, $list)
     // the private $_filter() serves to hide $carry from the public filter()
     $_filter = function($predicate, $list, $carry) use(&$_filter) {
         return
-            (_isempty($list)
-                ? _reverse($carry) :
+            (isempty($list)
+                ? reverse($carry) :
             ($predicate(head($list))
                 ? $_filter($predicate, tail($list), cons(head($list), $carry)) :
             $_filter($predicate, tail($list), $carry)));
@@ -135,7 +135,7 @@ function filter($predicate, $list)
     return
         hasplaceholders(func_get_args())
             ? partial(filter, $predicate, $list) :
-        $_filter($predicate, $list, []);
+        $_filter($predicate, $list, l());
 
 }
 

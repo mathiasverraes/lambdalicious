@@ -7,16 +7,16 @@ $sumOfHalves = pipe(
     reduce(add, __, 0)
 );
 assert(isequal(
-    $sumOfHalves([2, 4, 6]), 6
+    $sumOfHalves(l(2, 4, 6)), 6
 ));
 
 // How much money is still unpaid?
-$accounts = [
+$accounts = l(
     pair('Jim', 100),
     pair('Jenny', 30),
     pair('Jack', -50),
-    pair('Jill', -43),
-];
+    pair('Jill', -43)
+);
 
 $getAmount = tail; // returns the last item in a pair
 $isNegative = lt(__, 0);

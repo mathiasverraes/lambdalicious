@@ -220,9 +220,72 @@ final class listsTest extends LambdaliciousTestCase
         $list1 = l(1, 2, 3, 4);
         $list2 = l(4, 3, 2);
 
-        $this->assertEquals(
-            l(5, 5, 5),
-            zipWith(add, $list1, $list2)
+        $this->assertTrue(
+            isequal(
+                l(5, 5, 5),
+                zipWith(add, $list1, $list2)
+            )
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function map()
+    {
+        $this->assertTrue(
+            isequal(
+                l(),
+                map(add(1, __), l())
+            )
+        );
+
+        $this->assertTrue(
+            isequal(
+                l(2),
+                map(add(1, __), l(1))
+            )
+        );
+
+        $this->assertTrue(
+            isequal(
+                l(2, 3, 4),
+                map(add(1, __), l(1, 2, 3))
+            )
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function filter()
+    {
+        $this->assertTrue(
+            isequal(
+                l(),
+                filter(isequal(2, __), l())
+            )
+        );
+
+        $this->assertTrue(
+            isequal(
+                l(),
+                filter(isequal(2, __), l(1))
+            )
+        );
+
+        $this->assertTrue(
+            isequal(
+                l(2),
+                filter(isequal(2, __), l(2))
+            )
+        );
+
+        $this->assertTrue(
+            isequal(
+                l(2, 2, 2),
+                filter(isequal(2, __), l(1, 2, 3, 2, 1, 2, 3))
+            )
         );
     }
 }

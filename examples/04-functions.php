@@ -10,13 +10,13 @@ assert(isequal(
     c
 ));
 
-// _isempty is a predicate (a function that returns a boolean)
-// not(_isempty) returns a function. You could write it as $not = function($x) { return !_isempty($x); } but not(_isempty)
+// isempty is a predicate (a function that returns a boolean)
+// not(isempty) returns a function. You could write it as $not = function($x) { return !isempty($x); } but not(isempty)
 // is more readable. Now let's take a list and return a list without the empty elements.
-$listOfLists = [[a, b], [], [c, d], []];
+$listOfLists = l(l(a, b), l(), l(c, d), l());
 assert(isequal(
-    filter(not(_isempty), $listOfLists),
-    [[a, b], [c, d]]
+    filter(not(isempty), $listOfLists),
+    l(l(a, b), l(c, d))
 ));
 
 // partial fixes a number of arguments of a function. eg add(x, y) takes two arguments, partial(add, 1, __) creates a
@@ -33,10 +33,10 @@ assert(isequal(
 ));
 
 // Remember our filter? If we wanted to make it reusable, we could do this:
-// $removeEmptyLists = function($list) { return filter(not(_isempty), $list)); }
+// $removeEmptyLists = function($list) { return filter(not(isempty), $list)); }
 // We can make it shorter using partials now:
-$removeEmptyLists = filter(not(_isempty), __);
+$removeEmptyLists = filter(not(isempty), __);
 assert(isequal(
     $removeEmptyLists($listOfLists),
-    [[a, b], [c, d]]
+    l(l(a, b), l(c, d))
 ));
