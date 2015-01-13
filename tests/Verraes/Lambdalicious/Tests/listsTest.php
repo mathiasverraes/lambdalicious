@@ -25,9 +25,11 @@ final class listsTest extends LambdaliciousTestCase
      */
     public function cons_builds_lists()
     {
-        $this->assertEquals(
-            [a, b, c],
-            cons(a, [b, c])
+        $this->assertTrue(
+            isequal(
+                l(a, b, c),
+                cons(a, l(b, c))
+            )
         );
     }
 

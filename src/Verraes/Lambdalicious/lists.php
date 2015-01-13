@@ -42,9 +42,12 @@ function isempty($list)
  * @param array $list
  * @return array
  */
-function cons($element, array $list = [])
+function cons($element, $list = 'λ_list')
 {
-    return array_merge([$element], array_values($list));
+    return
+        is_array($list) ? array_merge(array($element), $list) : (
+        !islist($list) ? raise("cons() is only defined for lists") :
+        pair($element, $list));
 }
 
 
