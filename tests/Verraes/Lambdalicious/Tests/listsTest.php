@@ -171,7 +171,7 @@ final class listsTest extends LambdaliciousTestCase
      */
     public function max_by()
     {
-        $list = ['lambda', 'calculus', 'rocks'];
+        $list = l('lambda', 'calculus', 'rocks');
         $this->assertEquals('calculus', max_by(@strlen, $list));
 
         $longestString = max_by(@strlen, __);
@@ -183,7 +183,7 @@ final class listsTest extends LambdaliciousTestCase
      */
     public function min_by()
     {
-        $list = ['lambda', 'calculus', 'rocks'];
+        $list = l('lambda', 'calculus', 'rocks');
 
         $this->assertEquals('rocks', min_by(@strlen, $list));
 
@@ -196,8 +196,8 @@ final class listsTest extends LambdaliciousTestCase
      */
     public function zip()
     {
-        $list1 = [@keep, @lambda];
-        $list2 = [@calm, @on, @that, @whisky, @bottle];
+        $list1 = l(@keep, @lambda);
+        $list2 = l(@calm, @on, @that, @whisky, @bottle);
 
         $zipped = zip($list1, $list2);
         $this->assertTrue(isequal(
@@ -217,11 +217,11 @@ final class listsTest extends LambdaliciousTestCase
      */
     public function zipWith()
     {
-        $list1 = [1, 2, 3, 4];
-        $list2 = [4, 3, 2];
+        $list1 = l(1, 2, 3, 4);
+        $list2 = l(4, 3, 2);
 
         $this->assertEquals(
-            [5, 5, 5],
+            l(5, 5, 5),
             zipWith(add, $list1, $list2)
         );
     }
