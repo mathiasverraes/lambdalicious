@@ -71,7 +71,7 @@ final class listsTest extends LambdaliciousTestCase
     {
         $this->assertEquals(
             0,
-            length([])
+            length(l())
         );
     }
 
@@ -80,10 +80,10 @@ final class listsTest extends LambdaliciousTestCase
      */
     public function length_returns_the_number_of_list_elements_for_non_empty_lists()
     {
-        $this->assertEquals(1, length([1]));
-        $this->assertEquals(2, length([@foo, @bar]));
-        $this->assertEquals(3, length([[], [], []]));
-        $this->assertEquals(4, length([@foo, @bar, @baz, @qux]));
+        $this->assertEquals(1, length(l(1)));
+        $this->assertEquals(2, length(l(@foo, @bar)));
+        $this->assertEquals(3, length(l(l(), l(), l())));
+        $this->assertEquals(4, length(l(@foo, @bar, @baz, @qux)));
     }
 
     /**
@@ -128,9 +128,9 @@ final class listsTest extends LambdaliciousTestCase
      */
     public function contains1()
     {
-        $this->assertFalse(contains1([]));
-        $this->assertTrue(contains1([a]));
-        $this->assertFalse(contains1([a, b]));
+        $this->assertFalse(contains1(l()));
+        $this->assertTrue(contains1(l(a)));
+        $this->assertFalse(contains1(l(a, b)));
     }
 
     /**

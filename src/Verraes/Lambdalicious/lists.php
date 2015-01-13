@@ -51,24 +51,24 @@ function cons($element, array $list = [])
 /**
  * Returns the length of a list
  *
- * @param array $list
+ * @param callable $list
  *
  * @return int
  */
-function length(array $list)
+function length($list)
 {
     return
-        _isempty($list) ? 0 :
+        ((is_array($list) && _isempty($list)) || (islist($list) && isempty($list))) ? 0 :
         add(1, length(tail($list)))
     ;
 }
 
 /**
  * True if the list contains exactly one item
- * @param array $list
+ * @param list $list
  * @return bool
  */
-function contains1(array $list)
+function contains1($list)
 {
     return isequal(length($list), 1);
 }
