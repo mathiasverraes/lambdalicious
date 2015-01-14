@@ -33,7 +33,7 @@ function isempty($list)
 {
     return
         !islist($list) ? raise("isempty() is only defined for lists") :
-        (@λ_list === $list);
+        (l() === $list);
 }
 
 /**
@@ -76,6 +76,7 @@ function contains1($list)
 {
     return isequal(length($list), 1);
 }
+
 /**
  * Applies $function to the elements of the given $list
  *
