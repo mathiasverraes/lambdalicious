@@ -102,7 +102,7 @@ function islist($list)
  *
  * @return list
  */
-function arrayl($array)
+function al($array)
 {
     return call_user_func_array(l, $array);
 }

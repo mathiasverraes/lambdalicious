@@ -106,13 +106,13 @@ final class datastructuresTest extends LambdaliciousTestCase
     /**
      * @test
      */
-    public function arrayl()
+    public function al()
     {
         $this->assertTrue(
-            isequal(l(), arrayl([]))
+            isequal(l(), al([]))
         );
         $this->assertTrue(
-            isequal(l(a, b, c), arrayl([a, b, c]))
+            isequal(l(a, b, c), al([a, b, c]))
         );
     }
 }
