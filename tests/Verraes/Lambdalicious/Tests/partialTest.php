@@ -74,8 +74,8 @@ final class partialTest extends LambdaliciousTestCase
      */
     public function __hasPlaceholders()
     {
-        $this->assertTrue(hasplaceholders([a, __, c]));
-        $this->assertFalse(hasplaceholders([a, b, c]));
+        $this->assertTrue(hasplaceholders(l(a, __, c)));
+        $this->assertFalse(hasplaceholders(l(a, b, c)));
     }
 
     /**

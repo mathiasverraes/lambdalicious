@@ -88,7 +88,7 @@ function contains1($list)
 function map($function, $list)
 {
     return
-        hasplaceholders(func_get_args())
+        hasplaceholders(al(func_get_args()))
             ? partial(map, $function, $list) :
         (isempty($list)
             ? l() :
@@ -107,7 +107,7 @@ function map($function, $list)
 function reduce($function, $list, $initial)
 {
     return
-        hasplaceholders(func_get_args()) ? partial(reduce, $function, $list, $initial) :
+        hasplaceholders(al(func_get_args())) ? partial(reduce, $function, $list, $initial) :
         (((is_array($list) && _isempty($list)) || !is_array($list) && isempty($list))
             ? $initial :
         reduce($function, tail($list), $function($initial, head($list))));
@@ -134,7 +134,7 @@ function filter($predicate, $list)
     };
 
     return
-        hasplaceholders(func_get_args())
+        hasplaceholders(al(func_get_args()))
             ? partial(filter, $predicate, $list) :
         $_filter($predicate, $list, l());
 
@@ -205,7 +205,7 @@ function compare_by($comparator, $extract, $list)
     };
 
     return
-        hasplaceholders(func_get_args())
+        hasplaceholders(al(func_get_args()))
             ? partial(compare_by, $comparator, $extract, $list) :
             reduce($compare, $list, null);
 }
@@ -260,7 +260,7 @@ function zip($listA, $listB)
 function zipWith($function, $listA, $listB)
 {
     return
-        hasplaceholders(func_get_args()) ? partial(zipWith, $function, $listA, $listB) :
+        hasplaceholders(al(func_get_args())) ? partial(zipWith, $function, $listA, $listB) :
         (isempty($listA) || isempty($listB)
             ? l() :
         cons($function(head($listA), head($listB)), zipWith($function, tail($listA), tail($listB))));

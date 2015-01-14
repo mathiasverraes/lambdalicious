@@ -63,13 +63,13 @@ function partial($function, ...$partialArgs)
 
 /**
  * True if $list has placeholder aka __ arguments
- * @param array $list
+ * @param $list
  * @return mixed
  */
-function hasplaceholders(array $list)
+function hasplaceholders($list)
 {
     return
-        _isempty($list) ? false :
+        isempty($list) ? false :
         (head($list) === __ ? true :
         hasplaceholders(tail($list)));
 }
