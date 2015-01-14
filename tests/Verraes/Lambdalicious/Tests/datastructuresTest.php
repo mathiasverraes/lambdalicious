@@ -115,4 +115,14 @@ final class datastructuresTest extends LambdaliciousTestCase
             isequal(l(a, b, c), al([a, b, c]))
         );
     }
+
+    /**
+     * @test
+     */
+    public function la()
+    {
+        $this->assertEquals([], la(l()));
+        $this->assertEquals([a], la(l(a)));
+        $this->assertEquals([a, b, c], la(l(a, b, c)));
+    }
 }

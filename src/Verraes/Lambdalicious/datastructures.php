@@ -106,3 +106,18 @@ function al($array)
 {
     return call_user_func_array(l, $array);
 }
+
+/**
+ * Cast a list to an array
+ *
+ * @param list $list
+ *
+ * @return array
+ */
+function la($list)
+{
+    return
+        isempty($list) ? [] :
+        array_merge([head($list)], la(tail($list)))
+    ;
+}
