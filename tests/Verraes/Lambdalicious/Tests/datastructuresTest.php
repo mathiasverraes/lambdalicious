@@ -87,7 +87,16 @@ final class datastructuresTest extends LambdaliciousTestCase
     public function islist()
     {
         $this->assertTrue(
-            islist(l(a, b))
+            islist(l())
+        );
+        $this->assertTrue(
+            islist(l(a))
+        );
+        $this->assertTrue(
+            islist(l(a, b, c))
+        );
+        $this->assertFalse(
+            islist(a)
         );
         $this->assertFalse(
             islist([a])

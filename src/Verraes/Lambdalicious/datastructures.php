@@ -92,15 +92,7 @@ function l(...$elements)
  */
 function islist($list)
 {
-    return $list === @λ_list
-           || (
-                  ispair($list)
-                  && (
-                         tail($list) == @λ_list
-                         || islist(tail($list))
-                  )
-           )
-    ;
+    return $list === l() || (ispair($list) && islist(tail($list)));
 }
 
 /**
