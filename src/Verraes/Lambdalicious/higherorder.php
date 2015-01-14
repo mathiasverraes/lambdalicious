@@ -32,7 +32,7 @@ function compose(...$functions)
  */
 function pipe(...$functions)
 {
-    return call(compose, _reverse($functions));
+    return call(compose, reverse(al($functions)));
 }
 
 /**
@@ -94,7 +94,7 @@ function memoize(callable $function)
     return function(...$arguments) use($cache, $function) {
         $key = serialize($arguments);
         if(!array_key_exists($key, $cache[$function])) {
-            $cache[$function][$key] = call($function, $arguments);
+            $cache[$function][$key] = call($function, al($arguments));
         }
         return $cache[$function][$key];
     };

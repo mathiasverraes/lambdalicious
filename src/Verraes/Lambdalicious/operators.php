@@ -204,7 +204,7 @@ function not($value)
     return
         is_bool($value) ? !$value :
         (function (...$arguments) use ($value) {
-            return !call($value, $arguments);
+            return !call($value, al($arguments));
         });
 }
 

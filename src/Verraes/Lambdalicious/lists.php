@@ -148,8 +148,10 @@ function filter($predicate, $list)
  */
 function concat(...$lists)
 {
+    $lists = al($lists);
+
     return
-        _isempty($lists) ? l() :
+        isempty($lists) ? l() :
         (contains1($lists) ? head($lists) :
         (concat2(head($lists), call(concat, tail($lists)))))
     ;

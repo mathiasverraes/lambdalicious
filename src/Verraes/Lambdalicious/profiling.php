@@ -9,6 +9,6 @@
 function profile(callable $function, ...$arguments)
 {
     $start = microtime(true);
-    call($function, $arguments);
+    call($function, al($arguments));
     return round(subtract(microtime(true), $start), 4);
 }
