@@ -104,7 +104,7 @@ function islist($list)
  */
 function al($array)
 {
-    return call_user_func_array(l, $array);
+    return call(l, $array);
 }
 
 /**
