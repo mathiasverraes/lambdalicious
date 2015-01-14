@@ -70,8 +70,8 @@ function hasplaceholders(array $list)
 {
     return
         _isempty($list) ? false :
-        (reset($list) === __ ? true :
-        hasplaceholders(array_slice($list, 1)));
+        (head($list) === __ ? true :
+        hasplaceholders(tail($list)));
 }
 
 /**
