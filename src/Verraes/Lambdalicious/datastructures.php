@@ -102,7 +102,7 @@ function islist($list)
  *
  * @return list
  */
-function al($array)
+function al(array $array)
 {
     return call(l, $array);
 }
@@ -117,7 +117,8 @@ function al($array)
 function la($list)
 {
     return
-        isempty($list) ? [] :
-        array_merge([head($list)], la(tail($list)))
+        !islist($list) ? raise("la() is only defined for lists") :
+        (isempty($list) ? [] :
+        array_merge([head($list)], la(tail($list))))
     ;
 }
