@@ -4,8 +4,8 @@ require_once __DIR__ . '/../src/Verraes/Lambdalicious/load.php';
 
 $addScore = function ($carry, $score) {
     return [
-        add($score, $carry[0]),
-        add(1, $carry[1])
+        add($score, head($carry)),
+        add(1, head(tail($carry)))
     ];
 };
 
@@ -19,6 +19,6 @@ $average = pipe(
 );
 
 assert(isequal(
-    $average([5, 7, 12]),
+    $average(l(5, 7, 12)),
     8
 ));

@@ -6,7 +6,7 @@ require_once __DIR__.'/../src/Verraes/Lambdalicious/load.php';
 $third = compose(head, tail, tail);
 
 assert(isequal(
-    $third([a, b, c, d, e]),
+    $third(l(a, b, c, d, e)),
     c
 ));
 

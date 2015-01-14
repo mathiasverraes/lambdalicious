@@ -20,29 +20,29 @@ atom(@a, @b, @c, @d, @e, @f);
 
 // Lists of atoms are not atoms
 assert(
-    !isatom([a, b, c])
+    !isatom(l(a, b, c))
 );
 
 // The cons of an element and an empty list is a list with that element
 assert(isequal(
-    cons(a, []),
-    [a]
+    cons(a, l()),
+    l(a)
 ));
 
 // Square brackets are an easier way to make lists
 assert(isequal(
-    [a, b, c, d],
-    cons(a, cons(b, cons(c, cons(d, []))))
+    l(a, b, c, d),
+    cons(a, cons(b, cons(c, cons(d, l()))))
 ));
 
 // head takes the first element of a list
 assert(isequal(
-    head([a, b, c]),
+    head(l(a, b, c)),
     a
 ));
 
 // tail returns a list of all but the first element of a list
 assert(isequal(
-    tail([a, b, c]),
-    [b, c]
+    tail(l(a, b, c)),
+    l(b, c)
 ));
