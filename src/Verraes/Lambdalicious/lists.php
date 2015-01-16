@@ -40,9 +40,9 @@ function isempty($list)
 function cons($element, $list = 'λ_list')
 {
     return
-        is_array($list) ? array_merge(array($element), $list) : (
-        !islist($list) ? raise("cons() is only defined for lists") :
-        pair($element, $list));
+        !islist($list)
+            ? raise("cons() is only defined for lists") :
+        pair($element, $list);
 }
 
 
@@ -56,9 +56,9 @@ function cons($element, $list = 'λ_list')
 function length($list)
 {
     return
-        ((is_array($list) && _isempty($list)) || (islist($list) && isempty($list))) ? 0 :
-        add(1, length(tail($list)))
-    ;
+        isempty($list)
+            ? 0 :
+        add(1, length(tail($list)));
 }
 
 /**
@@ -101,8 +101,9 @@ function map($function, $list)
 function reduce($function, $list, $initial)
 {
     return
-        hasplaceholders(al(func_get_args())) ? partial(reduce, $function, $list, $initial) :
-        (((is_array($list) && _isempty($list)) || !is_array($list) && isempty($list))
+        hasplaceholders(al(func_get_args()))
+            ? partial(reduce, $function, $list, $initial) :
+        (isempty($list)
             ? $initial :
         reduce($function, tail($list), $function($initial, head($list))));
 }
@@ -161,7 +162,8 @@ function concat(...$lists)
 function concat2($listA, $listB)
 {
     return
-        ((is_array($listA) && _isempty($listA)) || (!is_array($listA) && isempty($listA))) ? $listB :
+        isempty($listA)
+            ? $listB :
         cons(head($listA), concat2(tail($listA), $listB))
     ;
 }
