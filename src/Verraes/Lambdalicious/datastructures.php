@@ -42,11 +42,7 @@ function ispair($pair)
  */
 function head($data)
 {
-    return
-        // for compatibility with arrays (@TODO get rid of this later?)
-        is_array($data) ?
-            (_isempty($data) ? raise("head() is only defined for non-empty lists.") : reset($data)) :
-            $data(head);
+    return $data(head);
 }
 
 /**
@@ -57,11 +53,7 @@ function head($data)
  */
 function tail($data)
 {
-    return
-        // for compatibility with arrays (@TODO get rid of this later?)
-        is_array($data) ?
-            (_isempty($data) ? raise("tail() is only defined for non-empty lists.") : array_slice($data, 1)) :
-        $data(tail);
+    return $data(tail);
 }
 
 final class pair {} // for IDE's
