@@ -20,7 +20,7 @@ atom(@zipWith);
 /**
  * Is the list empty?
  *
- * @param callable $list
+ * @param list $list
  * @return boolean
  */
 function isempty($list)
@@ -34,7 +34,7 @@ function isempty($list)
  * Create a list from $element and $list
  *
  * @param $element
- * @param array $list
+ * @param list $list
  * @return array
  */
 function cons($element, $list = 'λ_list')
@@ -49,7 +49,7 @@ function cons($element, $list = 'λ_list')
 /**
  * Returns the length of a list
  *
- * @param callable $list
+ * @param list $list
  *
  * @return int
  */
@@ -76,8 +76,8 @@ function contains1($list)
  *
  * @partial
  * @param callable $function
- * @param array $list
- * @return array|callable
+ * @param list $list
+ * @return list|callable
  */
 function map($function, $list)
 {
@@ -94,7 +94,7 @@ function map($function, $list)
  *
  * @partial
  * @param callable $function
- * @param array $list
+ * @param list $list
  * @param $initial
  * @return mixed|callable
  */
@@ -112,8 +112,8 @@ function reduce($function, $list, $initial)
  *
  * @partial
  * @param callable $predicate
- * @param array $list
- * @return array|callable
+ * @param list $list
+ * @return list|callable
  */
 function filter($predicate, $list)
 {
@@ -138,7 +138,7 @@ function filter($predicate, $list)
  * Make a new list of the elements of all the lists.
  *
  * @param $lists
- * @return array|mixed
+ * @return list|mixed
  */
 function concat(...$lists)
 {
@@ -154,8 +154,8 @@ function concat(...$lists)
 /**
  * Make a new list of the elements of two lists
  *
- * @param $listA
- * @param $listB
+ * @param list $listA
+ * @param list $listB
  * @return list
  */
 function concat2($listA, $listB)
@@ -170,7 +170,7 @@ function concat2($listA, $listB)
  * Reverse a list
  *
  * @param list $list
- * @return array
+ * @return list
  */
 function reverse($list, $carry = 'λ_list')
 {
@@ -197,7 +197,7 @@ function compare_by($comparator, $extract, $list)
  * Get the max item of a list, using an extract function
  *
  * @param callable $extract
- * @param array $list
+ * @param list $list
  * @return mixed
  */
 function max_by($extract, $list)
@@ -209,7 +209,7 @@ function max_by($extract, $list)
  * Get the min item of a list, using an extract function
  *
  * @param callable $extract
- * @param array $list
+ * @param list $list
  * @return mixed
  */
 function min_by($extract, $list)
@@ -220,10 +220,10 @@ function min_by($extract, $list)
 /**
  * Zip two lists
  *
- * @param array $listA
- * @param array $listB
+ * @param list $listA
+ * @param list $listB
  *
- * @return array of pairs
+ * @return list of pairs
  */
 function zip($listA, $listB)
 {
@@ -234,10 +234,10 @@ function zip($listA, $listB)
  * Zip two lists using a zipper function
  *
  * @param callable $function
- * @param array    $listA
- * @param array    $listB
+ * @param list     $listA
+ * @param list     $listB
  *
- * @return array
+ * @return list
  */
 function zipWith($function, $listA, $listB)
 {

@@ -35,10 +35,10 @@ function ispair($pair)
 }
 
 /**
- * Get the first element off a list
+ * Get the first element of a list
  *
- * @param pair|array
- * @return mixed|array
+ * @param pair|list
+ * @return mixed|list
  */
 function head($data)
 {
@@ -48,8 +48,8 @@ function head($data)
 /**
  * Returns the second element of the pair, or returns the list without its first element
  *
- * @param pair|array
- * @return mixed|array
+ * @param pair|list
+ * @return mixed|list
  */
 function tail($data)
 {

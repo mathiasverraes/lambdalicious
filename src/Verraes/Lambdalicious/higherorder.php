@@ -63,7 +63,7 @@ function partial($function, ...$partialArgs)
 
 /**
  * True if $list has placeholder aka __ arguments
- * @param $list
+ * @param list $list
  * @return mixed
  */
 function hasplaceholders($list)
