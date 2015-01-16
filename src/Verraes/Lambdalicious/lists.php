@@ -23,12 +23,6 @@ atom(@zipWith);
  * @param callable $list
  * @return boolean
  */
-function _isempty($list)
-{
-    return
-        !is_array($list) ? raise('_isempty() is only defined for arrays') :
-        ([] === $list);
-}
 function isempty($list)
 {
     return
