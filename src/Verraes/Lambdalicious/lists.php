@@ -175,20 +175,6 @@ function concat2($listA, $listB)
 /**
  * Reverse a list
  *
- * @param array $list
- * @return array
- */
-function _reverse(array $list, array $carry = [])
-{
-    return
-        _isempty($list) ? $carry :
-        _reverse(tail($list), cons(head($list), $carry))
-    ;
-}
-
-/**
- * Reverse a list
- *
  * @param list $list
  * @return array
  */
