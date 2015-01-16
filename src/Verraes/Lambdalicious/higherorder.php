@@ -19,7 +19,7 @@ function compose(...$functions)
                 return $carry($function($argument));
             };
         },
-        $functions,
+        al($functions),
         identity
     );
 }
@@ -45,10 +45,10 @@ function pipe(...$functions)
  */
 function partial($function, ...$partialArgs)
 {
-    $replacePlaceholders = function (array $partialArgs, array $finalArgs, array $carry = []) use (&$replacePlaceholders)
+    $replacePlaceholders = function ($partialArgs, $finalArgs, $carry = 'λ_list') use (&$replacePlaceholders)
     {
-        if (_isempty($partialArgs)) {
-            return concat(_reverse($carry), $finalArgs);
+        if (isempty($partialArgs)) {
+            return concat(reverse($carry), $finalArgs);
         } elseif (head($partialArgs) === __) {
             return $replacePlaceholders(tail($partialArgs), tail($finalArgs), cons(head($finalArgs), $carry));
         } else {
@@ -57,7 +57,7 @@ function partial($function, ...$partialArgs)
     };
 
     return function (...$finalArgs) use ($function, $partialArgs, $replacePlaceholders) {
-        return call_user_func_array($function, $replacePlaceholders($partialArgs, $finalArgs));
+        return call_user_func_array($function, la($replacePlaceholders(al($partialArgs), al($finalArgs))));
     };
 }
 

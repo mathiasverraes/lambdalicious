@@ -15,7 +15,7 @@ atom(@evaluate);
 function call($function, $arguments)
 {
     return
-        hasplaceholders(al(func_get_args())) ? call_user_func_array(partial, cons(call, func_get_args())) :
+        hasplaceholders(al(func_get_args())) ? call_user_func_array(partial, la(cons(call, al(func_get_args())))) :
         call_user_func_array($function, la($arguments));
 }
 
