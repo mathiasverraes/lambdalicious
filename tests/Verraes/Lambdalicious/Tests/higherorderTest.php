@@ -53,7 +53,7 @@ final class higherorderTest extends LambdaliciousTestCase
         $secondElement = compose(head, tail);
         $this->assertEquals(
             b,
-            $secondElement([a, b, c])
+            $secondElement(l(a, b, c))
         );
     }
 
