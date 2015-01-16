@@ -26,8 +26,10 @@ atom(@zipWith);
 function isempty($list)
 {
     return
-        !islist($list) ? raise("isempty() is only defined for lists") :
-        (l() === $list);
+        !islist($list)
+            ? raise("isempty() is only defined for lists") :
+        (l() === $list)
+    ;
 }
 
 /**
@@ -42,7 +44,8 @@ function cons($element, $list = 'λ_list')
     return
         !islist($list)
             ? raise("cons() is only defined for lists") :
-        pair($element, $list);
+        pair($element, $list)
+    ;
 }
 
 
@@ -58,7 +61,8 @@ function length($list)
     return
         isempty($list)
             ? 0 :
-        add(1, length(tail($list)));
+        add(1, length(tail($list)))
+    ;
 }
 
 /**
@@ -86,7 +90,8 @@ function map($function, $list)
             ? partial(map, $function, $list) :
         (isempty($list)
             ? l() :
-        (cons($function(head($list)), map($function, tail($list)))));
+        (cons($function(head($list)), map($function, tail($list)))))
+    ;
 }
 
 /**
@@ -105,7 +110,8 @@ function reduce($function, $list, $initial)
             ? partial(reduce, $function, $list, $initial) :
         (isempty($list)
             ? $initial :
-        reduce($function, tail($list), $function($initial, head($list))));
+        reduce($function, tail($list), $function($initial, head($list))))
+    ;
 }
 
 /**
@@ -125,14 +131,15 @@ function filter($predicate, $list)
                 ? reverse($carry) :
             ($predicate(head($list))
                 ? $_filter($predicate, tail($list), cons(head($list), $carry)) :
-            $_filter($predicate, tail($list), $carry)));
+            $_filter($predicate, tail($list), $carry)))
+        ;
     };
 
     return
         hasplaceholders(al(func_get_args()))
             ? partial(filter, $predicate, $list) :
-        $_filter($predicate, $list, l());
-
+        $_filter($predicate, $list, l())
+    ;
 }
 
 /**
@@ -146,8 +153,10 @@ function concat(...$lists)
     $lists = al($lists);
 
     return
-        isempty($lists) ? l() :
-        (contains1($lists) ? head($lists) :
+        isempty($lists)
+            ? l() :
+        (contains1($lists)
+            ? head($lists) :
         (concat2(head($lists), call(concat, tail($lists)))))
     ;
 }
@@ -177,7 +186,8 @@ function concat2($listA, $listB)
 function reverse($list, $carry = 'λ_list')
 {
     return
-        isempty($list) ? $carry :
+        isempty($list)
+            ? $carry :
         reverse(tail($list), cons(head($list), $carry))
     ;
 }
@@ -191,7 +201,8 @@ function compare_by($comparator, $extract, $list)
     return
         hasplaceholders(al(func_get_args()))
             ? partial(compare_by, $comparator, $extract, $list) :
-            reduce($compare, $list, null);
+        reduce($compare, $list, null)
+    ;
 }
 
 
@@ -244,8 +255,10 @@ function zip($listA, $listB)
 function zipWith($function, $listA, $listB)
 {
     return
-        hasplaceholders(al(func_get_args())) ? partial(zipWith, $function, $listA, $listB) :
+        hasplaceholders(al(func_get_args()))
+            ? partial(zipWith, $function, $listA, $listB) :
         (isempty($listA) || isempty($listB)
             ? l() :
-        cons($function(head($listA), head($listB)), zipWith($function, tail($listA), tail($listB))));
+        cons($function(head($listA), head($listB)), zipWith($function, tail($listA), tail($listB))))
+    ;
 }
