@@ -68,11 +68,9 @@ function l(...$elements)
             return $list;
         }
 
-        $last = current(array_reverse($elements));
+        $newList = pair(array_pop($elements), $list);
 
-        $newList = pair($last, $list);
-
-        return $createList(array_reverse(array_slice(array_reverse($elements), 1)), $newList);
+        return $createList($elements, $newList);
     };
 
     return $createList($elements);
