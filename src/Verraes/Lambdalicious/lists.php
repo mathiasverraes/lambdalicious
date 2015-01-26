@@ -1,5 +1,4 @@
 <?php
-atom(@_isempty);
 atom(@isempty);
 atom(@contains1);
 atom(@cons);

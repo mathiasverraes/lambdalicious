@@ -11,6 +11,7 @@ const head = 'head';
 const tail = 'tail';
 const compose = 'compose';
 const concat = 'concat';
+const concat2 = 'concat2';
 const cons = 'cons';
 const contains1 = 'contains1';
 const count = 'identity';
