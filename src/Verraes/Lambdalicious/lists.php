@@ -38,11 +38,10 @@ function isempty($list)
  * @param list $list
  * @return array
  */
-function cons($element, $list = 'λ_list')
+function cons($element, $list = nil)
 {
     return
-        !islist($list)
-            ? raise("cons() is only defined for lists") :
+        !islist($list) ? raise("cons() is only defined for lists") :
         pair($element, $list)
     ;
 }
@@ -58,8 +57,7 @@ function cons($element, $list = 'λ_list')
 function length($list)
 {
     return
-        isempty($list)
-            ? 0 :
+        isempty($list) ? 0 :
         add(1, length(tail($list)))
     ;
 }
@@ -85,11 +83,12 @@ function contains1($list)
 function map($function, $list)
 {
     return
-        hasplaceholders(al(func_get_args()))
-            ? partial(map, $function, $list) :
-        (isempty($list)
-            ? l() :
-        (cons($function(head($list)), map($function, tail($list)))))
+        hasplaceholders(al(func_get_args())) ? partial(map, $function, $list) :
+        (isempty($list) ? l() :
+        (cons(
+            $function(head($list)),
+            map($function, tail($list)))
+        ))
     ;
 }
 
@@ -211,7 +210,7 @@ function concat2($listA, $listB)
  * @param list $list
  * @return list
  */
-function reverse($list, $carry = 'λ_list')
+function reverse($list, $carry = nil)
 {
     return
         isempty($list)
