@@ -17,18 +17,20 @@ Experiments in Elegant Functional Programming in PHP
 
 ```php
 <?php
+atom(@jim, @jenny, @jack, @jules);
 $accounts = l(
-    pair(@jim, 100),
-    pair(@jenny, 30),
-    pair(@jack, -50),
-    pair(@jules, -43)
+    pair(jim, 100),
+    pair(jenny, 30),
+    pair(jack, -50),
+    pair(jules, -43)
 );
 
-$negate = multiply(-1, __);
-$balance = tail; // Alias tail(). tail returns the second item in a pair
+$negate = multiply(-1, __); // __ is a partial application placeholder
+$isnegative = lt(__, 0); // lt is short for "less than"
+$balance = tail; // Alias tail(), which returns the second item in a pair
 $totalOutstanding = pipe( // think *nix pipes and filters
-    map($balance, __), // __ is a partial application placeholder
-    filter(lt(__, 0), __), // lt is less than
+    map($balance, __), 
+    filter($isnegative, __), 
     reduce(add, __, 0),
     $negate
 );
