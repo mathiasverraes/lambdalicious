@@ -53,3 +53,6 @@ const raise = 'raise';
 const length = 'length';
 const zip = 'zip';
 const zipWith = 'zipWith';
+const l = 'l';
+
+final class pair {}

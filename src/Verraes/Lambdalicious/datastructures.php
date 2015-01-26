@@ -56,7 +56,7 @@ function tail($data)
     return $data(tail);
 }
 
-final class pair {} // for IDE's
+
 
 /**
  * Creates a list
