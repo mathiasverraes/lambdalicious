@@ -5,6 +5,8 @@ atom(@cons);
 atom(@length);
 atom(@reduce);
 atom(@map);
+atom(@map2);
+atom(@zipWith);
 atom(@filter);
 atom(@concat);
 atom(@concat2);
@@ -14,7 +16,6 @@ atom(@max_by);
 atom(@min_by);
 atom(@compare_by);
 atom(@zip);
-atom(@zipWith);
 
 /**
  * Is the list empty?
@@ -91,6 +92,32 @@ function map($function, $list)
             ? l() :
         (cons($function(head($list)), map($function, tail($list)))))
     ;
+}
+
+/**
+ * Map over two lists using a mapper function (zipWith)
+ *
+ * @param callable $function
+ * @param array    $listA
+ * @param array    $listB
+ *
+ * @return array
+ */
+function map2($function, $listA, $listB)
+{
+    return
+        hasplaceholders(func_get_args()) ? partial(map2, $function, $listA, $listB) :
+        (isempty($listA) || isempty($listB)
+            ? [] :
+        cons($function(head($listA), head($listB)), map2($function, tail($listA), tail($listB))));
+}
+
+/**
+ * Alias map2 to zipWith
+ */
+function zipWith($function, $listA, $listB)
+{
+    return map2($function, $listA, $listB);
 }
 
 /**
