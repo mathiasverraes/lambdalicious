@@ -17,22 +17,25 @@ Experiments in Elegant Functional Programming in PHP
 
 ```php
 <?php
-$accounts = [
-    pair('Jim', 100),
-    pair('Jenny', 30),
-    pair('Jack', -50),
-    pair('Jules', -43),
-];
+$accounts = l(
+    pair(@jim, 100),
+    pair(@jenny, 30),
+    pair(@jack, -50),
+    pair(@jules, -43)
+);
 
-$negate = multiply(-1);
+$negate = multiply(-1, __);
 $totalOutstanding = pipe( // think *nix pipes and filters
-    map(second, __), // __ is a partial application placeholder. second returns the second item in a Pair
+    map(tail, __), // __ is a partial application placeholder. tail returns the second item in a pair
     filter(lt(__, 0), __), // lt is less than
     reduce(add, __, 0),
     $negate
 );
 
-assert( $totalOutstanding($accounts) == 93 );
+assert(isequal(
+    $totalOutstanding($accounts),
+    93
+));
 ```
 
 Find more in the `examples` folder, or read the tests.
@@ -58,7 +61,7 @@ Boring, next question please.
 
 **Wouldn't this all be a lot easier and more elegant using HHVM/Hack?**
 
-I know right? HHVM doesn't support some of the extensions I need.
+I know right?
 
 **Should I use it in production?**
 
