@@ -1,10 +1,12 @@
 # Lambdalicious
 
-Experiments in Elegant Functional Programming in PHP
+Experiments in Elegant Functional Programming in PHP.
 
 ![Recursive Percy](docs/recursive_percy2.jpg "Recursive Percy")
 
 [![Build Status](https://travis-ci.org/mathiasverraes/lambdalicious.svg)](https://travis-ci.org/mathiasverraes/lambdalicious)
+
+Read [Higher Order Programming](http://verraes.net/2014/11/higher-order-programming/) for an introduction.
 
 ## Design Goals
 
