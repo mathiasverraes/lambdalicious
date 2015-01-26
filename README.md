@@ -25,8 +25,9 @@ $accounts = l(
 );
 
 $negate = multiply(-1, __);
+$balance = tail; // Alias tail(). tail returns the second item in a pair
 $totalOutstanding = pipe( // think *nix pipes and filters
-    map(tail, __), // __ is a partial application placeholder. tail returns the second item in a pair
+    map($balance, __), // __ is a partial application placeholder
     filter(lt(__, 0), __), // lt is less than
     reduce(add, __, 0),
     $negate
