@@ -4,6 +4,15 @@ namespace Verraes\Lambdalicious\Tests;
 
 final class listsTest extends LambdaliciousTestCase
 {
+
+    /**
+     * @test
+     */
+    public function empty_list_equals_itself()
+    {
+        $this->assertSame(l(), l());
+    }
+
     /**
      * @test
      */
