@@ -7,25 +7,9 @@ final class listsTest extends LambdaliciousTestCase
     /**
      * @test
      */
-    public function a_list_is_a_list()
-    {
-        $this->assertTrue(islist([a, b, c]));
-    }
-
-    /**
-     * @test
-     */
-    public function an_atom_is_not_a_list()
-    {
-        $this->assertFalse(islist(a));
-    }
-
-    /**
-     * @test
-     */
     public function isemtpy_is_true_for_empty_lists()
     {
-        $this->assertTrue(isempty([]));
+        $this->assertTrue(isempty(l()));
     }
 
     /**
@@ -33,7 +17,7 @@ final class listsTest extends LambdaliciousTestCase
      */
     public function isemtpy_is_false_for_non_empty_lists()
     {
-        $this->assertFalse(isempty([a]));
+        $this->assertFalse(isempty(l(a)));
     }
 
     /**
@@ -41,9 +25,11 @@ final class listsTest extends LambdaliciousTestCase
      */
     public function cons_builds_lists()
     {
-        $this->assertEquals(
-            [a, b, c],
-            cons(a, [b, c])
+        $this->assertTrue(
+            isequal(
+                l(a, b, c),
+                cons(a, l(b, c))
+            )
         );
     }
 
@@ -54,7 +40,7 @@ final class listsTest extends LambdaliciousTestCase
     {
         $this->assertEquals(
             a,
-            head([a, b, c])
+            head(l(a, b, c))
         );
     }
 
@@ -63,9 +49,11 @@ final class listsTest extends LambdaliciousTestCase
      */
     public function tail_returns_the_list_without_the_first_element()
     {
-        $this->assertEquals(
-            [b, c],
-            tail([a, b, c])
+        $this->assertTrue(
+            isequal(
+                l(b, c),
+                tail(l(a, b, c))
+            )
         );
     }
 
@@ -75,8 +63,8 @@ final class listsTest extends LambdaliciousTestCase
     public function tail_returns_an_empty_list_for_a_list_with_one_element()
     {
         $this->assertEquals(
-            [],
-            tail([a])
+            l(),
+            tail(l(a))
         );
     }
 
@@ -87,7 +75,7 @@ final class listsTest extends LambdaliciousTestCase
     {
         $this->assertEquals(
             0,
-            length([])
+            length(l())
         );
     }
 
@@ -96,10 +84,10 @@ final class listsTest extends LambdaliciousTestCase
      */
     public function length_returns_the_number_of_list_elements_for_non_empty_lists()
     {
-        $this->assertEquals(1, length([1]));
-        $this->assertEquals(2, length([@foo, @bar]));
-        $this->assertEquals(3, length([[], [], []]));
-        $this->assertEquals(4, length([@foo, @bar, @baz, @qux]));
+        $this->assertEquals(1, length(l(1)));
+        $this->assertEquals(2, length(l(@foo, @bar)));
+        $this->assertEquals(3, length(l(l(), l(), l())));
+        $this->assertEquals(4, length(l(@foo, @bar, @baz, @qux)));
     }
 
     /**
@@ -107,9 +95,11 @@ final class listsTest extends LambdaliciousTestCase
      */
     public function concat_empty()
     {
-        $this->assertEquals(
-            [],
-            concat()
+        $this->assertTrue(
+            isequal(
+                l(),
+                concat()
+            )
         );
     }
 
@@ -118,24 +108,38 @@ final class listsTest extends LambdaliciousTestCase
      */
     public function concat_1_element()
     {
-        $this->assertEquals(
-            [a, b],
-            concat([a, b])
+        $this->assertTrue(
+            isequal(
+                l(a, b),
+                concat(l(a, b))
+            )
         );
     }
 
     /**
      * @test
      */
+    public function concat_2_elements()
+    {
+        $this->assertTrue(
+            isequal(
+                l(a, b, c, d, e, f),
+                concat2(l(a, b, c), l(d, e, f))
+            )
+        );
+    }
+
     public function concat_multiple()
     {
-        $list1 = [a, b];
-        $list2 = [c, d];
-        $list3 = [e, f];
+        $list1 = l(a, b);
+        $list2 = l(c, d);
+        $list3 = l(e, f);
 
-        $this->assertEquals(
-            [a, b, c, d, e, f],
-            concat($list1, $list2, $list3)
+        $this->assertTrue(
+            isequal(
+                l(a, b, c, d, e, f),
+                concat($list1, $list2, $list3)
+            )
         );
     }
 
@@ -144,9 +148,9 @@ final class listsTest extends LambdaliciousTestCase
      */
     public function contains1()
     {
-        $this->assertFalse(contains1([]));
-        $this->assertTrue(contains1([a]));
-        $this->assertFalse(contains1([a, b]));
+        $this->assertFalse(contains1(l()));
+        $this->assertTrue(contains1(l(a)));
+        $this->assertFalse(contains1(l(a, b)));
     }
 
     /**
@@ -154,11 +158,11 @@ final class listsTest extends LambdaliciousTestCase
      */
     public function reverse()
     {
-        $this->assertEquals([], reverse([]));
-        $this->assertEquals([a], reverse([a]));
+        $this->assertEquals(l(), reverse(l()));
+        $this->assertEquals(l(a), reverse(l(a)));
         $this->assertEquals(
-            [c, b, a],
-            reverse([a, b, c])
+            l(c, b, a),
+            reverse(l(a, b, c))
         );
     }
 
@@ -167,7 +171,7 @@ final class listsTest extends LambdaliciousTestCase
      */
     public function max_by()
     {
-        $list = ['lambda', 'calculus', 'rocks'];
+        $list = l('lambda', 'calculus', 'rocks');
         $this->assertEquals('calculus', max_by(@strlen, $list));
 
         $longestString = max_by(@strlen, __);
@@ -179,7 +183,7 @@ final class listsTest extends LambdaliciousTestCase
      */
     public function min_by()
     {
-        $list = ['lambda', 'calculus', 'rocks'];
+        $list = l('lambda', 'calculus', 'rocks');
 
         $this->assertEquals('rocks', min_by(@strlen, $list));
 
@@ -192,8 +196,8 @@ final class listsTest extends LambdaliciousTestCase
      */
     public function zip()
     {
-        $list1 = [@keep, @lambda];
-        $list2 = [@calm, @on, @that, @whisky, @bottle];
+        $list1 = l(@keep, @lambda);
+        $list2 = l(@calm, @on, @that, @whisky, @bottle);
 
         $zipped = zip($list1, $list2);
         $this->assertTrue(isequal(
@@ -213,12 +217,75 @@ final class listsTest extends LambdaliciousTestCase
      */
     public function zipWith()
     {
-        $list1 = [1, 2, 3, 4];
-        $list2 = [4, 3, 2];
+        $list1 = l(1, 2, 3, 4);
+        $list2 = l(4, 3, 2);
 
-        $this->assertEquals(
-            [5, 5, 5],
-            zipWith(add, $list1, $list2)
+        $this->assertTrue(
+            isequal(
+                l(5, 5, 5),
+                zipWith(add, $list1, $list2)
+            )
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function map()
+    {
+        $this->assertTrue(
+            isequal(
+                l(),
+                map(add(1, __), l())
+            )
+        );
+
+        $this->assertTrue(
+            isequal(
+                l(2),
+                map(add(1, __), l(1))
+            )
+        );
+
+        $this->assertTrue(
+            isequal(
+                l(2, 3, 4),
+                map(add(1, __), l(1, 2, 3))
+            )
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function filter()
+    {
+        $this->assertTrue(
+            isequal(
+                l(),
+                filter(isequal(2, __), l())
+            )
+        );
+
+        $this->assertTrue(
+            isequal(
+                l(),
+                filter(isequal(2, __), l(1))
+            )
+        );
+
+        $this->assertTrue(
+            isequal(
+                l(2),
+                filter(isequal(2, __), l(2))
+            )
+        );
+
+        $this->assertTrue(
+            isequal(
+                l(2, 2, 2),
+                filter(isequal(2, __), l(1, 2, 3, 2, 1, 2, 3))
+            )
         );
     }
 }

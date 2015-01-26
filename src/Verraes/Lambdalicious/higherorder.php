@@ -19,7 +19,7 @@ function compose(...$functions)
                 return $carry($function($argument));
             };
         },
-        $functions,
+        al($functions),
         identity
     );
 }
@@ -32,7 +32,7 @@ function compose(...$functions)
  */
 function pipe(...$functions)
 {
-    return call(compose, reverse($functions));
+    return call(compose, reverse(al($functions)));
 }
 
 /**
@@ -45,7 +45,7 @@ function pipe(...$functions)
  */
 function partial($function, ...$partialArgs)
 {
-    $replacePlaceholders = function (array $partialArgs, array $finalArgs, array $carry = []) use (&$replacePlaceholders)
+    $replacePlaceholders = function ($partialArgs, $finalArgs, $carry = 'λ_list') use (&$replacePlaceholders)
     {
         if (isempty($partialArgs)) {
             return concat(reverse($carry), $finalArgs);
@@ -57,16 +57,16 @@ function partial($function, ...$partialArgs)
     };
 
     return function (...$finalArgs) use ($function, $partialArgs, $replacePlaceholders) {
-        return call_user_func_array($function, $replacePlaceholders($partialArgs, $finalArgs));
+        return call_user_func_array($function, la($replacePlaceholders(al($partialArgs), al($finalArgs))));
     };
 }
 
 /**
  * True if $list has placeholder aka __ arguments
- * @param array $list
+ * @param list $list
  * @return mixed
  */
-function hasplaceholders(array $list)
+function hasplaceholders($list)
 {
     return
         isempty($list) ? false :
@@ -94,7 +94,7 @@ function memoize(callable $function)
     return function(...$arguments) use($cache, $function) {
         $key = serialize($arguments);
         if(!array_key_exists($key, $cache[$function])) {
-            $cache[$function][$key] = call($function, $arguments);
+            $cache[$function][$key] = call($function, al($arguments));
         }
         return $cache[$function][$key];
     };

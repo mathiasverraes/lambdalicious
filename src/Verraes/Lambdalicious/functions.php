@@ -9,14 +9,14 @@ atom(@evaluate);
  *
  * @partial
  * @param callable $function
- * @param array $arguments
+ * @param list $arguments
  * @return mixed|callable
  */
 function call($function, $arguments)
 {
     return
-        hasplaceholders(func_get_args()) ? call_user_func_array(partial, cons(call, func_get_args())) :
-        call_user_func_array($function, $arguments);
+        hasplaceholders(al(func_get_args())) ? call_user_func_array(partial, la(cons(call, al(func_get_args())))) :
+        call_user_func_array($function, la($arguments));
 }
 
 /**
@@ -28,7 +28,7 @@ function call($function, $arguments)
 function reverseargs($function)
 {
     return function(...$arguments) use($function) {
-        return call($function, reverse($arguments));
+        return call($function, reverse(al($arguments)));
     };
 }
 

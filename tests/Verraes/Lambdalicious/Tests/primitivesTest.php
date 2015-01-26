@@ -19,7 +19,7 @@ final class primitivesTest extends LambdaliciousTestCase
         //$this->assertTrue(isatom("All hail the atom"));
 
         $this->assertFalse(isatom([]));
-        $this->assertFalse(isatom(cons(a, [b, c])));
+        $this->assertFalse(isatom(cons(a, l(b, c))));
     }
 
     /**

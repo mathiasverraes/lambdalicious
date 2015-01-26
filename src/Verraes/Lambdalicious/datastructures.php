@@ -4,6 +4,8 @@ atom(@pair);
 atom(@ispair);
 atom(@head);
 atom(@tail);
+atom(@l);
+atom(@islist);
 
 /**
  * Construct a pair
@@ -33,33 +35,80 @@ function ispair($pair)
 }
 
 /**
- * Get the first element off a list
+ * Get the first element of a list
  *
- * @param pair|array
- * @return mixed|array
+ * @param pair|list
+ * @return mixed|list
  */
 function head($data)
 {
-    return
-        // for compatibility with arrays (@TODO get rid of this later?)
-        is_array($data) ?
-            (isempty($data) ? raise("head() is only defined for non-empty lists.") : reset($data)) :
-            $data(head);
+    return $data(head);
 }
 
 /**
  * Returns the second element of the pair, or returns the list without its first element
  *
- * @param pair|array
- * @return mixed|array
+ * @param pair|list
+ * @return mixed|list
  */
 function tail($data)
 {
-    return
-        // for compatibility with arrays (@TODO get rid of this later?)
-        is_array($data) ?
-            (isempty($data) ? raise("tail() is only defined for non-empty lists.") : array_slice($data, 1)) :
-        $data(tail);
+    return $data(tail);
 }
 
 final class pair {} // for IDE's
+
+/**
+ * Creates a list
+ */
+function l(...$elements)
+{
+    $createList = function(array $elements, $list = 'λ_list') use (&$createList) {
+        if (empty($elements)) {
+            return $list;
+        }
+
+        $newList = pair(array_pop($elements), $list);
+
+        return $createList($elements, $newList);
+    };
+
+    return $createList($elements);
+}
+
+/**
+ * @param list $list
+ * @return bool
+ */
+function islist($list)
+{
+    return $list === l() || (ispair($list) && islist(tail($list)));
+}
+
+/**
+ * Cast an array to a list
+ *
+ * @param array $array
+ *
+ * @return list
+ */
+function al(array $array)
+{
+    return call_user_func_array(l, $array);
+}
+
+/**
+ * Cast a list to an array
+ *
+ * @param list $list
+ *
+ * @return array
+ */
+function la($list)
+{
+    return
+        !islist($list) ? raise("la() is only defined for lists") :
+        (isempty($list) ? [] :
+        array_merge([head($list)], la(tail($list))))
+    ;
+}

@@ -10,7 +10,7 @@ final class examplesTest extends LambdaliciousTestCase
     public static function provideExamples()
     {
         $files = array_diff(scandir(self::DIR), ['..', '.', '_']);
-        $data = array_combine($files, map(function($file) { return [$file]; }, $files));
+        $data = array_combine($files, array_map(function($file) { return [$file]; }, $files));
         return $data;
     }
 

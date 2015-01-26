@@ -1,4 +1,5 @@
 <?php
+atom(@_isempty);
 atom(@isempty);
 atom(@contains1);
 atom(@cons);
@@ -7,8 +8,8 @@ atom(@reduce);
 atom(@map);
 atom(@filter);
 atom(@concat);
+atom(@concat2);
 atom(@reverse);
-atom(@islist);
 atom(@count);
 atom(@max_by);
 atom(@min_by);
@@ -17,80 +18,80 @@ atom(@zip);
 atom(@zipWith);
 
 /**
- * @param $list
- * @return bool
- */
-function islist($list)
-{
-    return is_array($list);
-}
-
-/**
  * Is the list empty?
  *
- * @param array $list
+ * @param list $list
  * @return boolean
  */
 function isempty($list)
 {
     return
-        !islist($list) ? raise("isempty() is only defined for lists") :
-        ([] === $list);
+        !islist($list)
+            ? raise("isempty() is only defined for lists") :
+        (l() === $list)
+    ;
 }
 
 /**
  * Create a list from $element and $list
  *
  * @param $element
- * @param array $list
+ * @param list $list
  * @return array
  */
-function cons($element, array $list = [])
+function cons($element, $list = 'λ_list')
 {
-    return array_merge([$element], array_values($list));
+    return
+        !islist($list)
+            ? raise("cons() is only defined for lists") :
+        pair($element, $list)
+    ;
 }
 
 
 /**
  * Returns the length of a list
  *
- * @param array $list
+ * @param list $list
  *
  * @return int
  */
-function length(array $list)
+function length($list)
 {
     return
-        isempty($list) ? 0 :
+        isempty($list)
+            ? 0 :
         add(1, length(tail($list)))
     ;
 }
 
 /**
  * True if the list contains exactly one item
- * @param array $list
+ * @param list $list
  * @return bool
  */
-function contains1(array $list)
+function contains1($list)
 {
     return isequal(length($list), 1);
 }
+
 /**
  * Applies $function to the elements of the given $list
  *
  * @partial
  * @param callable $function
- * @param array $list
- * @return array|callable
+ * @param list $list
+ * @return list|callable
  */
 function map($function, $list)
 {
     return
-        hasplaceholders(func_get_args())
+        hasplaceholders(al(func_get_args()))
             ? partial(map, $function, $list) :
         (isempty($list)
-            ? [] :
-        (cons($function(head($list)), map($function, tail($list)))));
+            ? l() :
+        (cons($function(head($list)), map($function, tail($list)))))
+    ;
 }
 
 /**
@@ -98,17 +99,19 @@ function map($function, $list)
  *
  * @partial
  * @param callable $function
- * @param array $list
+ * @param list $list
  * @param $initial
  * @return mixed|callable
  */
 function reduce($function, $list, $initial)
 {
     return
-        hasplaceholders(func_get_args()) ? partial(reduce, $function, $list, $initial) :
+        hasplaceholders(al(func_get_args()))
+            ? partial(reduce, $function, $list, $initial) :
         (isempty($list)
             ? $initial :
-        reduce($function, tail($list), $function($initial, head($list))));
+        reduce($function, tail($list), $function($initial, head($list))))
+    ;
 }
 
 /**
@@ -116,8 +119,8 @@ function reduce($function, $list, $initial)
  *
  * @partial
  * @param callable $predicate
- * @param array $list
- * @return array|callable
+ * @param list $list
+ * @return list|callable
  */
 function filter($predicate, $list)
 {
@@ -128,41 +131,63 @@ function filter($predicate, $list)
                 ? reverse($carry) :
             ($predicate(head($list))
                 ? $_filter($predicate, tail($list), cons(head($list), $carry)) :
-            $_filter($predicate, tail($list), $carry)));
+            $_filter($predicate, tail($list), $carry)))
+        ;
     };
 
     return
-        hasplaceholders(func_get_args())
+        hasplaceholders(al(func_get_args()))
             ? partial(filter, $predicate, $list) :
-        $_filter($predicate, $list, []);
-
+        $_filter($predicate, $list, l())
+    ;
 }
 
 /**
  * Make a new list of the elements of all the lists.
  *
  * @param $lists
- * @return array|mixed
+ * @return list|mixed
  */
 function concat(...$lists)
 {
+    $lists = al($lists);
+
     return
-        isempty($lists) ? [] :
-        (contains1($lists) ? head($lists) :
-        (array_merge(head($lists), call(concat, tail($lists)))))
+        isempty($lists)
+            ? l() :
+        (contains1($lists)
+            ? head($lists) :
+        (concat2(head($lists), call(concat, tail($lists)))))
+    ;
+}
+
+/**
+ * Make a new list of the elements of two lists
+ *
+ * @param list $listA
+ * @param list $listB
+ * @return list
+ */
+function concat2($listA, $listB)
+{
+    return
+        isempty($listA)
+            ? $listB :
+        cons(head($listA), concat2(tail($listA), $listB))
     ;
 }
 
 /**
  * Reverse a list
  *
- * @param array $list
- * @return array
+ * @param list $list
+ * @return list
  */
-function reverse(array $list, array $carry = [])
+function reverse($list, $carry = 'λ_list')
 {
     return
-        isempty($list) ? $carry :
+        isempty($list)
+            ? $carry :
         reverse(tail($list), cons(head($list), $carry))
     ;
 }
@@ -174,9 +199,10 @@ function compare_by($comparator, $extract, $list)
     };
 
     return
-        hasplaceholders(func_get_args())
+        hasplaceholders(al(func_get_args()))
             ? partial(compare_by, $comparator, $extract, $list) :
-            array_reduce($list, $compare);
+        reduce($compare, $list, null)
+    ;
 }
 
 
@@ -184,7 +210,7 @@ function compare_by($comparator, $extract, $list)
  * Get the max item of a list, using an extract function
  *
  * @param callable $extract
- * @param array $list
+ * @param list $list
  * @return mixed
  */
 function max_by($extract, $list)
@@ -196,7 +222,7 @@ function max_by($extract, $list)
  * Get the min item of a list, using an extract function
  *
  * @param callable $extract
- * @param array $list
+ * @param list $list
  * @return mixed
  */
 function min_by($extract, $list)
@@ -207,10 +233,10 @@ function min_by($extract, $list)
 /**
  * Zip two lists
  *
- * @param array $listA
- * @param array $listB
+ * @param list $listA
+ * @param list $listB
  *
- * @return array of pairs
+ * @return list of pairs
  */
 function zip($listA, $listB)
 {
@@ -221,16 +247,18 @@ function zip($listA, $listB)
  * Zip two lists using a zipper function
  *
  * @param callable $function
- * @param array    $listA
- * @param array    $listB
+ * @param list     $listA
+ * @param list     $listB
  *
- * @return array
+ * @return list
  */
 function zipWith($function, $listA, $listB)
 {
     return
-        hasplaceholders(func_get_args()) ? partial(zipWith, $function, $listA, $listB) :
+        hasplaceholders(al(func_get_args()))
+            ? partial(zipWith, $function, $listA, $listB) :
         (isempty($listA) || isempty($listB)
-            ? [] :
-        cons($function(head($listA), head($listB)), zipWith($function, tail($listA), tail($listB))));
+            ? l() :
+        cons($function(head($listA), head($listB)), zipWith($function, tail($listA), tail($listB))))
+    ;
 }

@@ -3,6 +3,6 @@ atom(@dump);
 
 function dump($arg)
 {
-    call(@var_dump, [$arg]);
+    call(@var_dump, l($arg));
     return $arg;
 }
