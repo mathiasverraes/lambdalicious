@@ -14,3 +14,5 @@ const ok = 'ok';
 const half = 'half';
 const foo = 'foo';
 const bar = 'bar';
+const baz = 'baz';
+const qux = 'qux';
