@@ -26,8 +26,7 @@ atom(@zip);
 function isempty($list)
 {
     return
-        !islist($list)
-            ? raise("isempty() is only defined for lists") :
+        !islist($list) ? raise("isempty() is only defined for lists") :
         (l() === $list)
     ;
 }
@@ -106,14 +105,17 @@ function map($function, $list)
 function map2($function, $listA, $listB)
 {
     return
-        hasplaceholders(func_get_args()) ? partial(map2, $function, $listA, $listB) :
-        (isempty($listA) || isempty($listB)
-            ? [] :
-        cons($function(head($listA), head($listB)), map2($function, tail($listA), tail($listB))));
+        hasplaceholders(al(func_get_args())) ? partial(map2, $function, $listA, $listB) :
+        (isempty($listA) || isempty($listB) ? l() :
+        cons(
+            $function(head($listA), head($listB)),
+            map2($function, tail($listA), tail($listB)))
+        )
+    ;
 }
 
 /**
- * Alias map2 to zipWith
+ * Alias for map2
  */
 function zipWith($function, $listA, $listB)
 {
@@ -267,24 +269,4 @@ function min_by($extract, $list)
 function zip($listA, $listB)
 {
     return zipWith(pair, $listA, $listB);
-}
-
-/**
- * Zip two lists using a zipper function
- *
- * @param callable $function
- * @param list     $listA
- * @param list     $listB
- *
- * @return list
- */
-function zipWith($function, $listA, $listB)
-{
-    return
-        hasplaceholders(al(func_get_args()))
-            ? partial(zipWith, $function, $listA, $listB) :
-        (isempty($listA) || isempty($listB)
-            ? l() :
-        cons($function(head($listA), head($listB)), zipWith($function, tail($listA), tail($listB))))
-    ;
 }

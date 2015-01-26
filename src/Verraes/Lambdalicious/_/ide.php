@@ -31,6 +31,7 @@ const ispair = 'ispair';
 const lt = 'lt';
 const lteq = 'lteq';
 const map = 'map';
+const map2 = 'map2';
 const memoize = 'memoize';
 const method = 'method';
 const mod = 'mod';
