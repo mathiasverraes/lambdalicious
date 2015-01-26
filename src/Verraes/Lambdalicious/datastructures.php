@@ -16,15 +16,30 @@ atom(@islist);
  */
 function pair($head, $tail) {
     return
-        function($message) use($head, $tail) {
-            return
-                $message === head ? $head :
-                ($message === tail ? $tail :
-                ($message === ispair ? @λ_pair : // a bit hackish
-                raise("A pair can only be deconstructed using head or tail")))
-        ;
-    };
+        dispatch(
+            [
+                head => $head,
+                tail => $tail,
+                ispair => @λ_pair
+            ], "A pair can only be deconstructed using head or tail"
+        );
 };
+
+/**
+ * Returns a function that dispatches messages according to a map
+ * @param array $map
+ * @param string $error
+ * @return callable
+ */
+function dispatch(array $map, $error = "Message could not be dispatched.")
+{
+   return function($message) use ($map, $error) {
+        return
+            array_key_exists($message, $map) ? $map[$message] :
+            raise($error)
+        ;
+   };
+}
 
 /**
  * Check if a function accepts a message as the first argument
