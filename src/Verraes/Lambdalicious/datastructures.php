@@ -5,6 +5,7 @@ atom(@ispair);
 atom(@head);
 atom(@tail);
 atom(@l);
+atom(@nil);
 atom(@islist);
 
 /**
@@ -14,15 +15,45 @@ atom(@islist);
  * @return pair
  */
 function pair($head, $tail) {
-    return function($index) use($head, $tail) {
-        return
-            $index === head ? $head :
-            ($index === tail ? $tail :
-            ($index === ispair ? @λ_pair : // a bit hackish
-            raise("A pair can only be deconstructed using head or tail")))
-        ;
-    };
+    return
+        dispatch(
+            [
+                head => $head,
+                tail => $tail,
+                ispair => @λ_pair
+            ], "A pair can only be deconstructed using head or tail"
+        );
 };
+
+/**
+ * Returns a function that dispatches messages according to a map
+ * @param array $map
+ * @param string $error
+ * @return callable
+ */
+function dispatch(array $map, $error = "Message could not be dispatched.")
+{
+   return function($message) use ($map, $error) {
+        return
+            array_key_exists($message, $map) ? $map[$message] :
+            raise($error)
+        ;
+   };
+}
+
+/**
+ * Check if a function accepts a message as the first argument
+ * @param $function
+ * @return bool
+ * @throws λlicious_failed
+ */
+function acceptsmessage($function)
+{
+    return
+        !is_callable($function) ? false :
+        (new ReflectionFunction($function))->getParameters()[0]->name == 'message'
+    ;
+}
 
 /**
  * @param pair $pair
@@ -31,7 +62,7 @@ function pair($head, $tail) {
 function ispair($pair)
 {
     /** @var callable $pair */ // pleasing the IDE
-    return is_callable($pair) && ($pair(ispair) === @λ_pair);
+    return acceptsmessage($pair) && ($pair(ispair) === @λ_pair);
 }
 
 /**
@@ -63,13 +94,9 @@ function tail($data)
  */
 function l(...$elements)
 {
-    $createList = function(array $elements, $list = 'λ_list') use (&$createList) {
-        if (empty($elements)) {
-            return $list;
-        }
-
+    $createList = function(array $elements, $list = nil) use (&$createList) {
+        if (empty($elements)) return $list;
         $newList = pair(array_pop($elements), $list);
-
         return $createList($elements, $newList);
     };
 
@@ -82,7 +109,10 @@ function l(...$elements)
  */
 function islist($list)
 {
-    return $list === l() || (ispair($list) && islist(tail($list)));
+    return
+        $list === nil
+        || (ispair($list) && islist(tail($list)))
+    ;
 }
 
 /**

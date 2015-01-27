@@ -49,7 +49,7 @@ final class datastructuresTest extends LambdaliciousTestCase
     {
         $this->assertEquals(
             l(),
-            @λ_list
+            nil
         );
     }
 
@@ -64,7 +64,7 @@ final class datastructuresTest extends LambdaliciousTestCase
         );
         $this->assertEquals(
             tail(l(a)),
-            @λ_list
+            nil
         );
 
         $this->assertEquals(
@@ -77,7 +77,7 @@ final class datastructuresTest extends LambdaliciousTestCase
         );
         $this->assertEquals(
             tail(tail(l(a, b))),
-            @λ_list
+            nil
         );
     }
 

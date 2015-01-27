@@ -45,7 +45,7 @@ function pipe(...$functions)
  */
 function partial($function, ...$partialArgs)
 {
-    $replacePlaceholders = function ($partialArgs, $finalArgs, $carry = 'λ_list') use (&$replacePlaceholders)
+    $replacePlaceholders = function ($partialArgs, $finalArgs, $carry = nil) use (&$replacePlaceholders)
     {
         if (isempty($partialArgs)) {
             return concat(reverse($carry), $finalArgs);
