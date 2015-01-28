@@ -297,4 +297,26 @@ final class listsTest extends LambdaliciousTestCase
             )
         );
     }
+
+    /**
+     * @test
+     */
+    public function pick()
+    {
+        $list = l(a, b, c, d, e);
+        $this->assertEquals(
+            a,
+            pick($list, 0)
+        );
+        $this->assertEquals(
+            b,
+            pick($list, 1)
+        );
+        $this->assertEquals(
+            e,
+            pick($list, 4)
+        );
+        $this->setExpectedException(\_λlicious_failed::class);
+        pick($list, 5);
+    }
 }

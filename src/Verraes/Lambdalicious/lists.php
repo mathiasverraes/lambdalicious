@@ -269,3 +269,20 @@ function zip($listA, $listB)
 {
     return zipWith(pair, $listA, $listB);
 }
+
+
+/**
+ * Return the element with $index from a $list
+ */
+function pick($list, $index)
+{
+    return
+        gteq($index, length($list)) ? raise("Undefined index") :
+        isequal(0, $index) ? head($list) :
+        pick(tail($list), subtract($index, 1))
+        ;
+}
+
+$random = function($list) {
+    return pick($list, rand(0, length($list)));
+};
