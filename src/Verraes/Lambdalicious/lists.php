@@ -282,7 +282,3 @@ function pick($list, $index)
         pick(tail($list), subtract($index, 1))
         ;
 }
-
-$random = function($list) {
-    return pick($list, rand(0, length($list)));
-};
