@@ -7,6 +7,8 @@ atom(@tail);
 atom(@l);
 atom(@nil);
 atom(@islist);
+atom(@al);
+atom(@la);
 
 /**
  * Construct a pair

@@ -57,5 +57,7 @@ const zip = 'zip';
 const zipWith = 'zipWith';
 const l = 'l';
 const nil = 'nil';
+const al = 'al';
+const la = 'la';
 
 final class pair {}
