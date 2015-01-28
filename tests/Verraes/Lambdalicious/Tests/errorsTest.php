@@ -2,7 +2,7 @@
 
 namespace Verraes\Lambdalicious\Tests;
 
-use λlicious_failed;
+use _λlicious_failed;
 
 final class errorsTest extends LambdaliciousTestCase
 {
@@ -11,7 +11,7 @@ final class errorsTest extends LambdaliciousTestCase
      */
     public function raise_is_actually_a_λlicious_exceptions()
     {
-        $this->setExpectedException(λlicious_failed::class, @hello);
+        $this->setExpectedException(_λlicious_failed::class, @hello);
         raise(@hello);
     }
 }

@@ -1,6 +1,6 @@
 <?php
-require_once 'primitives.php';
-require_once 'errors.php';
+require_once '01.kernel.php';
+require_once 'equality.php';
 require_once 'datastructures.php';
 require_once 'functions.php';
 require_once 'higherorder.php';

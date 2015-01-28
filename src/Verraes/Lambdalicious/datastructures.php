@@ -25,35 +25,6 @@ function pair($head, $tail) {
         );
 };
 
-/**
- * Returns a function that dispatches messages according to a map
- * @param array $map
- * @param string $error
- * @return callable
- */
-function dispatch(array $map, $error = "Message could not be dispatched.")
-{
-   return function($message) use ($map, $error) {
-        return
-            array_key_exists($message, $map) ? $map[$message] :
-            raise($error)
-        ;
-   };
-}
-
-/**
- * Check if a function accepts a message as the first argument
- * @param $function
- * @return bool
- * @throws λlicious_failed
- */
-function acceptsmessage($function)
-{
-    return
-        !is_callable($function) ? false :
-        (new ReflectionFunction($function))->getParameters()[0]->name == 'message'
-    ;
-}
 
 /**
  * @param pair $pair
