@@ -60,5 +60,6 @@ const nil = 'nil';
 const al = 'al';
 const la = 'la';
 const pick = 'pick';
+const random = 'random';
 
 final class pair {}

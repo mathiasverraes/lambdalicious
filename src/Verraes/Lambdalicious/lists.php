@@ -17,6 +17,7 @@ atom(@min_by);
 atom(@compare_by);
 atom(@zip);
 atom(@pick);
+atom(@random);
 
 /**
  * Is the list empty?
@@ -284,3 +285,11 @@ function pick($list, $index)
         pick(tail($list), subtract($index, 1))
         ;
 }
+
+/**
+ * Return a random item from a list
+ */
+function random($list)
+{
+    return pick($list, rand(0, subtract(length($list), 1)));
+};
