@@ -16,6 +16,7 @@ atom(@max_by);
 atom(@min_by);
 atom(@compare_by);
 atom(@zip);
+atom(@pick);
 
 /**
  * Is the list empty?
@@ -277,6 +278,7 @@ function zip($listA, $listB)
 function pick($list, $index)
 {
     return
+        hasplaceholders(al(func_get_args())) ? partial(pick, $list, $index) :
         gteq($index, length($list)) ? raise("Undefined index") :
         isequal(0, $index) ? head($list) :
         pick(tail($list), subtract($index, 1))
