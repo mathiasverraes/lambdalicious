@@ -9,6 +9,12 @@
             "name": "Mathias Verraes",
             "email": "mathias@verraes.net",
             "homepage": "http://verraes.net"
+        },
+        {
+            "name": "Toon Daelman",
+            "email": "spinnewebber_toon@hotmail.com",
+            "homepage": "http://github.com/turanct",
+            "role": "Developer"
         }
     ],
     "autoload": {
@@ -22,7 +28,7 @@
             "Verraes\\": ["tests/Verraes"]
         }
     },
-    
+
     "require": {
         "php": "~5.6"
     },
