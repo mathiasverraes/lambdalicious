@@ -98,6 +98,17 @@ final class higherorderTest extends LambdaliciousTestCase
                 l(1,2,4,5,5,6)
             )
         );
+
+        $fib = fix(function($fib, $n) {
+            return $n > 1
+                ? $fib($fib, $n - 1) + $fib($fib, $n - 2)
+                : $n;
+        } );
+
+        $this->assertEquals(
+            13,
+            $fib(7)
+        );
     }
 }
 
