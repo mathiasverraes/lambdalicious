@@ -3,6 +3,7 @@ atom(@partial);
 atom(@compose);
 atom(@pipe);
 atom(@memoize);
+atom(@fix);
 atom(@__); // Argument placeholder for partials
 
 /**
@@ -97,5 +98,19 @@ function memoize(callable $function)
             $cache[$function][$key] = call($function, al($arguments));
         }
         return $cache[$function][$key];
+    };
+}
+
+/**
+ * Fixed point Y Combinator
+ *
+ * @param callable $function
+ *
+ * @return callable
+ */
+function fix(callable $function)
+{
+    return function(...$params) use ($function) {
+        return call($function, cons($function, al($params)));
     };
 }

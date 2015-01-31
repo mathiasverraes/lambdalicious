@@ -76,6 +76,29 @@ final class higherorderTest extends LambdaliciousTestCase
         $g(a, b);
         $this->assertEquals(3, $counter->count);
     }
+
+    /**
+     * @test
+     */
+    public function fix()
+    {
+        $quicksort = fix(function($_quicksort, $list) {
+            return
+                isempty($list) ? l() :
+                concat(
+                    $_quicksort($_quicksort, filter(gteq(head($list), __), tail($list))),
+                    l(head($list)),
+                    $_quicksort($_quicksort, filter(lt(head($list), __), tail($list)))
+                );
+        });
+
+        $this->assertTrue(
+            isequal(
+                $quicksort(l(5,2,4,1,6,5)),
+                l(1,2,4,5,5,6)
+            )
+        );
+    }
 }
 
 final class _TestCounter
