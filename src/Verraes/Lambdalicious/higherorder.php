@@ -3,7 +3,7 @@ atom(@partial);
 atom(@compose);
 atom(@pipe);
 atom(@memoize);
-atom(@fix);
+atom(@recurse);
 atom(@__); // Argument placeholder for partials
 
 /**
@@ -108,7 +108,7 @@ function memoize(callable $function)
  *
  * @return callable
  */
-function fix(callable $function)
+function recurse(callable $function)
 {
     return function(...$params) use ($function) {
         return call($function, cons($function, al($params)));

@@ -80,9 +80,9 @@ final class higherorderTest extends LambdaliciousTestCase
     /**
      * @test
      */
-    public function fix()
+    public function recurse()
     {
-        $quicksort = fix(function($quicksort, $list) {
+        $quicksort = recurse(function($quicksort, $list) {
             return
                 isempty($list) ? l() :
                 concat(
@@ -99,7 +99,7 @@ final class higherorderTest extends LambdaliciousTestCase
             )
         );
 
-        $fib = fix(function($fib, $n) {
+        $fib = recurse(function($fib, $n) {
             return $n > 1
                 ? $fib($fib, $n - 1) + $fib($fib, $n - 2)
                 : $n;
