@@ -103,8 +103,8 @@ function memoize(callable $function)
 
 /**
  * Fixed point Y Combinator
- *
- * @param callable $function
+ * Allows making recursive anonymous functions without resorting to
+ * the use(&$self) trick.
  *
  * @return callable
  */

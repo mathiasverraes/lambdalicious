@@ -82,13 +82,13 @@ final class higherorderTest extends LambdaliciousTestCase
      */
     public function fix()
     {
-        $quicksort = fix(function($_quicksort, $list) {
+        $quicksort = fix(function($quicksort, $list) {
             return
                 isempty($list) ? l() :
                 concat(
-                    $_quicksort($_quicksort, filter(gteq(head($list), __), tail($list))),
+                    $quicksort($quicksort, filter(gteq(head($list), __), tail($list))),
                     l(head($list)),
-                    $_quicksort($_quicksort, filter(lt(head($list), __), tail($list)))
+                    $quicksort($quicksort, filter(lt(head($list), __), tail($list)))
                 );
         });
 
