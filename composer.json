@@ -34,7 +34,8 @@
     },
 
     "require-dev": {
-        "phpunit/phpunit": "~4.3.0"
+        "phpunit/phpunit": "~4.3.0",
+        "turanct/omikron": "0.1.1"
     },
     "config": {
         "bin-dir": "bin"

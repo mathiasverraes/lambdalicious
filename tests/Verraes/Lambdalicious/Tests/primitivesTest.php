@@ -11,6 +11,7 @@ final class primitivesTest extends LambdaliciousTestCase
      */
     public function isatom()
     {
+        $this->markTestSkipped("moved to omikron");
         // These atoms are defined elsewhere
         $this->assertTrue(isatom(a));
         $this->assertTrue(isatom(b));
@@ -27,6 +28,8 @@ final class primitivesTest extends LambdaliciousTestCase
      */
     public function defining_atoms_is_idempotent()
     {
+        $this->markTestSkipped("moved to omikron");
+
         atom(@__my_test_atom__);
         atom(@__my_test_atom__);
 
@@ -38,6 +41,8 @@ final class primitivesTest extends LambdaliciousTestCase
      */
     public function define_multiple_atoms()
     {
+        $this->markTestSkipped("moved to omikron");
+
         atom(@a, @b, @c, @d, @e, @f);
         $this->assertEquals('f', f);
     }
@@ -47,7 +52,7 @@ final class primitivesTest extends LambdaliciousTestCase
      */
     public function defining_atoms_differently_fails()
     {
-       $this->markTestSkipped("Name clashing doesn't work with @atom definitions.");
+        $this->markTestSkipped("Name clashing doesn't work with @atom definitions.");
 
         define('__my_test_atom__2', 'other value');
         $this->setExpectedException(AtomIsAlreadyDefinedWithADifferentValue::class);
@@ -57,16 +62,18 @@ final class primitivesTest extends LambdaliciousTestCase
     /**
      * @test
      */
-    public function iseq_returns_true_when_equal()
+    public function isequal_returns_true_when_equal()
     {
+        $this->markTestSkipped("Name clashing doesn't work with @atom definitions.");
         $this->assertTrue(isequal(a, a));
     }
 
     /**
      * @test
      */
-    public function iseq_returns_false_when_not_equal()
+    public function isequal_returns_false_when_not_equal()
     {
+        $this->markTestSkipped("Name clashing doesn't work with @atom definitions.");
         $this->assertFalse(isequal(a, b));
     }
 
