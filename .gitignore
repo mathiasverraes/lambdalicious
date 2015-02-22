@@ -1,3 +1,4 @@
 vendor/
 composer.lock
 bin/phpunit
+bin/omikron
