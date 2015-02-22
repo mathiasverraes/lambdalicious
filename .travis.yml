@@ -9,3 +9,4 @@ before_script:
 
 script:
     - bin/phpunit
+    - bin/omikron topics

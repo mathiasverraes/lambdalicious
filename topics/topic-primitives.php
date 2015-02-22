@@ -40,7 +40,10 @@ within("primitives",
         }),
         it("returns false when not equal", function(){
             return !isequal(a, b);
-        })
+        }),
+        it("fails on purpose to test travis", function() { return false;})
     )
+
+
 
 );
