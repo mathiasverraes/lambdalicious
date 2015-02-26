@@ -207,14 +207,13 @@ within('lists',
                 toBe(c)
             );
         }),
-        it('throws an exception when index is not found', function() {
-            try {
-                pick(l(a, b, c, d), 5);
-            } catch (Exception $e) {
-                return true;
-            }
-
-            return false;
+        it('throws an exception when index is not found', function() { return
+            expectToThrow(
+                function() {
+                    pick(l(a, b, c, d), 5);
+                },
+                '_λlicious_failed'
+            );
         })
     )
 );
