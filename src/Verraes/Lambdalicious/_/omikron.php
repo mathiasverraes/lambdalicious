@@ -1,5 +1,13 @@
 <?php
 
+atom(@a);
+atom(@b);
+atom(@c);
+atom(@d);
+atom(@e);
+atom(@f);
+atom(@g);
+
 function toBeEqualTo($expected) {
     return function($actual) use($expected) {
         return isequal($actual, $expected)
