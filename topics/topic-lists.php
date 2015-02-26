@@ -19,11 +19,8 @@ within('lists',
     describe('cons',
         it('builds lists', function() { return
             expect(
-                isequal(
-                    cons(@a, l(@b, @c)),
-                    l(@a, @b, @c)
-                ),
-                toBeTrue()
+                cons(@a, l(@b, @c)),
+                toBeEqualTo(l(@a, @b, @c))
             );
         })
     ),
@@ -37,20 +34,14 @@ within('lists',
     describe('tail',
         it('returns the list without its first element', function() { return
             expect(
-                isequal(
-                    tail(l(@a, @b, @c)),
-                    l(@b, @c)
-                ),
-                toBeTrue()
+                tail(l(@a, @b, @c)),
+                toBeEqualTo(l(@b, @c))
             );
         }),
         it('returns an empty list for a list with one element', function() { return
             expect(
-                isequal(
-                    tail(l(@a)),
-                    l()
-                ),
-                toBeTrue()
+                tail(l(@a)),
+                toBeEqualTo(l())
             );
         })
     ),
@@ -67,38 +58,26 @@ within('lists',
     describe('concat',
         it('returns an emtpy list, without arguments', function() { return
             expect(
-                isequal(
-                    concat(),
-                    l()
-                ),
-                toBeTrue()
+                concat(),
+                toBeEqualTo(l())
             );
         }),
         it('returns the list, when given a single list', function() { return
             expect(
-                isequal(
-                    concat(l(@a, @b, @c)),
-                    l(@a, @b, @c)
-                ),
-                toBeTrue()
+                concat(l(@a, @b, @c)),
+                toBeEqualTo(l(@a, @b, @c))
             );
         }),
         it('returns a list, when given 2 lists', function() { return
             expect(
-                isequal(
-                    concat(l(@a, @b, @c), l(@d, @e, @f, @g)),
-                    l(@a, @b, @c, @d, @e, @f, @g)
-                ),
-                toBeTrue()
+                concat(l(@a, @b, @c), l(@d, @e, @f, @g)),
+                toBeEqualTo(l(@a, @b, @c, @d, @e, @f, @g))
             );
         }),
         it('returns a list, when given multiple lists', function() { return
             expect(
-                isequal(
-                    concat(l(@a, @b), l(@c, @d), l(@e, @f)),
-                    l(@a, @b, @c, @d, @e, @f)
-                ),
-                toBeTrue()
+                concat(l(@a, @b), l(@c, @d), l(@e, @f)),
+                toBeEqualTo(l(@a, @b, @c, @d, @e, @f))
             );
         })
     )
