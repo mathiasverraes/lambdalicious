@@ -77,3 +77,4 @@ strong individual who makes your own decisions, even in the face of constant cha
 
 I like you already!
 
+![Recursive Mustache](docs/recursive_mustache.jpg "Recursive Mustache")
