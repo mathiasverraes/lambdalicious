@@ -9,7 +9,6 @@ atom(@nil);
 atom(@islist);
 atom(@al);
 atom(@la);
-atom(@show);
 
 /**
  * Construct a pair
@@ -114,21 +113,5 @@ function la($list)
         !islist($list) ? raise("la() is only defined for lists") :
         (isempty($list) ? [] :
         array_merge([head($list)], la(tail($list))))
-    ;
-}
-
-/**
- * Return a string representation of a datastructure
- *
- * @param mixed $data
- *
- * @return string
- */
-function show($data)
-{
-    return
-        islist($data) ? '(' . implode(', ', la(map(show, $data))) . ')' :
-        (ispair($data) ? '(' . show(head($data)) . ' . ' . show(tail($data)) . ')':
-        print_r($data, true))
     ;
 }
