@@ -73,8 +73,12 @@ I know right?
 Yes! Be a pioneer, be an early adopter, be an innovator! Show your boss you *can* take risks on company time! You are a
 strong individual who makes your own decisions, even in the face of constant change and breakage! You are a legend!
 
+**Really?**
+
+I don't think you're ready for this curry cuz my codez is too Lamdalicious for ya babe.
+
 **I want to contribute!**
 
-I like you already!
+[I like you already!](https://github.com/mathiasverraes/lambdalicious/blob/master/CONTRIBUTING.md)
 
 ![Recursive Mustache](docs/recursive_mustache.jpg "Recursive Mustache")
