@@ -1,8 +1,31 @@
 <?php
 atom(@dump);
+atom(@pretty);
 
-function dump($arg)
+/**
+ * Dump a pretty representation of a datastructure to stdout
+ *
+ * @param mixed $args
+ *
+ * @IO This function has side effects
+ */
+function dump(...$args)
 {
-    call(@var_dump, l($arg));
-    return $arg;
+    print(implode("\n", la(map(pretty, al($args)))));
+}
+
+/**
+ * Return a string representation of a datastructure
+ *
+ * @param mixed $data
+ *
+ * @return string
+ */
+function pretty($data)
+{
+    return
+        islist($data) ? '(' . implode(', ', la(map(pretty, $data))) . ')' :
+        (ispair($data) ? '(' . pretty(head($data)) . ' . ' . pretty(tail($data)) . ')':
+        print_r($data, true))
+    ;
 }
