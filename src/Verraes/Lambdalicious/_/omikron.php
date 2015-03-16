@@ -17,3 +17,6 @@ function toBeEqualTo($expected) {
     };
 }
 
+function assertCallback($file, $line, $code) {
+    throw new _λlicious_failed('Assertion failed in ' . $file . ', line ' . $line);
+}
