@@ -60,6 +60,14 @@ Why did I try to build a radio when I was ten? Why did I take apart my father's 
 
 You're very observant! Don't think of it as polluting the global namespace. Think of it as cleaning up the global namespace!
 
+**Are there unit tests?**
+
+Yes, check out the `/topics` directory. These are [omikron](https://github.com/turanct/omikron) topics. To run them, use this command:
+
+```php
+bin/omikron topics
+```
+
 **Can you backport it to older PHP versions?**
 
 Boring, next question please.
