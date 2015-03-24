@@ -24,9 +24,6 @@
     },
 
     "autoload-dev": {
-        "psr-4": {
-            "Verraes\\": ["tests/Verraes"]
-        },
         "files": [
             "src/Verraes/Lambdalicious/_/omikron.php"
         ]
