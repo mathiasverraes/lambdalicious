@@ -8,4 +8,4 @@ before_script:
     - composer install
 
 script:
-    - bin/phpunit
+    - bin/omikron topics

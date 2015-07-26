@@ -60,6 +60,14 @@ Why did I try to build a radio when I was ten? Why did I take apart my father's 
 
 You're very observant! Don't think of it as polluting the global namespace. Think of it as cleaning up the global namespace!
 
+**Are there unit tests?**
+
+Yes, check out the `/topics` directory. These are [omikron](https://github.com/turanct/omikron) topics. To run them, use this command:
+
+```php
+bin/omikron topics
+```
+
 **Can you backport it to older PHP versions?**
 
 Boring, next question please.
@@ -73,8 +81,12 @@ I know right?
 Yes! Be a pioneer, be an early adopter, be an innovator! Show your boss you *can* take risks on company time! You are a
 strong individual who makes your own decisions, even in the face of constant change and breakage! You are a legend!
 
+**Really?**
+
+I don't think you're ready for this curry cuz my codez is too Lamdalicious for ya babe.
+
 **I want to contribute!**
 
-I like you already!
+[I like you already!](https://github.com/mathiasverraes/lambdalicious/blob/master/CONTRIBUTING.md)
 
 ![Recursive Mustache](docs/recursive_mustache.jpg "Recursive Mustache")
