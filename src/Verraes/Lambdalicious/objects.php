@@ -13,6 +13,6 @@ atom(@method);
 function method($methodName, $arguments, $object)
 {
     return
-        hasplaceholders(al(func_get_args())) ? partial(method, $methodName, $arguments, $object) :
+        hasplaceholders(func_get_args()) ? partial(method, $methodName, $arguments, $object) :
         call_user_func_array([$object, $methodName], $arguments);
 }

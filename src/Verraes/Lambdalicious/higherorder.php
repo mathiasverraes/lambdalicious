@@ -62,18 +62,6 @@ function partial($function, ...$partialArgs)
     };
 }
 
-/**
- * True if $list has placeholder aka __ arguments
- * @param list $list
- * @return mixed
- */
-function hasplaceholders($list)
-{
-    return
-        isempty($list) ? false :
-        (head($list) === __ ? true :
-        hasplaceholders(tail($list)));
-}
 
 /**
  * Stores the results of expensive function calls and returns the cached result when the same function is called with

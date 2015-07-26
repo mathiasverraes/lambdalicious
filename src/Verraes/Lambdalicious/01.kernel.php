@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Kernel consists of functions that can't be implemented in Lambdalicious, and
- * are therefore written in legacy PHP.
+ * Kernel consists of functions that can't or shouldn't be implemented in
+ * pure Lambdalicious, and are therefore written in legacy PHP.
  */
 
 
@@ -84,4 +84,14 @@ function acceptsmessage($function)
 function isatom($atom)
 {
     return is_scalar($atom);
+}
+
+/**
+ * True if $list has placeholder aka __ arguments
+ * @param array $list
+ * @return mixed
+ */
+function hasplaceholders(array $list)
+{
+    return false !== array_search(__, $list, true);
 }

@@ -11,7 +11,7 @@ atom(@identity);
 function isequal($x, $y)
 {
     return
-        hasplaceholders(al(func_get_args())) ? partial(isequal, $x, $y) :
+        hasplaceholders(func_get_args()) ? partial(isequal, $x, $y) :
         (ispair($x) && ispair($y) ? (isequal(head($x), head($y)) && isequal(tail($x), tail($y))) :
         ($x === $y));
 }

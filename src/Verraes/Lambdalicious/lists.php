@@ -85,7 +85,7 @@ function contains1($list)
 function map($function, $list)
 {
     return
-        hasplaceholders(al(func_get_args())) ? partial(map, $function, $list) :
+        hasplaceholders(func_get_args()) ? partial(map, $function, $list) :
         (isempty($list) ? l() :
         (cons(
             $function(head($list)),
@@ -106,7 +106,7 @@ function map($function, $list)
 function map2($function, $listA, $listB)
 {
     return
-        hasplaceholders(al(func_get_args())) ? partial(map2, $function, $listA, $listB) :
+        hasplaceholders(func_get_args()) ? partial(map2, $function, $listA, $listB) :
         (isempty($listA) || isempty($listB) ? l() :
         cons(
             $function(head($listA), head($listB)),
@@ -135,7 +135,7 @@ function zipWith($function, $listA, $listB)
 function reduce($function, $list, $initial)
 {
     return
-        hasplaceholders(al(func_get_args()))
+        hasplaceholders(func_get_args())
             ? partial(reduce, $function, $list, $initial) :
         (isempty($list)
             ? $initial :
@@ -165,7 +165,7 @@ function filter($predicate, $list)
     };
 
     return
-        hasplaceholders(al(func_get_args()))
+        hasplaceholders(func_get_args())
             ? partial(filter, $predicate, $list) :
         $_filter($predicate, $list, l())
     ;
@@ -228,7 +228,7 @@ function compare_by($comparator, $extract, $list)
     };
 
     return
-        hasplaceholders(al(func_get_args()))
+        hasplaceholders(func_get_args())
             ? partial(compare_by, $comparator, $extract, $list) :
         reduce($compare, $list, null)
     ;
@@ -279,7 +279,7 @@ function zip($listA, $listB)
 function pick($list, $index)
 {
     return
-        hasplaceholders(al(func_get_args())) ? partial(pick, $list, $index) :
+        hasplaceholders(func_get_args()) ? partial(pick, $list, $index) :
         gteq($index, length($list)) ? raise("Undefined index") :
         isequal(0, $index) ? head($list) :
         pick(tail($list), subtract($index, 1))

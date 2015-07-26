@@ -69,14 +69,7 @@ final class partialTest extends LambdaliciousTestCase
         $this->assertEquals('ab', $firstNChars('abcde', 2));
     }
 
-    /**
-     * @test
-     */
-    public function __hasPlaceholders()
-    {
-        $this->assertTrue(hasplaceholders(l(a, __, c)));
-        $this->assertFalse(hasplaceholders(l(a, b, c)));
-    }
+
 
     /**
      * @test
