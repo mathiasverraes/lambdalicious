@@ -38,15 +38,5 @@ within('partials',
 
             return expect($firstNChars('abcde', 2), toBe('ab'));
         })
-    ),
-
-    describe('private function hasplaceholders',
-        it('returns true when placeholders are found in a list', function() { return
-            expect(hasplaceholders([a, __, c]), toBeTrue());
-        }),
-
-        it('returns false when no placeholders are found in a list', function() { return
-            expect(hasplaceholders([a, b, c]), toBeFalse());
-        })
     )
 );
