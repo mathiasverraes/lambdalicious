@@ -34,7 +34,7 @@
     },
 
     "require-dev": {
-        "turanct/omikron": "0.5.0"
+        "turanct/omikron": "0.6.0"
     },
     "config": {
         "bin-dir": "bin"
