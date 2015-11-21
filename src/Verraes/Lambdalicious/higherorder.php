@@ -94,6 +94,8 @@ function memoize(callable $function)
  * Allows making recursive anonymous functions without resorting to
  * the use(&$self) trick.
  *
+ * @param callable $function The tail-recursive function we want to optimize
+ *
  * @return callable
  */
 function recurse(callable $function)
