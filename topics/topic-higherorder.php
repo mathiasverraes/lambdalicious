@@ -62,6 +62,37 @@ within('higher order',
 
             return expect($fib(7), toBe(13));
         })
+    ),
+
+    describe('trampoline',
+        it('makes tail recursion possible, without stack overflows', function() {
+            // Define a simple length function, to get the length of an array
+            $length_ = recurse(function($length_, $a, $acc = 0) {
+                return empty($a)
+                    ? $acc
+                    // Instead of returning the result of a recursive call, we return
+                    // a closure representing the recursive call, which can be called
+                    // out of context, one stack frame up.
+                    : function() use ($length_, $a, $acc) {
+                        return $length_($length_, array_slice($a, 1), $acc + 1);
+                      }
+                ;
+            });
+
+            $length = trampoline($length_);
+
+            // The normal implementation would blow the stack (uncomment to try):
+            /*
+            $length = recurse(function($length, $a, $acc = 0) {
+                return empty($a)
+                    ? $acc
+                    : $length($length, array_slice($a, 1), $acc + 1)
+                ;
+            });
+            */
+
+            return expect($length(range(1, 1000)), toBe(1000));
+        })
     )
 );
 

@@ -104,3 +104,26 @@ function recurse(callable $function)
         return call($function, cons($function, al($params)));
     };
 }
+
+/**
+ * Trampoline
+ *
+ * Allows writing tail-recursive functions without stack overflows
+ * At the moment it only works with functions that do NOT return functions
+ *
+ * @param callable $function The tail-recursive function we want to optimize
+ *
+ * @return callable
+ */
+function trampoline(callable $function)
+{
+    return function(...$params) use ($function) {
+        $result = call($function, al($params));
+
+        while (is_callable($result)) {
+            $result = call($result, l());
+        }
+
+        return $result;
+    };
+}
